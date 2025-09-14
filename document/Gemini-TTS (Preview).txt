@@ -1,53 +1,89 @@
-Cloud Text-to-Speech API
- Gemini-TTS (프리뷰)
- Text-to-Speech Gemini-TTS는 텍스트 기반 프롬프트로 생성된 오디오를 세부적으로 제어할
-수 있는 최신 버전의 TTS 기술입니다.
-짧은 스니펫부터 긴 내러티브까지 합성 가능하며, 스타일, 억양, 속도, 어조, 감정 표현을 지정할 수
-있습니다.
-지원 모델:- gemini-2.5-flash-preview-tts: 비용 효율적, 짧은 지연 시간, 일상 애플리케이션 적합- gemini-2.5-pro-preview-tts: 높은 제어력, 팟캐스트/오디오북/고객 지원 워크플로 적합
-기능:- 자연스러운 대화, 뛰어난 품질의 상호작용- 스타일 제어 (억양, 속삭임 등)- 감정/억양 제어- 속도 및 발음 제어
-예시:
- model: "gemini-2.5-pro-preview-tts"
- prompt: "Say the following in a friendly way."
- text: "hahah I did NOT expect that. Can you believe it!."
- speaker: "Callirhoe"
- model: "gemini-2.5-flash-preview-tts"
- prompt: "Say the following in a curious way"
- text: "OK, so... tell me about this [uhm] AI thing."
- speaker: "Orus"
- model: "gemini-2.5-flash-preview-tts"
- prompt: "Say the following"
- text: "[extremely fast] Availability and terms may vary..."
- speaker: "Kore"
-음성 옵션:
- Achernar(여성), Achird(남성), Algenib(남성), Algieba(남성), Alnilam(남성),
- Aoede(여성), Autonoe(여성), Callirrhoe(여성), Charon(남성), Despina(여성),
- Enceladus(남성), Erinome(여성), Fenrir(남성), Gacrux(여성), Iapetus(남성),
- Kore(여성), Laomedeia(여성), Leda(여성), Orus(남성), Pulcherrima(여성),
-Puck(남성), Rasalgethi(남성), Sadachbia(남성), Sadaltager(남성),
- Schedar(남성), Sulafat(여성), Umbriel(남성), Vindemiatrix(여성),
- Zephyr(여성), Zubenelgenubi(남성)
-지원 언어: 영어(미국) en-US
-리전: global (공개 프리뷰)
-지원 출력 형식: LINEAR16, ALAW, MULAW, MP3, OGG_OPUS, PCM
- Python 예제 코드:
- import os
- from google.cloud import texttospeech
- PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT")
- def synthesize(prompt: str, text: str, model_name: str, output_filepath: str = "output.mp3"):
- client = texttospeech.TextToSpeechClient()
- synthesis_input = texttospeech.SynthesisInput(text=text, prompt=prompt)
- voice = texttospeech.VoiceSelectionParams(
- language_code="en-US",
- name="Charon",
- model_name=model_name
- )
- audio_config = texttospeech.AudioConfig(
- audio_encoding=texttospeech.AudioEncoding.MP3
- )
- response = client.synthesize_speech(
- input=synthesis_input, voice=voice, audio_config=audio_config
- )
- with open(output_filepath, "wb") as out:
- out.write(response.audio_content)
- print(f"Audio content written to file: {output_filepath}"
+# Gemini-TTS 종합 정리
+
+## 1. 모델 종류
+- **gemini-2.5-flash-preview-tts**
+  - 짧은 지연 시간, 비용 효율적, 일상 대화 적합
+- **gemini-2.5-pro-preview-tts**
+  - 품질 우수, 감정/억양 제어 가능, 복잡한 프롬프트 대응
+
+---
+
+## 2. 주요 기능과 제어 방법
+- **자연스러운 대화**
+  - 프롬프트 예: "casual conversation", "natural dialogue"
+- **스타일 제어 (억양, 속삭임 등)**
+  - 프롬프트 예: "in a whispering tone", "formal", "angry"
+- **감정/억양 제어**
+  - 프롬프트 예: "in a surprised and joyful tone", "sad and hesitant"
+- **속도 및 발음 제어**
+  - API 속성: `speaking_rate`, `pitch`
+  - 프롬프트 예: "[extremely fast]", "[slowly and carefully]"
+
+---
+
+## 3. API 속성 vs 프롬프트 제어
+| 구분 | API 속성 | 프롬프트 제어 |
+|------|-----------|---------------|
+| 제어 방식 | 수치형 파라미터 (`speaking_rate`, `pitch`) | 자연어 지시문 |
+| 적용 | 일정하고 기계적, 전 구간 동일 | 문맥 따라 달라짐, 억양·연기 포함 |
+| 예시 | `speaking_rate=0.8`, `pitch=+2.0` | "Say this extremely fast and excited" |
+
+---
+
+## 4. 음성 옵션 (일부)
+- **여성**: Achernar, Aoede, Autonoe, Callirrhoe, Despina, Erinome, Gacrux, Kore, Laomedeia, Leda, Pulcherrima, Sulafat, Vindemiatrix, Zephyr
+- **남성**: Achird, Algenib, Algieba, Alnilam, Charon, Enceladus, Fenrir, Iapetus, Orus, Puck, Rasalgethi, Sadachbia, Sadaltager, Schedar, Umbriel, Zubenelgenubi  
+- 각 음성에는 기본 라벨이 있음 (예: **Fenrir: 남성, 흥분함** → 기본 성격 설명)
+
+---
+
+## 5. Python 예제 코드
+```python
+import os
+from google.cloud import texttospeech
+
+PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT")
+
+def synthesize(prompt: str, text: str, model_name: str, speaker: str, output_filepath: str = "output.mp3"):
+    client = texttospeech.TextToSpeechClient()
+
+    # 텍스트 및 프롬프트 입력
+    synthesis_input = texttospeech.SynthesisInput(text=text, prompt=prompt)
+
+    # 음성 선택
+    voice = texttospeech.VoiceSelectionParams(
+        language_code="en-US",
+        name=speaker,            # 예: "Fenrir"
+        model_name=model_name    # "gemini-2.5-pro-preview-tts"
+    )
+
+    # 오디오 설정 (속도·피치 제어 가능)
+    audio_config = texttospeech.AudioConfig(
+        audio_encoding=texttospeech.AudioEncoding.MP3,
+        speaking_rate=0.9,   # 속도 제어
+        pitch=1.1            # 피치 제어
+    )
+
+    # 요청 수행
+    response = client.synthesize_speech(
+        input=synthesis_input, voice=voice, audio_config=audio_config
+    )
+
+    # 파일 저장
+    with open(output_filepath, "wb") as out:
+        out.write(response.audio_content)
+        print(f"Audio content written to file: {output_filepath}")
+
+# 사용 예시
+synthesize(
+    prompt="Say the following in a whispering, secretive tone",
+    text="Can you keep a secret?",
+    model_name="gemini-2.5-pro-preview-tts",
+    speaker="Kore",
+    output_filepath="whisper.mp3"
+)
+
+목소리 기본 성격(경쾌함, 흥분함 등) = 음성 프리셋 라벨
+속도·피치 = API 속성 (speaking_rate, pitch)
+억양·감정·스타일(속삭임 등) = 프롬프트 제어
+실무 활용법: API로 기본 톤 고정 → 프롬프트로 감정·연기 추가
