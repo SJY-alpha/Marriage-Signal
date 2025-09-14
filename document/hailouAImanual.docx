@@ -1,0 +1,154 @@
+알겠다. 네 매뉴얼을 그대로 살리면서 **이모지, 시각적 구분, 쇼츠 드라마 맥락**에 맞춰 깔끔하게 문서화해줄게.
+
+---
+
+# 🎬 미니맥스 Hailuo AI Director 모드 카메라/프롬프트 사용 매뉴얼
+
+---
+
+## 📌 제1부: 프롬프트 및 카메라 제어 핵심 원리
+
+### 1.1 완벽한 영상 생성을 위한 프롬프트 구조화
+
+* AI = **패턴 재현 시스템** → 모호성 최소화 필요.
+* 추상적 표현(예: *“걷는 여자”*)은 예측 불가 → 구체화해야 함.
+* 프롬프트 엔지니어는 **모호성 제거 감독자**.
+* **5요소 구조**
+  1️⃣ **카메라 샷 & 모션**: `[ ]` 안에 작성. 최대 3개 조합.
+  2️⃣ **피사체 & 묘사**: 외형 구체화 (예: a woman in a red dress with long black hair).
+  3️⃣ **행동**: 동사 명확 (예: walks cautiously).
+  4️⃣ **장면 & 환경**: 시간·장소 포함 (예: busy city street at dusk).
+  5️⃣ **조명·스타일·분위기**: cinematic, photorealistic 등.
+
+---
+
+## 🎥 제2부: 기본 문법과 카메라 제어
+
+### 2.1 문법 형식
+
+* 카메라 기능은 반드시 `[ ]` 안에.
+* `,` → 동시 실행 / `][` → 순차 실행.
+* `[Static shot]`은 단독 사용만 권장.
+* 자연어 수식 가능 (예: quickly \[Push in]).
+
+### 2.2 기본 카메라 움직임
+
+* ↔️ \[Truck left/right] : 수평 이동
+* 🔄 \[Pan left/right] : 축 회전
+* ➡️ \[Push in] / ⬅️ \[Pull out] : 전진·후퇴
+* ⬆️ \[Pedestal up] / ⬇️ \[Pedestal down] : 수직 이동
+* 🎯 \[Tilt up/down] : 상하 기울기
+* 🔍 \[Zoom in/out] : 화각 조절
+* ⚡ \[Shake] : 긴장·충격 표현
+* 🎬 \[Tracking shot] : 피사체 추적
+* 🖼 \[Static shot] : 고정
+
+### 2.3 시네마틱 샷 프리셋 (드라마 활용 가이드)
+
+* **Debut**: \[Truck left, Push in, Pan right]
+  → 인물 첫 등장, 인상적 오프닝.
+* **Freedom**: \[Push out, Pedestal up, Tilt down]
+  → 해방·행복 엔딩.
+* **Left circling**: \[Truck left, Pan right, Tracking shot]
+  → 로맨틱 데이트·댄스씬.
+* **Right circling**: \[Truck right, Pan left, Tracking shot]
+  → 혼란·반전 상황.
+* **Upward tilt**: \[Push in, Pedestal up]
+  → 프로포즈·영웅적 순간.
+* **Downward tilt**: \[Pedestal down, Tilt up]
+  → 긴장·불안감.
+* **Stage left**: \[Pan left, Zoom in]
+  → 아내 클로즈업·감정 강조.
+* **Stage right**: \[Pan right, Zoom in]
+  → 남편 클로즈업·리액션 강조.
+* **Scenic shot**: \[Truck left, Pedestal up]
+  → 공원·바닷가 등 배경 강조.
+
+---
+
+## 🚶 제3부: 워킹 안정성 전략
+
+* **정면 워킹**
+
+  * 문제: 인물 크기 변화, 프레임 이탈
+  * 해결: \[Tracking shot] + `"Her size and position remain constant."`
+
+* **턴(Turn) 동작**
+  1️⃣ walks forward → 2️⃣ stops → 3️⃣ executes 360° spin → 4️⃣ ends facing camera
+
+* **후면 워킹 & 복귀**
+
+  * “…turns 180°, showing her back, walks away.”
+  * “…turns back to face the camera and resumes walking.”
+
+---
+
+## 💃 제4부: 댄스 프롬프트 구성
+
+* **요소**
+
+  * 장르 🎵: K-pop, ballet, tango
+  * 움직임 🌊: fluid, sharp, delicate
+  * 동작 🕺: body wave, hip sway, twirl
+  * 감정 💖: confident, sultry, joyful
+
+* **키워드 예시**
+
+  * 섹시: sultry, sensual, slow body wave, dim light
+  * 트렌디: energetic, synchronized, neon lights
+  * 우아함: graceful, elegant, flowing dress
+
+---
+
+## 📑 제5부: 실전 템플릿
+
+1️⃣ **정면 워킹**
+
+```
+[Tracking shot]  
+Full shot of a fashion model walking towards the camera.  
+Her size and position remain constant. Cinematic, photorealistic.
+```
+
+2️⃣ **걷기 + 360도 턴**
+
+```
+[Tracking shot]  
+A female dancer in a flowing gown walks forward, stops, executes a perfect 360° spin, then strikes a dramatic pose.  
+```
+
+3️⃣ **걷기 + 후면 워킹 + 복귀**
+
+```
+[Static shot]  
+A man in a trench coat walks forward on a foggy street, turns 180° to show his back, walks away, then turns again to face the camera and resumes walking.  
+```
+
+4️⃣ **관능적 댄스**
+
+```
+[Push in, Tilt up]  
+A woman in a shimmering cocktail dress performs a sensual slow dance under a spotlight, moving fluidly with alluring eye contact.  
+```
+
+5️⃣ **K-pop 안무**
+
+```
+[Truck left, Tracking shot]  
+A K-pop idol with pink hair executes synchronized choreography in a mirrored dance studio. Energetic, sharp, dynamic.  
+```
+
+---
+
+## ✅ 결론
+
+* **Tracking shot + 보조문구** = 워킹 안정화 필수
+* **프리셋 활용** = 드라마/쇼츠 장르에서 감정 연출 최적화
+* **댄스·드라마 키워드** = 감정·분위기 강화
+* 반복 실험으로 시그니처 스타일 구축
+
+---
+
+👉 이 문서를 바로 **결혼시그널 쇼츠 웹앱 메뉴얼**에 넣으면, 스토리 상황별 프롬프트 가이드로 쓸 수 있음.
+
+원해? 내가 이걸 PDF 버전으로 다듬어서 배포 매뉴얼 형태로 만들어줄까?
