@@ -1,1 +1,156 @@
+# 미니맥스 Hailuo AI Director 모드 카메라/프롬프트 사용 매뉴얼
 
+
+---
+
+
+## 제1부: Hailuo AI 02 프롬프트 및 카메라 제어 핵심 원리
+
+
+### 1.1 완벽한 영상 생성을 위한 프롬프트 구조화
+- AI는 지능이 아닌 패턴 재현 시스템 → 모호성 최소화 필요.
+- "걷는 여자" 같은 추상적 표현은 AI가 임의 보정 → 원치 않는 결과 초래.
+- 프롬프트 엔지니어는 **모호성 제거 감독** 역할 수행.
+- 5요소 구조:
+  1. **카메라 샷 & 모션**: [ ] 안에 작성. 최대 3개 동작 조합 가능.
+  2. **피사체 & 묘사**: 구체적 외형 묘사(예: a woman in a red dress with long black hair).
+  3. **행동**: 동사의 질감 명확(예: walks cautiously).
+  4. **장면 & 환경**: 배경·시간·맥락 포함(예: busy city street at dusk).
+  5. **조명·스타일·분위기**: cinematic, photorealistic 등 일관된 톤.
+
+
+---
+
+
+## 제2부: 기본 문법과 카메라 제어
+
+
+### 2.1 문법 형식
+- 카메라 기능은 반드시 **[ ] 대괄호** 안에 위치.
+- 쉼표(,)로 최대 3개 동작 동시 실행.  
+- 다른 괄호를 이어서 사용하면 순차적 실행.  
+- [Static shot]은 단독 사용만 가능.  
+- 자연어 수식 가능 (예: quickly [Push in] → 빠른 접근).
+
+
+### 2.2 기본 카메라 움직임
+- [Truck left] / [Truck right] → 카메라 수평 이동.
+- [Pan left] / [Pan right] → 축 회전.
+- [Push in] / [Pull out] → 카메라 전진/후퇴.
+- [Pedestal up/down] → 수직 이동.
+- [Tilt up/down] → 상하 기울기.
+- [Zoom in/out] → 화각 조절.
+- [Shake] → 흔들림 효과.
+- [Tracking shot] → 피사체 추적.
+- [Static shot] → 고정.
+
+
+### 2.3 시네마틱 샷 프리셋
+- Debut: [Truck left, Push in, Pan right]  
+  → 모델 중심을 유지하며 측면 이동 + 전진 + 회전이 결합된 드라마틱한 도입 효과.  
+- Freedom: [Push out, Pedestal up, Tilt down]  
+  → 후퇴하면서 상승 및 하향 틸트 → 공간 확장, 해방감 연출.  
+- Left circling: [Truck left, Pan right, Tracking shot]  
+  → 좌측 이동과 반대 회전 결합 → 피사체를 원형으로 도는 듯한 다이내믹 샷.  
+- Right circling: [Truck right, Pan left, Tracking shot]  
+  → 우측 이동과 반대 회전 결합 → 반대 방향 원형 샷으로 공간 몰입감 강화.  
+- Upward tilt: [Push in, Pedestal up]  
+  → 전진하면서 상승 → 피사체를 웅장하고 위엄 있게 강조.  
+- Downward tilt: [Pedestal down, Tilt up]  
+  → 하강하면서 위로 틸트 → 역동적 전환과 비극적 또는 긴장감 있는 분위기.  
+- Stage left: [Pan left, Zoom in]  
+  → 좌측 회전과 줌인 결합 → 특정 대상 강조, 드라마적 포커스.  
+- Stage right: [Pan right, Zoom in]  
+  → 우측 회전과 줌인 결합 → 동일 효과의 반대 방향 강조.  
+- Scenic shot: [Truck left, Pedestal up]  
+  → 좌측 이동과 상승 결합 → 풍경 강조, 장면 전체의 스케일 업 효과.  
+
+
+---
+
+
+## 제3부: 모델 워킹 안정성 극대화 전략
+
+
+### 3.1 정면 워킹
+- 문제: 모델이 점점 커지거나 프레임 밖으로 이탈.
+- 원인: 카메라-피사체 상대 위치 불안정.
+- 해결책: [Tracking shot] + "Her size and position in the frame remain constant."  
+- [Push out]은 속도 불일치로 부적절.
+
+
+### 3.2 턴(Turn) 동작 설계 – 순차적 분해
+1. 걷기: walks forward.  
+2. 정지: After several steps, she stops.  
+3. 턴: executes a perfect 360-degree spin to the right.  
+4. 종료: She ends the turn facing the camera with a confident smile.
+
+
+### 3.3 후면 워킹 & 복귀
+- 뒷모습 지시: ...she turns 180 degrees, showing her back. She walks away from the camera.  
+- 복귀 지시: ...turns back to face the camera. She resumes her walk forward.  
+
+
+**표: 워킹 및 턴 문제 해결**
+
+
+| 문제 상황 | 원인 | 최적화된 프롬프트 |
+|-----------|------|-------------------|
+| 정면 워킹 시 크기 변화 | 거리 자동 조정 | Tracking shot + "Her size and position… constant" |
+| 걷다 턴 시 불안정 | 모호한 지시 | walks forward. After a few steps, she stops and turns |
+| 턴 후 뒷모습 실패 | 뒷모습·방향 미지시 | ...turns 180°, showing back. Walks away |
+| 원위치 복귀 실패 | 이전 상태 망각 | ...turns back to face the camera. Resumes walk |
+
+
+---
+
+
+## 제4부: 댄스 프롬프트 구성
+
+
+### 4.1 핵심 요소
+1. **댄스 장르**: K-pop, ballet, bachata 등.  
+2. **움직임 질감**: fluid, sharp, powerful, delicate.  
+3. **핵심 동작**: body wave, popping, hip sway, twirl.  
+4. **감정 & 분위기**: confident, sultry, joyful, background context.
+
+
+### 4.2 키워드
+- 섹시: sultry, sensual, alluring, intimate, slow body wave, silk dress, dim light.  
+- 트렌디: energetic, synchronized choreography, K-pop idol, neon lights.  
+- 우아함: graceful, elegant, ballet studio, flowing white dress.
+
+
+---
+
+
+## 제5부: 실전 템플릿
+
+
+### 템플릿 1: 안정적 정면 워킹
+- **Prompt**: Full shot of a fashion model walking directly towards the camera on a white seamless background. Her size and centered position in the frame are maintained perfectly throughout the walk. Cinematic, photorealistic.  
+
+
+### 템플릿 2: 걷기 + 360도 턴 + 포즈
+- **Prompt**: A female dancer in a flowing gown walks forward. After five steps, she stops smoothly and executes a perfect 360-degree spin to her right. She concludes by striking a dramatic pose, looking directly at the camera.  
+
+
+### 템플릿 3: 걷기 + 턴 + 후면 워킹 + 복귀
+- **Prompt**: A man in a trench coat walks forward on a foggy street at night. He stops, turns 180 degrees to show his back, and walks away into the fog. After a few steps, he turns back to face the camera and resumes his determined walk forward.  
+
+
+### 템플릿 4: 관능적 댄스
+- **Prompt**: A woman with long hair in a shimmering cocktail dress performs a sensual slow dance under a spotlight in a dark nightclub. Her movements are fluid with hip sways and an alluring gaze at the camera. Sultry atmosphere, cinematic lighting.  
+
+
+### 템플릿 5: 에너제틱 K-pop 안무
+- **Prompt**: A K-pop idol with vibrant pink hair executes synchronized hip-hop choreography in a brightly lit dance practice room with mirrors. Energetic, sharp, dynamic. Camera follows smoothly.  
+
+
+---
+
+
+## 결론
+- **기술적 제어**: Tracking shot, 단계적 행동 분해 → 안정적 워킹·턴 구현.  
+- **의미론적 묘사**: 키워드 constellation → 감정·분위기 강화.  
+- 실험·반복을 통해 프롬프트 스타일 구축 시 최고의 결과 도출.
