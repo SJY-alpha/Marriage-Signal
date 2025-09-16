@@ -3,13 +3,7 @@
     ... (여기에 prompt_kit 내용 전부)
   },
   "CharacterSystem": {
-    ... (여기에 character_system 내용 전부)
-  }
-}
-
-
-
-import json
+   import json
 
 character_system = {
   "CharacterSystem": {
@@ -183,3 +177,9 @@ with open(out_path, "w", encoding="utf-8") as f:
     json.dump(character_system, f, ensure_ascii=False, indent=2)
 
 out_path
+
+  }
+}
+
+
+
