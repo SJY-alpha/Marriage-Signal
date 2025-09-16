@@ -1,3 +1,14 @@
+{
+  "PromptKit": {
+    ... (여기에 prompt_kit 내용 전부)
+  },
+  "CharacterSystem": {
+    ... (여기에 character_system 내용 전부)
+  }
+}
+
+
+
 import json
 
 character_system = {
