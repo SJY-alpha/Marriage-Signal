@@ -1,0 +1,115 @@
+import json
+
+character_system = {
+  "CharacterSystem": {
+    "Voice": {
+      "gender_pool": {
+        "female": ["Achernar","Aoede","Autonoe","Callirrhoe","Despina","Erinome","Gacrux","Kore","Laomedeia","Leda","Pulcherrima","Sulafat","Vindemiatrix","Zephyr"],
+        "male": ["Achird","Algenib","Algieba","Alnilam","Charon","Enceladus","Fenrir","Iapetus","Orus","Puck","Rasalgethi","Sadachbia","Sadaltager","Schedar","Umbriel","Zubenelgenubi"]
+      },
+      "tones": ["Bright","Upbeat","Informative","Firm","Excitable","Youthful","Breezy","Easy-going","Breathy","Clear","Smooth","Gravelly","Soft","Even","Mature","Forward","Friendly","Casual","Gentle","Lively","Knowledgeable","Warm"],
+      "tone_selection": {
+        "rule_based_probability": 0.70,
+        "free_pick_probability": 0.30,
+        "note": "If free pick triggers, ignore axis mapping for tone and choose any tone compatible with selected gender voice."
+      },
+      "adjustments": {
+        "speed_base": 1.0, "speed_min": 0.9, "speed_max": 1.5,
+        "pitch_base": 0,   "pitch_min": -5,  "pitch_max": 5,
+        "apply_probabilities": {"rule_based": 0.70, "free_pick": 0.30},
+        "jitter_if_rule_based": {"speed_abs_max": 0.03, "pitch_abs_max": 0.3},
+        "algorithm": "For each axis v ∈ {-1,0,+1}, take delta from rules below, multiply by weight, sum over axes. speed = clamp(speed_base + ΣΔspeed, speed_min, speed_max). pitch = clamp(pitch_base + ΣΔpitch, pitch_min, pitch_max). If free_pick, sample speed∼U[0.9,1.5], pitch∼U[-5,5]."
+      },
+      "axis_rules": [
+        {"id":"introversion","label_kr":"내향성","weight":1.0,
+         "values":{"-1":{"speed":-0.20,"pitch":-2},"0":{"speed":0,"pitch":0},"+1":{"speed":0.20,"pitch":2}}},
+        {"id":"assertiveness","label_kr":"적극성","weight":0.8,
+         "values":{"-1":{"speed":-0.10,"pitch":0},"0":{"speed":0,"pitch":0},"+1":{"speed":0.10,"pitch":0}}},
+        {"id":"calm_temper","label_kr":"차분/다혈질","weight":1.0,
+         "values":{"-1":{"speed":-0.15,"pitch":0},"0":{"speed":0,"pitch":0},"+1":{"speed":0.20,"pitch":1}}},
+        {"id":"stability_anxiety","label_kr":"안정/불안","weight":0.6,
+         "values":{"-1":{"speed":-0.05,"pitch":0},"0":{"speed":0,"pitch":0},"+1":{"speed":0.05,"pitch":0}}},
+        {"id":"optimism_pessimism","label_kr":"낙천/비관","weight":0.7,
+         "values":{"-1":{"speed":0.05,"pitch":1},"0":{"speed":0,"pitch":0},"+1":{"speed":-0.05,"pitch":-1}}},
+        {"id":"fragile_strong","label_kr":"유약/강인","weight":1.0,
+         "values":{"-1":{"speed":0,"pitch":2},"0":{"speed":0,"pitch":0},"+1":{"speed":0,"pitch":-2}}},
+        {"id":"brave_coward","label_kr":"용감/비겁","weight":0.7,
+         "values":{"-1":{"speed":0.05,"pitch":-1},"0":{"speed":0,"pitch":0},"+1":{"speed":-0.05,"pitch":1}}},
+        {"id":"emotional_rational","label_kr":"감정/이성","weight":0.6,
+         "values":{"-1":{"speed":0.05,"pitch":1},"0":{"speed":0,"pitch":0},"+1":{"speed":-0.05,"pitch":-1}}},
+        {"id":"quiet_talkative","label_kr":"과묵/수다","weight":0.8,
+         "values":{"-1":{"speed":-0.10,"pitch":0},"0":{"speed":0,"pitch":0},"+1":{"speed":0.10,"pitch":0}}},
+        {"id":"leisure_hasty","label_kr":"느긋/급함","weight":1.0,
+         "values":{"-1":{"speed":-0.15,"pitch":0},"0":{"speed":0,"pitch":0},"+1":{"speed":0.15,"pitch":0}}},
+        {"id":"lead_conform","label_kr":"주도/순응","weight":0.5,
+         "values":{"-1":{"speed":0.05,"pitch":0},"0":{"speed":0,"pitch":0},"+1":{"speed":-0.05,"pitch":0}}},
+        {"id":"active_passive","label_kr":"능동/수동","weight":0.5,
+         "values":{"-1":{"speed":0.05,"pitch":0},"0":{"speed":0,"pitch":0},"+1":{"speed":-0.05,"pitch":0}}},
+        {"id":"obedient_dominant","label_kr":"순종/지배","weight":0.5,
+         "values":{"-1":{"speed":-0.05,"pitch":0},"0":{"speed":0,"pitch":0},"+1":{"speed":0.05,"pitch":0}}},
+        {"id":"feminine_masculine_image","label_kr":"여성/남성 이미지","weight":0.4,
+         "values":{"-1":{"speed":0,"pitch":1},"0":{"speed":0,"pitch":0},"+1":{"speed":0,"pitch":-1}}},
+        {"id":"kind_cold","label_kr":"친절/무정","weight":0.4,
+         "values":{"-1":{"speed":0,"pitch":1},"0":{"speed":0,"pitch":0},"+1":{"speed":0,"pitch":-1}}},
+        {"id":"art_science","label_kr":"예술/과학","weight":0.3,
+         "values":{"-1":{"speed":0,"pitch":1},"0":{"speed":0,"pitch":0},"+1":{"speed":0,"pitch":0}}},
+        {"id":"sensitive_stoic","label_kr":"예민/무던","weight":0.4,
+         "values":{"-1":{"speed":0.05,"pitch":0},"0":{"speed":0,"pitch":0},"+1":{"speed":-0.05,"pitch":0}}},
+        {"id":"aggressive_defensive","label_kr":"공격/방어","weight":0.5,
+         "values":{"-1":{"speed":0.05,"pitch":0},"0":{"speed":0,"pitch":0},"+1":{"speed":-0.05,"pitch":0}}}
+      ]
+    },
+    "Fashion": {
+      "categories": {
+        "Formal": ["Suit","Blazer","Skirt suit","Tie"],
+        "Casual": ["T-shirt","Jeans","Cardigan","Sweater","Sneakers"],
+        "Trendy": ["Crop top","Mini skirt","Oversized jacket","Streetwear","Logo print"],
+        "Sporty": ["Tracksuit","Hoodie","Running shorts","Tank top","Sports bra"],
+        "Luxury": ["Evening gown","Designer coat","Jewelry-heavy","Silk dress","Tailored tuxedo"],
+        "Traditional": ["Hanbok","Kimono","Cheongsam","Sari"],
+        "Edgy": ["Leather jacket","Fishnet","Ripped jeans","Dark makeup","Chains"],
+        "Feminine": ["Floral dress","Pastel cardigan","Pleated skirt","Heels"],
+        "Masculine": ["Tailored suit","Straight pants","Boots","Minimal accessories"]
+      },
+      "randomness": {"rule_based":0.70,"soft_random":0.20,"strong_random":0.10,"free_pick":0.30}
+    },
+    "Hair": {
+      "base_styles": ["Clean Bob","Long Straight","Long Wave","Short Wave","Ponytail","Twin Tail","Braids","Updo","Slick Back","Asymmetric","Dyed","Layered","Short Cut","Buzz Cut","Curly Afro"],
+      "wave_variants": ["Loose Wave","Tight Wave","Messy Wave","Bouncy Wave","Wet Wave"],
+      "wave_bias_keywords": {"increase_probability_by": 0.15, "keywords":["부드러운","여성스러운","친절한","창의적","예술적"]},
+      "randomness": {"rule_based":0.70,"soft_random":0.20,"strong_random":0.10,"free_pick":0.30}
+    },
+    "Face": {
+      "features": {
+        "Eyes": ["Large round","Almond sharp","Drooping","Wide","Single eyelid","Double eyelid"],
+        "Nose": ["Small","Straight","Button","Aquiline"],
+        "Lips": ["Full","Thin","Smirk","Smile"],
+        "Skin": ["Pale","Tan","Olive","Dark","Freckles"],
+        "Jaw": ["Soft rounded","Sharp angular","Wide strong"]
+      },
+      "mapping": {
+        "감정적": ["Soft eyes","Large pupils","Frequent micro-expressions"],
+        "이성적": ["Sharp eyes","Tense lips","Angular jaw"],
+        "겸손": ["Lowered gaze","Soft mouth line"],
+        "거만": ["Raised chin","Smirk","Arched eyebrows"],
+        "낙천적": ["Smiling eyes","Plump cheeks"],
+        "비관적": ["Drooping eyes","Thin lips"]
+      },
+      "randomness": {"rule_based":0.70,"soft_random":0.20,"strong_random":0.10,"free_pick":0.30}
+    },
+    "Rules": {
+      "notes": [
+        "All personality axes use 3-level values: -1 (left), 0 (neutral), +1 (right).",
+        "Tone selection: 70% personality-based, 30% free pick.",
+        "Speed/Pitch: numeric-only, combined by weighted sum, with clamp.",
+        "Randomness: Fashion/Hair/Face follow 70/20/10 + 30% free pick."
+      ]
+    }
+  }
+}
+
+out_path = "/mnt/data/character_system_v3.json"
+with open(out_path, "w", encoding="utf-8") as f:
+    json.dump(character_system, f, ensure_ascii=False, indent=2)
+
+out_path
