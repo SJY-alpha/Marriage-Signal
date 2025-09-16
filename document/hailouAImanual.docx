@@ -10,15 +10,15 @@
 
 ### 1.1 완벽한 영상 생성을 위한 프롬프트 구조화
 
-* AI = **패턴 재현 시스템** → 모호성 최소화 필요.
+* AI =  패턴 재현 시스템  → 모호성 최소화 필요.
 * 추상적 표현(예: *“걷는 여자”*)은 예측 불가 → 구체화해야 함.
-* 프롬프트 엔지니어는 **모호성 제거 감독자**.
-* **5요소 구조**
-  1️⃣ **기본 카메라 모션**: `[ ]` 안에 작성. 최대 3개 조합.(기본 카메라 모션만 괄호 안에서 작동한다)
-  2️⃣ **피사체 & 묘사**: 외형 구체화 (예: a woman in a red dress with long black hair).
-  3️⃣ **행동**: 동사 명확 (예: walks cautiously).
-  4️⃣ **장면 & 환경**: 시간·장소 포함 (예: busy city street at dusk).
-  5️⃣ **조명·스타일·분위기**: cinematic, photorealistic 등.
+* 프롬프트 엔지니어는  모호성 제거 감독자 .
+*  5요소 구조 
+  1️⃣  기본 카메라 모션 : `[ ]` 안에 작성. 최대 3개 조합.(기본 카메라 모션만 괄호 안에서 작동한다)
+  2️⃣  피사체 & 묘사 : 외형 구체화 (예: a woman in a red dress with long black hair).
+  3️⃣  행동 : 동사 명확 (예: walks cautiously).
+  4️⃣  장면 & 환경 : 시간·장소 포함 (예: busy city street at dusk).
+  5️⃣  조명·스타일·분위기 : cinematic, photorealistic 등.
 
 ---
 
@@ -27,57 +27,84 @@
 ### 2.1 문법 형식
 
 * 카메라 카메라 모션만 반드시 `[ ]` 안에.
-* `,` → 동시 실행 / `][` → 순차 실행.
+* `,` → 동시 실행  `[기본 카메라 모션][기본 카메라 모션]` → 순차 실행.
 * `[Static shot]`은 단독 사용만 권장.
-* 자연어 수식 가능 (예: quickly [Push in]).
-* 자연어 수식시 중요한건 [] 대괄호 안에는 2.2의 기본 카메라 움직임 이름만 들어가야 한다. 수식어는 대활호[]바깥에서만 쓴다.
+* 자연어 수식 가능 (예: quickly [Push in]). 수식어는 대활호[]바깥에서만 쓴다.
+* 자연어 수식시 중요한건 [] 대괄호 안에는 2.2의 기본 카메라 모션 이름만 들어가야 한다. 
 
-### 2.2 기본 카메라 모션(중요)
+### 2.2 기본 카메라 모션(카메라 기능 명칭은 이게 전부다 다른 명칭 혼용 금지)
 
-* ↔️ \[Truck left/right] : 수평 이동
-* 🔄 \[Pan left/right] : 축 회전
-* ➡️ \[Push in] / ⬅️ \[Pull out] : 전진·후퇴
-* ⬆️ \[Pedestal up] / ⬇️ \[Pedestal down] : 수직 이동
-* 🎯 \[Tilt up/down] : 상하 기울기
-* 🔍 \[Zoom in/out] : 화각 조절
-* ⚡ \[Shake] : 긴장·충격 표현
-* 🎬 \[Tracking shot] : 피사체 추적
-* 🖼 \[Static shot] : 고정
+* ↔️ [Truck left/right] : 수평 이동
+* 🔄 [Pan left/right] : 축 회전
+* ➡️ [Push in]  ⬅️  [Pull out] : 전진·후퇴
+* ⬆️ [Pedestal up]  ⬇️  [Pedestal down] : 수직 이동
+* 🎯 [Tilt up/down] : 상하 기울기
+* 🔍 [Zoom in/out] : 화각 조절
+* ⚡ [Shake] : 긴장·충격 표현
+* 🎬 [Tracking shot] : 피사체 추적
+* 🖼 [Static shot] : 고정
 
-### 2.3 시네마틱 샷 프리셋 (드라마 활용 가이드)
+### 2.3 카메라 조합 효과 및 활용 가이드
+아래 내용은 카메라를 이런식으로 조합아면 이런 효과를 만들어 낼수 있는 카메라 조합 방법들이다.
 
-* **Debut**: \[Truck left, Push in, Pan right]
-  → 인물 첫 등장, 인상적 오프닝.
-* **Freedom**: \[Push out, Pedestal up, Tilt down]
-  → 해방·행복 엔딩.
-* **Left circling**: \[Truck left, Pan right, Tracking shot]
-  → 로맨틱 데이트·댄스씬.
-* **Right circling**: \[Truck right, Pan left, Tracking shot]
-  → 혼란·반전 상황.
-* **Upward tilt**: \[Push in, Pedestal up]
-  → 프로포즈·영웅적 순간.
-* **Downward tilt**: \[Pedestal down, Tilt up]
-  → 긴장·불안감.
-* **Stage left**: \[Pan left, Zoom in]
-  → 아내 클로즈업·감정 강조.
-* **Stage right**: \[Pan right, Zoom in]
-  → 남편 클로즈업·리액션 강조.
-* **Scenic shot**: \[Truck left, Pedestal up]
-  → 공원·바닷가 등 배경 강조.
+* **Debut**
+  효과: 피사체를 중심으로 시계방향 원운동처럼 다가옴. 배경이 크게 회전하며 입체감 강화.
+  프롬프트 삽입: `[Truck left, Push in, Pan right]`
+  활용: 인물 첫 등장, 히어로식 등장, 무대 오프닝, 모델 런웨이 시작.
 
----
+* **Freedom**
+  효과: 뒤로 물러나며 상승, 넓은 공간이 개방적으로 드러남.
+  프롬프트 삽입: `[Push out, Pedestal up, Tilt down]`
+  활용: 엔딩 장면, 해방·행복·자유 표현, 결혼식 피날레, 공연 마지막 장면.
+
+* **Left circling**
+  효과: 피사체 중심 원운동(시계 방향). 배경이 크게 회전해 몰입감 강화.
+  프롬프트 삽입: `[Truck left, Pan right, Tracking shot]`
+  활용: 로맨틱 데이트, 댄스, 둘이 손잡고 도는 장면, 고백, 몽환적 장면.
+
+* **Right circling**
+  효과: 피사체 중심 원운동(반시계 방향). 배경 회전 방향이 반대.
+  프롬프트 삽입: `[Truck right, Pan left, Tracking shot]`
+  활용: 반전, 위기, 혼란, 추격 장면, 갑작스러운 분위기 전환.
+
+* **Upward tilt**
+  효과: 전진하며 상승. 피사체가 점점 커지고 시선은 위로 올라감.
+  프롬프트 삽입: `[Push in, Pedestal up]`
+  활용: 프로포즈, 승리, 영웅적 순간, 무대 클라이맥스, 리더십 강조.
+
+* **Downward tilt**
+  효과: 낮은 시점에서 올려다봄. 피사체가 웅장하고 위압적.
+  프롬프트 삽입: `[Pedestal down, Tilt up]`
+  활용: 불안, 공포, 권력자 등장, 적의 위협, 위기감 조성.
+
+* **Stage left**
+  효과: 좌측 회전과 확대. 인물이 빠르게 화면을 채움.
+  프롬프트 삽입: `[Pan left, Zoom in]`
+  활용: 아내·여자 캐릭터 감정 강조, 고백 순간, 눈물 클로즈업, 무대 좌측 배우 강조.
+
+* **Stage right**
+  효과: 우측 회전과 확대. 동일한 압축 효과, 방향만 반대.
+  프롬프트 삽입: `[Pan right, Zoom in]`
+  활용: 남편·남자 캐릭터 리액션, 충격 반응, 대화 상대 클로즈업, 무대 우측 배우 강조.
+
+* **Scenic shot**
+  효과: 좌측 이동과 상승이 겹쳐 대각선 궤적. 공간이 시원하게 열림.
+  프롬프트 삽입: `[Truck left, Pedestal up]`
+  활용: 풍경 소개, 여행 장면, 스케일감 강조, 장면 전환, 자연·도시 스케치, 배경 강조 컷.
+
+
 
 ## 🚶 제3부: 워킹 안정성 전략
 
-* **정면 워킹**
+*  정면 워킹 
 
   * 문제: 인물 크기 변화, 프레임 이탈
-  * 해결: \[Tracking shot] + `"Her size and position remain constant."`
+  * 해결:  [Tracking shot] + `"Her size and position remain constant."`
 
-* **턴(Turn) 동작**
+*  턴(Turn) 동작 
   1️⃣ walks forward → 2️⃣ stops → 3️⃣ executes 360° spin → 4️⃣ ends facing camera
 
-* **후면 워킹 & 복귀**
+*  후면 워킹 & 복귀 
 
   * “…turns 180°, showing her back, walks away.”
   * “…turns back to face the camera and resumes walking.”
@@ -86,14 +113,14 @@
 
 ## 💃 제4부: 댄스 프롬프트 구성
 
-* **요소**
+*  요소 
 
   * 장르 🎵: K-pop, ballet, tango
   * 움직임 🌊: fluid, sharp, delicate
   * 동작 🕺: body wave, hip sway, twirl
   * 감정 💖: confident, sultry, joyful
 
-* **키워드 예시**
+*  키워드 예시 
 
   * 섹시: sultry, sensual, slow body wave, dim light
   * 트렌디: energetic, synchronized, neon lights
@@ -103,7 +130,7 @@
 
 ## 📑 제5부: 실전 템플릿
 
-1️⃣ **정면 워킹**
+1️⃣  정면 워킹 
 
 ```
 [Tracking shot]  
@@ -111,28 +138,28 @@ Full shot of a fashion model walking towards the camera.
 Her size and position remain constant. Cinematic, photorealistic.
 ```
 
-2️⃣ **걷기 + 360도 턴**
+2️⃣  걷기 + 360도 턴 
 
 ```
 [Tracking shot]  
 A female dancer in a flowing gown walks forward, stops, executes a perfect 360° spin, then strikes a dramatic pose.  
 ```
 
-3️⃣ **걷기 + 후면 워킹 + 복귀**
+3️⃣  걷기 + 후면 워킹 + 복귀 
 
 ```
 [Static shot]  
 A man in a trench coat walks forward on a foggy street, turns 180° to show his back, walks away, then turns again to face the camera and resumes walking.  
 ```
 
-4️⃣ **관능적 댄스**
+4️⃣  관능적 댄스 
 
 ```
 [Push in, Tilt up]  
 A woman in a shimmering cocktail dress performs a sensual slow dance under a spotlight, moving fluidly with alluring eye contact.  
 ```
 
-5️⃣ **K-pop 안무**
+5️⃣  K-pop 안무 
 
 ```
 [Truck left, Tracking shot]  
@@ -143,15 +170,15 @@ A K-pop idol with pink hair executes synchronized choreography in a mirrored dan
 
 ## ✅ 결론
 
-* **Tracking shot + 보조문구** = 워킹 안정화 필수
-* **프리셋 활용** = 드라마/쇼츠 장르에서 감정 연출 최적화
-* **댄스·드라마 키워드** = 감정·분위기 강화
+*  Tracking shot + 보조문구  = 워킹 안정화 필수
+*  프리셋 활용  = 드라마/쇼츠 장르에서 감정 연출 최적화
+*  댄스·드라마 키워드  = 감정·분위기 강화
 * 반복 실험으로 시그니처 스타일 구축
 
 ---
 
-👉 이 문서를 바로 **결혼시그널 쇼츠 웹앱 메뉴얼**에 넣으면, 스토리 상황별 프롬프트 가이드로 쓸 수 있음.
-좋아. 요청대로 모든 카메라 기능 각각의 예시와 **프리셋 활용 가이드(드라마 전용)**를 정리해줄게.
+👉 이 문서를 바로  결혼시그널 쇼츠 웹앱 메뉴얼 에 넣으면, 스토리 상황별 프롬프트 가이드로 쓸 수 있음.
+좋아. 요청대로 모든 카메라 기능 각각의 예시와  프리셋 활용 가이드(드라마 전용) 를 정리해줄게.
 
 🎥 Hailuo 카메라 기능별 드라마 예시
 1. [Static shot]
