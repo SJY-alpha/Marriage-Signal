@@ -31,9 +31,23 @@
 ---
 
 ## 4. 음성 옵션 (일부)
+
+4.1 성별
 - **여성**: Achernar, Aoede, Autonoe, Callirrhoe, Despina, Erinome, Gacrux, Kore, Laomedeia, Leda, Pulcherrima, Sulafat, Vindemiatrix, Zephyr
 - **남성**: Achird, Algenib, Algieba, Alnilam, Charon, Enceladus, Fenrir, Iapetus, Orus, Puck, Rasalgethi, Sadachbia, Sadaltager, Schedar, Umbriel, Zubenelgenubi  
 - 각 음성에는 기본 라벨이 있음 (예: **Fenrir: 남성, 흥분함** → 기본 성격 설명)
+
+4.2 톤
+Zephyr -- Bright	Puck -- Upbeat	Charon -- Informative
+Kore -- Firm	Fenrir -- Excitable	Leda -- Youthful
+Orus -- Firm	Aoede -- Breezy	Callirrhoe -- Easy-going
+Autonoe -- Bright	Enceladus -- Breathy	Iapetus -- Clear
+Umbriel -- Easy-going	Algieba -- Smooth	Despina -- Smooth
+Erinome -- Clear	Algenib -- Gravelly	Rasalgethi -- Informative
+Laomedeia -- Upbeat	Achernar -- Soft	Alnilam -- Firm
+Schedar -- Even	Gacrux -- Mature	Pulcherrima -- Forward
+Achird -- Friendly	Zubenelgenubi -- Casual	Vindemiatrix -- Gentle
+Sadachbia -- Lively	Sadaltager -- Knowledgeable	Sulafat -- Warm
 
 ---
 
