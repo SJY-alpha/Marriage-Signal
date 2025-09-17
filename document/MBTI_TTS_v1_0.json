@@ -1,366 +1,938 @@
 {
   "version": "mbti-tts-v1.1",
   "constraints": {
-    "voice": { "speaking_rate_range": [0.85, 1.5], "pitch_range": [-2.0, 2.0] },
+    "voice": {
+      "speaking_rate_range": [
+        0.85,
+        1.5
+      ],
+      "pitch_range": [
+        -2.0,
+        2.0
+      ]
+    },
     "override_probability_per_section": 0.3,
-    "sections": ["voice", "appearance", "fashion", "hair"]
-  },
-
-  "tts_tones": {
-    "female": [
-      {"name":"Achernar","label":"Soft","tags":["soft","warm","gentle"]},
-      {"name":"Aoede","label":"Breezy","tags":["breezy","light","friendly"]},
-      {"name":"Autonoe","label":"Bright","tags":["bright","lively"]},
-      {"name":"Callirrhoe","label":"Easy-going","tags":["easygoing","casual"]},
-      {"name":"Despina","label":"Smooth","tags":["smooth","warm"]},
-      {"name":"Erinome","label":"Clear","tags":["clear","articulate"]},
-      {"name":"Gacrux","label":"Mature","tags":["mature","calm"]},
-      {"name":"Kore","label":"Firm","tags":["firm","authoritative"]},
-      {"name":"Laomedeia","label":"Upbeat","tags":["upbeat","lively"]},
-      {"name":"Leda","label":"Youthful","tags":["youthful","bright"]},
-      {"name":"Pulcherrima","label":"Forward","tags":["forward","assertive"]},
-      {"name":"Sulafat","label":"Warm","tags":["warm","kind"]},
-      {"name":"Vindemiatrix","label":"Gentle","tags":["gentle","soft"]},
-      {"name":"Zephyr","label":"Bright","tags":["bright","sparkling"]}
-    ],
-    "male": [
-      {"name":"Achird","label":"Friendly","tags":["friendly","warm"]},
-      {"name":"Algenib","label":"Gravelly","tags":["gravelly","deep"]},
-      {"name":"Algieba","label":"Smooth","tags":["smooth","warm"]},
-      {"name":"Alnilam","label":"Firm","tags":["firm","authoritative"]},
-      {"name":"Charon","label":"Informative","tags":["informative","clear"]},
-      {"name":"Enceladus","label":"Breathy","tags":["breathy","airy"]},
-      {"name":"Fenrir","label":"Excitable","tags":["excitable","energetic"]},
-      {"name":"Iapetus","label":"Clear","tags":["clear","articulate"]},
-      {"name":"Orus","label":"Firm","tags":["firm","authoritative"]},
-      {"name":"Puck","label":"Upbeat","tags":["upbeat","lively"]},
-      {"name":"Rasalgethi","label":"Informative","tags":["informative","calm"]},
-      {"name":"Sadachbia","label":"Lively","tags":["lively","bright"]},
-      {"name":"Sadaltager","label":"Knowledgeable","tags":["knowledgeable","calm"]},
-      {"name":"Schedar","label":"Even","tags":["even","neutral"]},
-      {"name":"Umbriel","label":"Easy-going","tags":["easygoing","casual"]},
-      {"name":"Zubenelgenubi","label":"Casual","tags":["casual","friendly"]}
+    "sections": [
+      "voice",
+      "appearance",
+      "fashion",
+      "hair"
     ]
   },
-
-  "tone_selection_rules": {
-    "E": ["bright","upbeat","lively","friendly","casual"],
-    "I": ["gentle","mature","even","clear","soft"],
-    "T": ["firm","authoritative","informative","even"],
-    "F": ["warm","gentle","soft","friendly"],
-    "J": ["firm","clear","mature","even"],
-    "P": ["upbeat","casual","easygoing","lively"]
+  "tts_tones": {
+    "female": [
+      {
+        "name": "Achernar",
+        "label": "Soft",
+        "tags": [
+          "soft",
+          "warm",
+          "gentle"
+        ]
+      },
+      {
+        "name": "Aoede",
+        "label": "Breezy",
+        "tags": [
+          "breezy",
+          "light",
+          "friendly"
+        ]
+      },
+      {
+        "name": "Autonoe",
+        "label": "Bright",
+        "tags": [
+          "bright",
+          "lively"
+        ]
+      },
+      {
+        "name": "Callirrhoe",
+        "label": "Easy-going",
+        "tags": [
+          "easygoing",
+          "casual"
+        ]
+      },
+      {
+        "name": "Despina",
+        "label": "Smooth",
+        "tags": [
+          "smooth",
+          "warm"
+        ]
+      },
+      {
+        "name": "Erinome",
+        "label": "Clear",
+        "tags": [
+          "clear",
+          "articulate"
+        ]
+      },
+      {
+        "name": "Gacrux",
+        "label": "Mature",
+        "tags": [
+          "mature",
+          "calm"
+        ]
+      },
+      {
+        "name": "Kore",
+        "label": "Firm",
+        "tags": [
+          "firm",
+          "authoritative"
+        ]
+      },
+      {
+        "name": "Laomedeia",
+        "label": "Upbeat",
+        "tags": [
+          "upbeat",
+          "lively"
+        ]
+      },
+      {
+        "name": "Leda",
+        "label": "Youthful",
+        "tags": [
+          "youthful",
+          "bright"
+        ]
+      },
+      {
+        "name": "Pulcherrima",
+        "label": "Forward",
+        "tags": [
+          "forward",
+          "assertive"
+        ]
+      },
+      {
+        "name": "Sulafat",
+        "label": "Warm",
+        "tags": [
+          "warm",
+          "kind"
+        ]
+      },
+      {
+        "name": "Vindemiatrix",
+        "label": "Gentle",
+        "tags": [
+          "gentle",
+          "soft"
+        ]
+      },
+      {
+        "name": "Zephyr",
+        "label": "Bright",
+        "tags": [
+          "bright",
+          "sparkling"
+        ]
+      }
+    ],
+    "male": [
+      {
+        "name": "Achird",
+        "label": "Friendly",
+        "tags": [
+          "friendly",
+          "warm"
+        ]
+      },
+      {
+        "name": "Algenib",
+        "label": "Gravelly",
+        "tags": [
+          "gravelly",
+          "deep"
+        ]
+      },
+      {
+        "name": "Algieba",
+        "label": "Smooth",
+        "tags": [
+          "smooth",
+          "warm"
+        ]
+      },
+      {
+        "name": "Alnilam",
+        "label": "Firm",
+        "tags": [
+          "firm",
+          "authoritative"
+        ]
+      },
+      {
+        "name": "Charon",
+        "label": "Informative",
+        "tags": [
+          "informative",
+          "clear"
+        ]
+      },
+      {
+        "name": "Enceladus",
+        "label": "Breathy",
+        "tags": [
+          "breathy",
+          "airy"
+        ]
+      },
+      {
+        "name": "Fenrir",
+        "label": "Excitable",
+        "tags": [
+          "excitable",
+          "energetic"
+        ]
+      },
+      {
+        "name": "Iapetus",
+        "label": "Clear",
+        "tags": [
+          "clear",
+          "articulate"
+        ]
+      },
+      {
+        "name": "Orus",
+        "label": "Firm",
+        "tags": [
+          "firm",
+          "authoritative"
+        ]
+      },
+      {
+        "name": "Puck",
+        "label": "Upbeat",
+        "tags": [
+          "upbeat",
+          "lively"
+        ]
+      },
+      {
+        "name": "Rasalgethi",
+        "label": "Informative",
+        "tags": [
+          "informative",
+          "calm"
+        ]
+      },
+      {
+        "name": "Sadachbia",
+        "label": "Lively",
+        "tags": [
+          "lively",
+          "bright"
+        ]
+      },
+      {
+        "name": "Sadaltager",
+        "label": "Knowledgeable",
+        "tags": [
+          "knowledgeable",
+          "calm"
+        ]
+      },
+      {
+        "name": "Schedar",
+        "label": "Even",
+        "tags": [
+          "even",
+          "neutral"
+        ]
+      },
+      {
+        "name": "Umbriel",
+        "label": "Easy-going",
+        "tags": [
+          "easygoing",
+          "casual"
+        ]
+      },
+      {
+        "name": "Zubenelgenubi",
+        "label": "Casual",
+        "tags": [
+          "casual",
+          "friendly"
+        ]
+      }
+    ]
   },
-
+  "tone_selection_rules": {
+    "E": [
+      "bright",
+      "upbeat",
+      "lively",
+      "friendly",
+      "casual"
+    ],
+    "I": [
+      "gentle",
+      "mature",
+      "even",
+      "clear",
+      "soft"
+    ],
+    "T": [
+      "firm",
+      "authoritative",
+      "informative",
+      "even"
+    ],
+    "F": [
+      "warm",
+      "gentle",
+      "soft",
+      "friendly"
+    ],
+    "J": [
+      "firm",
+      "clear",
+      "mature",
+      "even"
+    ],
+    "P": [
+      "upbeat",
+      "casual",
+      "easygoing",
+      "lively"
+    ]
+  },
   "mbti_mapping": {
     "INFP": {
       "display_name_ko": "로맨티스트 이상주의자",
       "description_ko": "항상 아름다운 이상적 꿈을 꾸며 러블리한 감성적 데이트를 희망한다",
-      "keywords_ko": ["감성적","이상주의적","공감적","창의적"],
-      "base": {
-        "voice": {
-          "female_candidates": ["Achernar","Vindemiatrix","Sulafat"],
-          "male_candidates": ["Umbriel","Achird","Sadachbia"],
-          "default": {"speaking_rate": 1.00, "pitch": 1.00, "tone_pref": "gentle/warm/soft"}
-        },
-        "appearance_ko": "순한 눈매와 부드러운 인상",
-        "fashion_ko": "단정한 옷차림의 감성적인 룩",
-        "hair_ko": "자연스러운 컬러의 긴 웨이브",
-        "appearance_en": "gentle eyes and a soft, sentimental impression",
-        "fashion_en": "a neat, sentimental outfit with subtle literary touches",
-        "hair_en": "natural long waves"
-      }
+      "keywords_ko": [
+        "감성적",
+        "이상주의적",
+        "공감적",
+        "창의적"
+      ],
+      "voice": {
+        "female_candidates": [
+          "Achernar",
+          "Vindemiatrix",
+          "Sulafat"
+        ],
+        "male_candidates": [
+          "Umbriel",
+          "Achird",
+          "Sadachbia"
+        ],
+        "default": {
+          "speaking_rate": 1.0,
+          "pitch": 1.0,
+          "tone_pref": "gentle/warm/soft"
+        }
+      },
+      "appearance_ko": "순한 눈매와 부드러운 인상",
+      "appearance_en": "gentle eyes and a soft, sentimental impression",
+      "fashion_ko_female": "단정한 옷차림의 감성적인 룩",
+      "fashion_en_female": "a neat, sentimental outfit with subtle literary touches",
+      "fashion_ko_male": "단정하고 감성적인 캐주얼",
+      "fashion_en_male": "a neat, sentimental casual look",
+      "hair_ko_female": "자연스러운 롱 웨이브",
+      "hair_en_female": "natural long waves",
+      "hair_ko_male": "세련된 단정한 숏컷",
+      "hair_en_male": "a refined short cut"
     },
     "INFJ": {
       "display_name_ko": "조언자",
       "description_ko": "깊은 통찰과 따뜻한 마음으로 조용히 변화를 이끈다",
-      "keywords_ko": ["통찰적","온화함","이상지향","신중함"],
-      "base": {
-        "voice": {
-          "female_candidates": ["Erinome","Vindemiatrix","Gacrux"],
-          "male_candidates": ["Iapetus","Schedar","Rasalgethi"],
-          "default": {"speaking_rate": 0.95, "pitch": 0.00, "tone_pref": "gentle/clear/mature"}
-        },
-        "appearance_ko": "깊은 눈빛의 신비로운 인상",
-        "fashion_ko": "미니멀하고 감성적인 파스텔톤",
-        "hair_ko": "부드럽게 흐르는 롱 헤어",
-        "appearance_en": "deep eyes with a serene, mysterious aura",
-        "fashion_en": "minimal romantic palette in pastels",
-        "hair_en": "soft flowing long hair"
-      }
+      "keywords_ko": [
+        "통찰적",
+        "온화함",
+        "이상지향",
+        "신중함"
+      ],
+      "voice": {
+        "female_candidates": [
+          "Erinome",
+          "Vindemiatrix",
+          "Gacrux"
+        ],
+        "male_candidates": [
+          "Iapetus",
+          "Schedar",
+          "Rasalgethi"
+        ],
+        "default": {
+          "speaking_rate": 0.95,
+          "pitch": 0.0,
+          "tone_pref": "gentle/clear/mature"
+        }
+      },
+      "appearance_ko": "깊은 눈빛의 신비로운 인상",
+      "appearance_en": "deep eyes with a serene, mysterious aura",
+      "fashion_ko_female": "미니멀하고 감성적인 파스텔톤",
+      "fashion_en_female": "minimal romantic palette in pastels",
+      "fashion_ko_male": "미니멀하고 차분한 톤의 포멀",
+      "fashion_en_male": "minimal and calm-toned formal wear",
+      "hair_ko_female": "부드럽게 흐르는 롱 헤어",
+      "hair_en_female": "soft flowing long hair",
+      "hair_ko_male": "단정한 사이드 파트",
+      "hair_en_male": "a neat side part"
     },
     "INTJ": {
       "display_name_ko": "전략가",
       "description_ko": "차갑지만 뚜렷한 비전으로 흔들림 없이 전진한다",
-      "keywords_ko": ["전략적","냉철함","목표지향","질서"],
-      "base": {
-        "voice": {
-          "female_candidates": ["Kore","Gacrux","Erinome"],
-          "male_candidates": ["Orus","Alnilam","Rasalgethi"],
-          "default": {"speaking_rate": 0.95, "pitch": -1.00, "tone_pref": "firm/authoritative/clear"}
-        },
-        "appearance_ko": "날카로운 눈매와 각진 턱선, 침착한 표정",
-        "fashion_ko": "블랙·그레이 파워 포멀",
-        "hair_ko": "정돈된 올백 또는 매끈한 보브",
-        "appearance_en": "sharp eyes, defined jawline, composed expression",
-        "fashion_en": "black and gray power formal",
-        "hair_en": "slicked-back or a sleek bob"
-      }
+      "keywords_ko": [
+        "전략적",
+        "냉철함",
+        "목표지향",
+        "질서"
+      ],
+      "voice": {
+        "female_candidates": [
+          "Kore",
+          "Gacrux",
+          "Erinome"
+        ],
+        "male_candidates": [
+          "Orus",
+          "Alnilam",
+          "Rasalgethi"
+        ],
+        "default": {
+          "speaking_rate": 0.95,
+          "pitch": -1.0,
+          "tone_pref": "firm/authoritative/clear"
+        }
+      },
+      "appearance_ko": "날카로운 눈매와 각진 턱선, 침착한 표정",
+      "appearance_en": "sharp eyes, defined jawline, composed expression",
+      "fashion_ko_female": "블랙·그레이 파워 포멀",
+      "fashion_en_female": "black and gray power formal",
+      "fashion_ko_male": "블랙·그레이 파워 수트",
+      "fashion_en_male": "black and gray power suit",
+      "hair_ko_female": "정돈된 올백 또는 매끈한 보브",
+      "hair_en_female": "slicked-back or a sleek bob",
+      "hair_ko_male": "슬릭백 또는 클래식 사이드 파트",
+      "hair_en_male": "slicked-back or a classic side part"
     },
     "INTP": {
       "display_name_ko": "사색가",
       "description_ko": "세상의 원리를 파고들며 끝없이 질문한다",
-      "keywords_ko": ["분석적","호기심","논리적","차분함"],
-      "base": {
-        "voice": {
-          "female_candidates": ["Erinome","Achernar","Vindemiatrix"],
-          "male_candidates": ["Charon","Iapetus","Schedar"],
-          "default": {"speaking_rate": 0.90, "pitch": -1.00, "tone_pref": "logical/clear/even"}
-        },
-        "appearance_ko": "차분한 표정의 지적인 인상",
-        "fashion_ko": "기능적인 심플 캐주얼",
-        "hair_ko": "단정한 숏컷 또는 내추럴 단발",
-        "appearance_en": "a calm face with an intellectual vibe",
-        "fashion_en": "functional simple casual",
-        "hair_en": "a tidy short cut or natural bob"
-      }
+      "keywords_ko": [
+        "분석적",
+        "호기심",
+        "논리적",
+        "차분함"
+      ],
+      "voice": {
+        "female_candidates": [
+          "Erinome",
+          "Achernar",
+          "Vindemiatrix"
+        ],
+        "male_candidates": [
+          "Charon",
+          "Iapetus",
+          "Schedar"
+        ],
+        "default": {
+          "speaking_rate": 0.9,
+          "pitch": -1.0,
+          "tone_pref": "logical/clear/even"
+        }
+      },
+      "appearance_ko": "차분한 표정의 지적인 인상",
+      "appearance_en": "a calm face with an intellectual vibe",
+      "fashion_ko_female": "기능적인 심플 캐주얼",
+      "fashion_en_female": "functional simple casual",
+      "fashion_ko_male": "기능적인 심플 캐주얼",
+      "fashion_en_male": "functional simple casual",
+      "hair_ko_female": "단정한 단발 또는 내추럴 보브",
+      "hair_en_female": "a tidy bob or natural bob",
+      "hair_ko_male": "단정한 숏컷",
+      "hair_en_male": "a tidy short cut"
     },
     "ENFP": {
       "display_name_ko": "탐험가",
       "description_ko": "자유로운 영혼으로 사랑과 우정을 향해 뛰어든다",
-      "keywords_ko": ["외향적","열정적","자유분방","즉흥적"],
-      "base": {
-        "voice": {
-          "female_candidates": ["Autonoe","Zephyr","Laomedeia"],
-          "male_candidates": ["Puck","Sadachbia","Zubenelgenubi"],
-          "default": {"speaking_rate": 1.20, "pitch": 1.00, "tone_pref": "bright/upbeat/lively"}
-        },
-        "appearance_ko": "큰 눈과 환한 미소, 표현이 풍부한 얼굴",
-        "fashion_ko": "컬러풀 스트리트 믹스",
-        "hair_ko": "파스텔 포인트의 자유로운 헤어",
-        "appearance_en": "a bright smile, big lively eyes, expressive face",
-        "fashion_en": "colorful street mix with bohemian accessories",
-        "hair_en": "free-style hair with pastel accents"
-      }
+      "keywords_ko": [
+        "외향적",
+        "열정적",
+        "자유분방",
+        "즉흥적"
+      ],
+      "voice": {
+        "female_candidates": [
+          "Autonoe",
+          "Zephyr",
+          "Laomedeia"
+        ],
+        "male_candidates": [
+          "Puck",
+          "Sadachbia",
+          "Zubenelgenubi"
+        ],
+        "default": {
+          "speaking_rate": 1.2,
+          "pitch": 1.0,
+          "tone_pref": "bright/upbeat/lively"
+        }
+      },
+      "appearance_ko": "큰 눈과 환한 미소, 표현이 풍부한 얼굴",
+      "appearance_en": "a bright smile, big lively eyes, expressive face",
+      "fashion_ko_female": "컬러풀 스트리트 믹스",
+      "fashion_en_female": "colorful street mix with bohemian accessories",
+      "fashion_ko_male": "컬러풀 스트리트 캐주얼",
+      "fashion_en_male": "colorful street casual",
+      "hair_ko_female": "파스텔 포인트의 자유로운 헤어",
+      "hair_en_female": "free-style hair with pastel accents",
+      "hair_ko_male": "자유로운 텍스처의 미디엄 컷",
+      "hair_en_male": "a free-textured medium cut"
     },
     "ENFJ": {
       "display_name_ko": "선도자",
       "description_ko": "따뜻한 카리스마로 모두를 하나로 모은다",
-      "keywords_ko": ["다정함","리더십","사교성","배려"],
-      "base": {
-        "voice": {
-          "female_candidates": ["Sulafat","Vindemiatrix","Gacrux"],
-          "male_candidates": ["Sadaltager","Rasalgethi","Achird"],
-          "default": {"speaking_rate": 1.10, "pitch": 0.00, "tone_pref": "warm/gentle/knowledgeable"}
-        },
-        "appearance_ko": "친근한 미소와 따뜻한 눈빛",
-        "fashion_ko": "드레스업+단정, 스테이트먼트 액세서리",
-        "hair_ko": "우아한 롱 레이어",
-        "appearance_en": "a warm smile and welcoming eyes, confident presence",
-        "fashion_en": "dressed-up yet tidy with statement accessories",
-        "hair_en": "elegant long layers"
-      }
+      "keywords_ko": [
+        "다정함",
+        "리더십",
+        "사교성",
+        "배려"
+      ],
+      "voice": {
+        "female_candidates": [
+          "Sulafat",
+          "Vindemiatrix",
+          "Gacrux"
+        ],
+        "male_candidates": [
+          "Sadaltager",
+          "Rasalgethi",
+          "Achird"
+        ],
+        "default": {
+          "speaking_rate": 1.1,
+          "pitch": 0.0,
+          "tone_pref": "warm/gentle/knowledgeable"
+        }
+      },
+      "appearance_ko": "친근한 미소와 따뜻한 눈빛",
+      "appearance_en": "a warm smile and welcoming eyes, confident presence",
+      "fashion_ko_female": "드레스업+단정, 스테이트먼트 액세서리",
+      "fashion_en_female": "dressed-up yet tidy with statement accessories",
+      "fashion_ko_male": "세미포멀 캐주얼, 포인트 액세서리",
+      "fashion_en_male": "semi-formal casual with a statement accessory",
+      "hair_ko_female": "우아한 롱 레이어",
+      "hair_en_female": "elegant long layers",
+      "hair_ko_male": "단정한 미디엄 사이드 파트",
+      "hair_en_male": "a tidy medium side part"
     },
     "ENTP": {
       "display_name_ko": "발명가",
       "description_ko": "재치와 장난기로 새로운 아이디어를 던진다",
-      "keywords_ko": ["창의적","영리함","장난기","빠른전환"],
-      "base": {
-        "voice": {
-          "female_candidates": ["Laomedeia","Autonoe","Zephyr"],
-          "male_candidates": ["Puck","Sadachbia","Zubenelgenubi"],
-          "default": {"speaking_rate": 1.20, "pitch": 1.00, "tone_pref": "upbeat/bright/casual"}
-        },
-        "appearance_ko": "장난기 어린 눈빛과 빠른 표정 변화",
-        "fashion_ko": "스트리트-포멀 하이브리드, 대담한 패턴",
-        "hair_ko": "언밸런스 컷과 포인트 컬러",
-        "appearance_en": "a mischievous spark with quick expressions",
-        "fashion_en": "street–formal hybrid with bold patterns",
-        "hair_en": "an asymmetric cut with an accent color"
-      }
+      "keywords_ko": [
+        "창의적",
+        "영리함",
+        "장난기",
+        "빠른전환"
+      ],
+      "voice": {
+        "female_candidates": [
+          "Laomedeia",
+          "Autonoe",
+          "Zephyr"
+        ],
+        "male_candidates": [
+          "Puck",
+          "Sadachbia",
+          "Zubenelgenubi"
+        ],
+        "default": {
+          "speaking_rate": 1.2,
+          "pitch": 1.0,
+          "tone_pref": "upbeat/bright/casual"
+        }
+      },
+      "appearance_ko": "장난기 어린 눈빛과 빠른 표정 변화",
+      "appearance_en": "a mischievous spark with quick expressions",
+      "fashion_ko_female": "스트리트-포멀 하이브리드, 대담한 패턴",
+      "fashion_en_female": "street–formal hybrid with bold patterns",
+      "fashion_ko_male": "스트리트-포멀 믹스, 패턴 셔츠",
+      "fashion_en_male": "street–formal mix with patterned shirts",
+      "hair_ko_female": "언밸런스 컷과 포인트 컬러",
+      "hair_en_female": "an asymmetric cut with an accent color",
+      "hair_ko_male": "텍스처 포인트의 언밸런스 컷",
+      "hair_en_male": "an asymmetric textured cut"
     },
     "ENTJ": {
       "display_name_ko": "카리스마 리더",
       "description_ko": "강렬한 추진력으로 성과를 이끈다",
-      "keywords_ko": ["권위감","결단력","목표지향","효율"],
-      "base": {
-        "voice": {
-          "female_candidates": ["Kore","Gacrux","Erinome"],
-          "male_candidates": ["Orus","Alnilam","Rasalgethi"],
-          "default": {"speaking_rate": 1.05, "pitch": -1.00, "tone_pref": "firm/authoritative/clear"}
-        },
-        "appearance_ko": "강렬한 눈빛과 자신감 있는 자세",
-        "fashion_ko": "파워 수트, 레더, 레드 포인트",
-        "hair_ko": "올백 또는 타이트 업스타일",
-        "appearance_en": "a piercing gaze and confident posture",
-        "fashion_en": "a power suit with leather and a red accent",
-        "hair_en": "slicked-back or a tight updo"
-      }
+      "keywords_ko": [
+        "권위감",
+        "결단력",
+        "목표지향",
+        "효율"
+      ],
+      "voice": {
+        "female_candidates": [
+          "Kore",
+          "Gacrux",
+          "Erinome"
+        ],
+        "male_candidates": [
+          "Orus",
+          "Alnilam",
+          "Rasalgethi"
+        ],
+        "default": {
+          "speaking_rate": 1.05,
+          "pitch": -1.0,
+          "tone_pref": "firm/authoritative/clear"
+        }
+      },
+      "appearance_ko": "강렬한 눈빛과 자신감 있는 자세",
+      "appearance_en": "a piercing gaze and confident posture",
+      "fashion_ko_female": "파워 수트, 레더, 레드 포인트",
+      "fashion_en_female": "a power suit with leather and a red accent",
+      "fashion_ko_male": "파워 수트, 레더 포인트",
+      "fashion_en_male": "a power suit with a leather accent",
+      "hair_ko_female": "올백 또는 타이트 업스타일",
+      "hair_en_female": "slicked-back or a tight updo",
+      "hair_ko_male": "슬릭백 또는 클린 페이드",
+      "hair_en_male": "slicked-back or a clean fade"
     },
     "ISFP": {
       "display_name_ko": "아티스트",
       "description_ko": "따뜻한 감성으로 순간의 아름다움을 담는다",
-      "keywords_ko": ["감성","자유","온화","미적감각"],
-      "base": {
-        "voice": {
-          "female_candidates": ["Sulafat","Achernar","Vindemiatrix"],
-          "male_candidates": ["Umbriel","Achird","Algieba"],
-          "default": {"speaking_rate": 1.00, "pitch": 1.00, "tone_pref": "warm/soft/smooth"}
-        },
-        "appearance_ko": "부드러운 눈매의 따뜻한 인상",
-        "fashion_ko": "보헤미안 감성 캐주얼",
-        "hair_ko": "내추럴 웨이브",
-        "appearance_en": "soft eyes with a warm, artistic aura",
-        "fashion_en": "bohemian-inspired casual",
-        "hair_en": "natural waves"
-      }
+      "keywords_ko": [
+        "감성",
+        "자유",
+        "온화",
+        "미적감각"
+      ],
+      "voice": {
+        "female_candidates": [
+          "Sulafat",
+          "Achernar",
+          "Vindemiatrix"
+        ],
+        "male_candidates": [
+          "Umbriel",
+          "Achird",
+          "Algieba"
+        ],
+        "default": {
+          "speaking_rate": 1.0,
+          "pitch": 1.0,
+          "tone_pref": "warm/soft/smooth"
+        }
+      },
+      "appearance_ko": "부드러운 눈매의 따뜻한 인상",
+      "appearance_en": "soft eyes with a warm, artistic aura",
+      "fashion_ko_female": "보헤미안 감성 캐주얼",
+      "fashion_en_female": "bohemian-inspired casual",
+      "fashion_ko_male": "보헤미안 감성 캐주얼",
+      "fashion_en_male": "bohemian-inspired casual",
+      "hair_ko_female": "내추럴 웨이브",
+      "hair_en_female": "natural waves",
+      "hair_ko_male": "내추럴 웨이브 텍스처의 미디엄 컷",
+      "hair_en_male": "a medium cut with natural wave texture"
     },
     "ISTP": {
       "display_name_ko": "장인",
       "description_ko": "말보다 손이 빠르다. 실용적으로 해결한다",
-      "keywords_ko": ["실용","침착","직관적손기술","과묵"],
-      "base": {
-        "voice": {
-          "female_candidates": ["Erinome","Gacrux","Achernar"],
-          "male_candidates": ["Schedar","Charon","Iapetus"],
-          "default": {"speaking_rate": 0.90, "pitch": -1.00, "tone_pref": "even/clear/firm"}
-        },
-        "appearance_ko": "담백한 표정의 실용적 인상",
-        "fashion_ko": "심플 캐주얼, 밀리터리 디테일",
-        "hair_ko": "짧고 실용적인 스타일",
-        "appearance_en": "minimal expression with a focused gaze",
-        "fashion_en": "simple casual with military details",
-        "hair_en": "a short, practical style"
-      }
+      "keywords_ko": [
+        "실용",
+        "침착",
+        "직관적손기술",
+        "과묵"
+      ],
+      "voice": {
+        "female_candidates": [
+          "Erinome",
+          "Gacrux",
+          "Achernar"
+        ],
+        "male_candidates": [
+          "Schedar",
+          "Charon",
+          "Iapetus"
+        ],
+        "default": {
+          "speaking_rate": 0.9,
+          "pitch": -1.0,
+          "tone_pref": "even/clear/firm"
+        }
+      },
+      "appearance_ko": "담백한 표정의 실용적 인상",
+      "appearance_en": "minimal expression with a focused gaze",
+      "fashion_ko_female": "심플 캐주얼, 밀리터리 디테일",
+      "fashion_en_female": "simple casual with military details",
+      "fashion_ko_male": "유틸리티 캐주얼, 워크웨어 포인트",
+      "fashion_en_male": "utility casual with workwear accents",
+      "hair_ko_female": "짧고 실용적인 스타일",
+      "hair_en_female": "a short, practical style",
+      "hair_ko_male": "크루컷 또는 쇼트 텍스처",
+      "hair_en_male": "a crew cut or short textured style"
     },
     "ISFJ": {
       "display_name_ko": "수호자",
       "description_ko": "따뜻한 배려로 곁을 지킨다",
-      "keywords_ko": ["헌신","온화","책임","배려"],
-      "base": {
-        "voice": {
-          "female_candidates": ["Vindemiatrix","Sulafat","Erinome"],
-          "male_candidates": ["Achird","Umbriel","Schedar"],
-          "default": {"speaking_rate": 0.95, "pitch": 0.00, "tone_pref": "gentle/warm/even"}
-        },
-        "appearance_ko": "온화한 미소와 부드러운 얼굴선",
-        "fashion_ko": "전통적이고 보수적인 스타일",
-        "hair_ko": "깔끔한 단발 또는 숏컷",
-        "appearance_en": "a mild expression with soft facial lines",
-        "fashion_en": "traditional, conservative styling",
-        "hair_en": "a clean bob or short cut"
-      }
+      "keywords_ko": [
+        "헌신",
+        "온화",
+        "책임",
+        "배려"
+      ],
+      "voice": {
+        "female_candidates": [
+          "Vindemiatrix",
+          "Sulafat",
+          "Erinome"
+        ],
+        "male_candidates": [
+          "Achird",
+          "Umbriel",
+          "Schedar"
+        ],
+        "default": {
+          "speaking_rate": 0.95,
+          "pitch": 0.0,
+          "tone_pref": "gentle/warm/even"
+        }
+      },
+      "appearance_ko": "온화한 미소와 부드러운 얼굴선",
+      "appearance_en": "a mild expression with soft facial lines",
+      "fashion_ko_female": "전통적이고 보수적인 스타일",
+      "fashion_en_female": "traditional, conservative styling",
+      "fashion_ko_male": "전통적이고 단정한 스타일",
+      "fashion_en_male": "traditional and tidy styling",
+      "hair_ko_female": "깔끔한 단발 또는 숏컷",
+      "hair_en_female": "a clean bob or short cut",
+      "hair_ko_male": "클래식 사이드 파트 또는 단정한 숏컷",
+      "hair_en_male": "a classic side part or tidy short cut"
     },
     "ISTJ": {
       "display_name_ko": "원칙주의자",
       "description_ko": "질서와 책임으로 신뢰를 만든다",
-      "keywords_ko": ["원칙","성실","보수","차분"],
-      "base": {
-        "voice": {
-          "female_candidates": ["Kore","Erinome","Gacrux"],
-          "male_candidates": ["Orus","Alnilam","Rasalgethi"],
-          "default": {"speaking_rate": 0.90, "pitch": -1.00, "tone_pref": "firm/clear/mature"}
-        },
-        "appearance_ko": "단정한 얼굴의 진지한 눈빛",
-        "fashion_ko": "수트, 단색 셔츠, 단정 니트",
-        "hair_ko": "짧고 정돈된 헤어",
-        "appearance_en": "a neat face with serious eyes",
-        "fashion_en": "a suit, solid shirt, tidy knit",
-        "hair_en": "short, well-groomed hair"
-      }
+      "keywords_ko": [
+        "원칙",
+        "성실",
+        "보수",
+        "차분"
+      ],
+      "voice": {
+        "female_candidates": [
+          "Kore",
+          "Erinome",
+          "Gacrux"
+        ],
+        "male_candidates": [
+          "Orus",
+          "Alnilam",
+          "Rasalgethi"
+        ],
+        "default": {
+          "speaking_rate": 0.9,
+          "pitch": -1.0,
+          "tone_pref": "firm/clear/mature"
+        }
+      },
+      "appearance_ko": "단정한 얼굴의 진지한 눈빛",
+      "appearance_en": "a neat face with serious eyes",
+      "fashion_ko_female": "수트, 단색 셔츠, 단정 니트",
+      "fashion_en_female": "a suit, solid shirt, tidy knit",
+      "fashion_ko_male": "클래식 수트와 단색 셔츠",
+      "fashion_en_male": "a classic suit with a solid shirt",
+      "hair_ko_female": "짧고 정돈된 헤어",
+      "hair_en_female": "short, well-groomed hair",
+      "hair_ko_male": "클래식 사이드 파트 또는 슬릭 숏컷",
+      "hair_en_male": "a classic side part or sleek short cut"
     },
     "ESFP": {
       "display_name_ko": "연예인",
       "description_ko": "무대의 중심에서 반짝인다",
-      "keywords_ko": ["화려","활기","사교","즉흥"],
-      "base": {
-        "voice": {
-          "female_candidates": ["Zephyr","Autonoe","Laomedeia"],
-          "male_candidates": ["Sadachbia","Puck","Zubenelgenubi"],
-          "default": {"speaking_rate": 1.20, "pitch": 2.00, "tone_pref": "bright/lively/upbeat"}
-        },
-        "appearance_ko": "큰 눈과 화려한 표정",
-        "fashion_ko": "스팽글과 컬러풀 드레스",
-        "hair_ko": "대담한 컬러의 볼륨 헤어",
-        "appearance_en": "large sparkling eyes with flamboyant expressions",
-        "fashion_en": "sparkly, colorful stage-like outfits",
-        "hair_en": "bold-colored voluminous hair"
-      }
+      "keywords_ko": [
+        "화려",
+        "활기",
+        "사교",
+        "즉흥"
+      ],
+      "voice": {
+        "female_candidates": [
+          "Zephyr",
+          "Autonoe",
+          "Laomedeia"
+        ],
+        "male_candidates": [
+          "Sadachbia",
+          "Puck",
+          "Zubenelgenubi"
+        ],
+        "default": {
+          "speaking_rate": 1.2,
+          "pitch": 2.0,
+          "tone_pref": "bright/lively/upbeat"
+        }
+      },
+      "appearance_ko": "큰 눈과 화려한 표정",
+      "appearance_en": "large sparkling eyes with flamboyant expressions",
+      "fashion_ko_female": "스팽글과 컬러풀 드레스",
+      "fashion_en_female": "sparkly, colorful stage-like outfits",
+      "fashion_ko_male": "대담한 컬러 스트리트",
+      "fashion_en_male": "bold-colored streetwear",
+      "hair_ko_female": "대담한 컬러의 볼륨 헤어",
+      "hair_en_female": "bold-colored voluminous hair",
+      "hair_ko_male": "볼륨 스타일의 미디엄 컷, 하이라이트",
+      "hair_en_male": "a voluminous medium cut with highlights"
     },
     "ESTP": {
       "display_name_ko": "모험가",
       "description_ko": "지금 이 순간에 과감하게 뛰어든다",
-      "keywords_ko": ["에너지","대담","현실감","속도"],
-      "base": {
-        "voice": {
-          "female_candidates": ["Pulcherrima","Autonoe","Laomedeia"],
-          "male_candidates": ["Puck","Sadachbia","Fenrir"],
-          "default": {"speaking_rate": 1.15, "pitch": 0.00, "tone_pref": "forward/upbeat/excitable"}
-        },
-        "appearance_ko": "활발한 표정과 탄탄한 인상",
-        "fashion_ko": "스포츠웨어와 스트리트",
-        "hair_ko": "실용적인 쇼트",
-        "appearance_en": "an energetic expression with an athletic presence",
-        "fashion_en": "sportswear and street style",
-        "hair_en": "a practical short cut"
-      }
+      "keywords_ko": [
+        "에너지",
+        "대담",
+        "현실감",
+        "속도"
+      ],
+      "voice": {
+        "female_candidates": [
+          "Pulcherrima",
+          "Autonoe",
+          "Laomedeia"
+        ],
+        "male_candidates": [
+          "Puck",
+          "Sadachbia",
+          "Fenrir"
+        ],
+        "default": {
+          "speaking_rate": 1.15,
+          "pitch": 0.0,
+          "tone_pref": "forward/upbeat/excitable"
+        }
+      },
+      "appearance_ko": "활발한 표정과 탄탄한 인상",
+      "appearance_en": "an energetic expression with an athletic presence",
+      "fashion_ko_female": "스포츠웨어와 스트리트",
+      "fashion_en_female": "sportswear and street style",
+      "fashion_ko_male": "애슬레저 스트리트",
+      "fashion_en_male": "athleisure street style",
+      "hair_ko_female": "실용적인 쇼트",
+      "hair_en_female": "a practical short cut",
+      "hair_ko_male": "쇼트 스파이크 또는 페이드",
+      "hair_en_male": "a short spiky cut or fade"
     },
     "ESFJ": {
       "display_name_ko": "사교가",
       "description_ko": "미소로 분위기를 따뜻하게 잇는다",
-      "keywords_ko": ["친화","온정","조화","배려"],
-      "base": {
-        "voice": {
-          "female_candidates": ["Sulafat","Vindemiatrix","Achernar"],
-          "male_candidates": ["Achird","Umbriel","Zubenelgenubi"],
-          "default": {"speaking_rate": 1.10, "pitch": 1.00, "tone_pref": "warm/gentle/casual"}
-        },
-        "appearance_ko": "다정한 눈빛과 친근한 미소",
-        "fashion_ko": "단정하면서 따뜻한 캐주얼, 스카프 포인트",
-        "hair_ko": "부드러운 레이어",
-        "appearance_en": "a friendly smile and kind eyes",
-        "fashion_en": "neat warm casual with a soft scarf",
-        "hair_en": "a soft layered style"
-      }
+      "keywords_ko": [
+        "친화",
+        "온정",
+        "조화",
+        "배려"
+      ],
+      "voice": {
+        "female_candidates": [
+          "Sulafat",
+          "Vindemiatrix",
+          "Achernar"
+        ],
+        "male_candidates": [
+          "Achird",
+          "Umbriel",
+          "Zubenelgenubi"
+        ],
+        "default": {
+          "speaking_rate": 1.1,
+          "pitch": 1.0,
+          "tone_pref": "warm/gentle/casual"
+        }
+      },
+      "appearance_ko": "다정한 눈빛과 친근한 미소",
+      "appearance_en": "a friendly smile and kind eyes",
+      "fashion_ko_female": "단정하면서 따뜻한 캐주얼, 스카프 포인트",
+      "fashion_en_female": "neat warm casual with a soft scarf",
+      "fashion_ko_male": "단정한 스마트 캐주얼, 스카프/니트 포인트",
+      "fashion_en_male": "neat smart casual with a scarf or knit accent",
+      "hair_ko_female": "부드러운 레이어",
+      "hair_en_female": "a soft layered style",
+      "hair_ko_male": "소프트 레이어의 미디엄 컷",
+      "hair_en_male": "a soft layered medium cut"
     },
     "ESTJ": {
       "display_name_ko": "관리자",
       "description_ko": "현실을 단호하게 이끈다",
-      "keywords_ko": ["결단","실용","규율","책임"],
-      "base": {
-        "voice": {
-          "female_candidates": ["Kore","Gacrux","Erinome"],
-          "male_candidates": ["Orus","Alnilam","Rasalgethi"],
-          "default": {"speaking_rate": 1.00, "pitch": -1.00, "tone_pref": "firm/authoritative/clear"}
-        },
-        "appearance_ko": "단호한 표정과 곧은 자세",
-        "fashion_ko": "깔끔한 수트",
-        "hair_ko": "포멀하게 정돈된 헤어",
-        "appearance_en": "a firm expression and upright posture",
-        "fashion_en": "a clean formal suit",
-        "hair_en": "polished formal hair"
-      }
+      "keywords_ko": [
+        "결단",
+        "실용",
+        "규율",
+        "책임"
+      ],
+      "voice": {
+        "female_candidates": [
+          "Kore",
+          "Gacrux",
+          "Erinome"
+        ],
+        "male_candidates": [
+          "Orus",
+          "Alnilam",
+          "Rasalgethi"
+        ],
+        "default": {
+          "speaking_rate": 1.0,
+          "pitch": -1.0,
+          "tone_pref": "firm/authoritative/clear"
+        }
+      },
+      "appearance_ko": "단호한 표정과 곧은 자세",
+      "appearance_en": "a firm expression and upright posture",
+      "fashion_ko_female": "깔끔한 수트",
+      "fashion_en_female": "a clean formal suit",
+      "fashion_ko_male": "클래식 포멀 수트",
+      "fashion_en_male": "a classic formal suit",
+      "hair_ko_female": "포멀하게 정돈된 헤어",
+      "hair_en_female": "polished formal hair",
+      "hair_ko_male": "슬릭백 또는 클래식 포멀 컷",
+      "hair_en_male": "slicked-back or a classic formal cut"
     }
   },
-
   "generation_logic": {
     "gender": "auto",
     "pipeline": [
-      "apply_mbti_defaults(appearance_ko,fashion_ko,hair_ko,voice_candidates_by_gender,default_pitch_speed)",
+      "apply_mbti_defaults(appearance,fashion,hair,voice_candidates_by_gender,default_pitch_speed)",
       "per_section_override_with_probability(0.3)"
     ],
     "override_rules": {
       "voice": {
         "select_from_gender_pool": true,
         "select_best_tone_for_scenario": true,
-        "fine_tune": { "speaking_rate_range": [0.85, 1.5], "pitch_range": [-2.0, 2.0] }
+        "fine_tune": {
+          "speaking_rate_range": [
+            0.85,
+            1.5
+          ],
+          "pitch_range": [
+            -2.0,
+            2.0
+          ]
+        }
       },
-      "appearance": {"strategy": "scenario_fit"},
-      "fashion": {"strategy": "scenario_fit"},
-      "hair": {"strategy": "scenario_fit"}
+      "appearance": {
+        "strategy": "scenario_fit"
+      },
+      "fashion": {
+        "strategy": "scenario_fit"
+      },
+      "hair": {
+        "strategy": "scenario_fit"
+      }
     }
   },
-
   "nl_templates": {
     "to_english": {
       "appearance": "A person with {{appearance_ko}}.",
@@ -369,9 +941,11 @@
     },
     "compose_image_prompt": "{{appearance_en}} {{fashion_en}} {{hair_en}} Cinematic portrait, natural lighting, highly detailed."
   },
-
   "ui": {
-    "personality_selector": ["MBTI_16","AI_RANDOM"],
+    "personality_selector": [
+      "MBTI_16",
+      "AI_RANDOM"
+    ],
     "ai_random_selected_default": true,
     "editor_flags": {
       "show_ai_random_checked_in_personality_panel": true,
@@ -390,15 +964,18 @@
       "on_micro_adjust": "scenario_editor_fine_tunes_dialogue_to_personality"
     }
   },
-
   "example_flow": {
     "input_assumption": {
       "decided_gender": "female",
       "mbti": "INFP",
-      "character_name_ko": "손은미"
+      "character_name_ko": "샘플 캐릭터"
     },
     "step1_mbti_defaults": {
-      "voice": {"tone": "Achernar", "speaking_rate": 1.0, "pitch": 1.0},
+      "voice": {
+        "tone": "Achernar",
+        "speaking_rate": 1.0,
+        "pitch": 1.0
+      },
       "appearance_ko": "순한 눈매와 부드러운 인상",
       "fashion_ko": "단정한 옷차림의 감성적인 룩",
       "hair_ko": "세련된 숏컷"
@@ -411,8 +988,12 @@
     },
     "final_profile": {
       "gender": "female",
-      "name_ko": "손은미",
-      "voice": {"tone": "Achernar","speaking_rate": 1.0,"pitch": 1.0},
+      "name_ko": "샘플 캐릭터",
+      "voice": {
+        "tone": "Achernar",
+        "speaking_rate": 1.0,
+        "pitch": 1.0
+      },
       "appearance_ko": "순한 눈매와 부드러운 인상",
       "fashion_ko": "단정한 옷차림의 감성적인 룩",
       "hair_ko": "세련된 숏컷"
