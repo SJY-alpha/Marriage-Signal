@@ -1,1095 +1,378 @@
 {
-  "PromptKit": {
-    "PromptRules": {
-      "assembly_order": ["character", "fashion", "hair", "face", "mood", "camera"],
-      "probabilities": {
-        "rule_based": 0.70,
-        "soft_random": 0.20,
-        "strong_random": 0.10,
-        "free_pick": 0.30
-      },
-      "note": "Use rule-based picks unless free_pick triggers. Soft/Strong random only when not free_pick."
+  "version": "mbti-tts-v1.0",
+  "constraints": {
+    "voice": {
+      "speaking_rate_range": [0.85, 1.5],
+      "pitch_range": [-2.0, 2.0]
     },
-    "PromptTemplates": {
-      "character": "{gender}, age {age}, {body_type} body",
-      "fashion": "wearing {top} and {bottom} with a {silhouette} silhouette, {palette} palette, {pattern} pattern, {exposure} exposure, {material} material; accessories: {accessories}",
-      "hair": "{base_style} hairstyle, {texture} texture{wave_opt}{bangs_opt}{part_opt}, {color} color{hair_acc_opt}",
-      "face": "{eyes}; brows: {brows}; nose: {nose}; lips: {lips}; skin: {skin}; jawline: {jaw}{cheekbones_opt}",
-      "mood": "{mood_adjectives}",
-      "camera": "cinematic lighting, {camera_type} shot, high detail, 4k"
-    },
-    "NegativePhrases": [
-      "blurry",
-      "out of frame",
-      "low quality",
-      "overexposed",
-      "underexposed",
-      "duplicate face",
-      "extra limbs",
-      "deformed hands",
-      "text watermark"
+    "override_probability_per_section": 0.3,
+    "sections": ["voice", "appearance", "fashion", "hair"]
+  },
+
+  "tts_tones": {
+    "female": [
+      {"name":"Achernar","label":"Soft"},
+      {"name":"Aoede","label":"Breezy"},
+      {"name":"Autonoe","label":"Bright"},
+      {"name":"Callirrhoe","label":"Easy-going"},
+      {"name":"Despina","label":"Smooth"},
+      {"name":"Erinome","label":"Clear"},
+      {"name":"Gacrux","label":"Mature"},
+      {"name":"Kore","label":"Firm"},
+      {"name":"Laomedeia","label":"Upbeat"},
+      {"name":"Leda","label":"Youthful"},
+      {"name":"Pulcherrima","label":"Forward"},
+      {"name":"Sulafat","label":"Warm"},
+      {"name":"Vindemiatrix","label":"Gentle"},
+      {"name":"Zephyr","label":"Bright"}
     ],
-    "FashionPhrases": {
-      "Topwear": ["T-shirt", "Shirt", "Blouse", "Crop top", "Tank top", "Sweater", "Cardigan", "Hoodie", "Turtleneck", "Jersey", "Off-shoulder"],
-      "Bottomwear": ["Jeans", "Straight pants", "Wide pants", "Shorts", "Mini skirt", "Midi skirt", "Long skirt", "Leggings", "Cargo pants"],
-      "Dresses": ["Slip dress", "Floral dress", "Bodycon dress", "Shirt dress", "Evening gown"],
-      "Outerwear": ["Blazer", "Trench coat", "Leather jacket", "Denim jacket", "Puffer jacket", "Bomber", "Long coat", "Parka"],
-      "Footwear": ["Sneakers", "Loafers", "Oxfords", "Boots", "Heels", "Sandals", "Running shoes"],
-      "Accessories": ["Watch", "Necklace", "Earrings", "Ring", "Bracelet", "Cap", "Beanie", "Sunglasses", "Belt", "Scarf", "Tote bag", "Backpack", "Crossbody"],
-      "ColorPalette": {
-        "Bright": ["bright, saturated colors"],
-        "Pastel": ["soft pastel colors"],
-        "Neutral": ["neutral palette"],
-        "Dark": ["dark, muted colors"],
-        "Earth": ["earth tones"],
-        "Neon": ["neon accents"]
-      },
-      "Pattern": {
-        "Solid": ["solid color"],
-        "Stripes": ["striped"],
-        "Checks": ["checkered"],
-        "Florals": ["floral pattern"],
-        "Graphics": ["graphic print"],
-        "Camo": ["camouflage"],
-        "Polka": ["polka dots"]
-      },
-      "Silhouette": {
-        "Fitted": ["fitted silhouette"],
-        "Straight": ["straight silhouette"],
-        "Oversized": ["oversized fit"],
-        "Flared": ["flared hem"],
-        "Cropped": ["cropped fit"],
-        "Layered": ["layered styling"]
-      },
-      "Exposure": {
-        "Conservative": ["modest, minimal skin exposure"],
-        "Moderate": ["moderate exposure"],
-        "Bold": ["high-contrast, daring cuts"]
-      },
-      "Material": ["Cotton", "Linen", "Wool", "Denim", "Leather", "Silk", "Satin", "Synthetic", "Mesh", "Knitted"]
-    },
-    "HairPhrases": {
-      "Base": {
-        "Clean Bob": ["clean bob"],
-        "Wavy Bob": ["wavy bob"],
-        "Long Straight": ["long straight hair"],
-        "Long Wave": ["long wavy hair"],
-        "Short Wave": ["short wavy hair"],
-        "Ponytail": ["high ponytail"],
-        "Twin Tail": ["twin tails"],
-        "Braids": ["braided hair"],
-        "Updo": ["elegant updo"],
-        "Half-up": ["half-up hairstyle"],
-        "Slick Back": ["slicked-back hair"],
-        "Asymmetric": ["asymmetric cut"],
-        "Dyed": ["vivid dyed hair"],
-        "Layered": ["layered haircut"],
-        "Short Cut": ["short haircut"],
-        "Buzz Cut": ["buzz cut"],
-        "Undercut": ["undercut"],
-        "Fade": ["fade cut"],
-        "Curly Afro": ["curly afro"],
-        "Perm": ["permed hair"]
-      },
-      "Texture": ["Straight", "Wavy", "Curly", "Coily"],
-      "WaveVariants": {
-        "Loose Wave": ["loose, flowing waves"],
-        "Tight Wave": ["tight, regular waves"],
-        "Messy Wave": ["messy, irregular waves"],
-        "Bouncy Wave": ["bouncy, voluminous waves"],
-        "Wet Wave": ["wet-look waves"]
-      },
-      "Bangs": {
-        "None": [""],
-        "See-through": ["see-through bangs"],
-        "Blunt": ["blunt bangs"],
-        "Side": ["side-swept bangs"]
-      },
-      "Part": {
-        "Middle": ["middle part"],
-        "Side": ["side part"],
-        "Zigzag": ["zigzag part"]
-      },
-      "Color": ["Black", "Dark brown", "Light brown", "Blonde", "Platinum", "Red", "Auburn", "Ash", "Blue", "Green", "Pink", "Purple", "Gray", "Silver", "Ombre", "Two-tone", "Highlights"],
-      "Accessories": ["Hairband", "Clip", "Ribbon", "Scrunchie", "Barrette"]
-    },
-    "FacePhrases": {
-      "EyesShape": {
-        "Large round": ["large round eyes"],
-        "Almond": ["almond-shaped eyes"],
-        "Monolid": ["monolid eyes"],
-        "Double lid": ["double eyelids"],
-        "Downturned": ["downturned eyes"],
-        "Upturned": ["upturned eyes"],
-        "Wide-set": ["wide-set eyes"],
-        "Close-set": ["close-set eyes"]
-      },
-      "Brows": {
-        "Straight soft": ["soft straight brows"],
-        "Natural curve": ["naturally curved brows"],
-        "Arched sharp": ["sharply arched brows"],
-        "Thick": ["thick brows"],
-        "Thin": ["thin brows"]
-      },
-      "Nose": {
-        "Small": ["small nose"],
-        "Straight": ["straight nose"],
-        "Button": ["button nose"],
-        "Aquiline": ["aquiline nose"],
-        "Wide": ["wide nose"]
-      },
-      "Lips": {
-        "Full": ["full lips"],
-        "Medium": ["medium lips"],
-        "Thin": ["thin lips"],
-        "Heart-shaped": ["heart-shaped lips"],
-        "Downturned": ["downturned lips"],
-        "Smirk": ["a slight smirk"]
-      },
-      "SkinTone": {
-        "Porcelain": ["porcelain skin"],
-        "Fair": ["fair skin"],
-        "Light": ["light skin"],
-        "Medium": ["medium skin"],
-        "Olive": ["olive skin"],
-        "Tan": ["tan skin"],
-        "Deep": ["deep skin"]
-      },
-      "SkinDetail": {
-        "Freckles": ["freckles"],
-        "Moles": ["beauty marks"],
-        "Blush low": ["low, natural blush"],
-        "Blush high": ["high, vivid blush"],
-        "None": ["clear skin"]
-      },
-      "Jawline": {
-        "Soft rounded": ["soft rounded jawline"],
-        "Oval": ["oval jawline"],
-        "Sharp angular": ["sharp angular jawline"],
-        "Wide strong": ["wide, strong jawline"]
-      },
-      "Cheekbones": {
-        "Low": ["low cheekbones"],
-        "Medium": ["medium cheekbones"],
-        "High": ["high cheekbones"]
-      }
-    },
-    "AxisToPhraseBias": [
-      {
-        "axis_kr": "내향성",
-        "-1": {
-          "boost": ["Exposure.Conservative", "ColorPalette.Pastel", "Base.Clean Bob", "Brows.Straight soft", "Mouth.Neutral"]
-        },
-        "+1": {
-          "boost": ["Exposure.Bold", "Accessories.Sunglasses", "Base.Ponytail", "Base.Dyed", "ColorPalette.Bright", "Mouth.Smile"]
-        }
-      },
-      {
-        "axis_kr": "보수/진보",
-        "-1": {
-          "boost": ["Silhouette.Straight", "Pattern.Solid", "Base.Long Straight"]
-        },
-        "+1": {
-          "boost": ["Silhouette.Oversized", "Pattern.Graphics", "Base.Asymmetric", "Base.Dyed"]
-        }
-      },
-      {
-        "axis_kr": "질서/자유",
-        "-1": {
-          "boost": ["Silhouette.Fitted", "Pattern.Solid", "Base.Clean Bob"]
-        },
-        "+1": {
-          "boost": ["Silhouette.Layered", "Pattern.Florals", "WaveVariants.Messy Wave"]
-        }
-      },
-      {
-        "axis_kr": "여성/남성 이미지",
-        "-1": {
-          "boost": ["Dresses.Floral dress", "Footwear.Heels", "Base.Long Wave", "Brows.Natural curve"]
-        },
-        "+1": {
-          "boost": ["Outerwear.Blazer", "Footwear.Boots", "Base.Slick Back", "Base.Buzz Cut", "Jawline.Wide strong"]
-        }
-      },
-      {
-        "axis_kr": "낙천/비관",
-        "-1": {
-          "boost": ["ColorPalette.Bright", "Pattern.Polka", "Mouth.Smile", "Lips.Full", "WaveVariants.Bouncy Wave"]
-        },
-        "+1": {
-          "boost": ["ColorPalette.Dark", "Pattern.Solid", "Mouth.Slight frown", "Lips.Thin", "WaveVariants.Wet Wave"]
-        }
-      },
-      {
-        "axis_kr": "감정/이성",
-        "-1": {
-          "boost": ["EyesShape.Large round", "SkinDetail.Blush high", "Tone.Warm"]
-        },
-        "+1": {
-          "boost": ["EyesShape.Almond", "Mouth.Tight", "Jawline.Sharp angular", "Tone.Informative"]
-        }
-      },
-      {
-        "axis_kr": "예술/과학",
-        "-1": {
-          "boost": ["Pattern.Florals", "Accessories.Ring", "WaveVariants.Messy Wave", "Tone.Bright"]
-        },
-        "+1": {
-          "boost": ["Silhouette.Straight", "ColorPalette.Neutral", "Tone.Even", "Tone.Clear"]
-        }
-      },
-      {
-        "axis_kr": "친절/무정",
-        "-1": {
-          "boost": ["Tone.Friendly", "Tone.Gentle", "WaveVariants.Loose Wave"]
-        },
-        "+1": {
-          "boost": ["Tone.Firm", "Tone.Informative", "WaveVariants.Wet Wave"]
-        }
-      }
-    ],
-    "HowToBuild": [
-      "1) Check free_pick (30%). If true, sample everything randomly from catalogs.",
-      "2) Else compute axis boosts. For each category, add weights to boosted phrases.",
-      "3) Sample Top/Bottom/Dress/Outerwear/Accessories using weighted multinomial; ensure logical outfit.",
-      "4) Build hair: pick Base, then Texture; if Base includes Wave, pick WaveVariant with bias; pick Bangs/Part/Color/Accessories.",
-      "5) Build face: pick one phrase per feature category with applied boosts; add 15% micro-contrast (contradictory detail).",
-      "6) Render templates in assembly_order. Join with commas. Append NegativePhrases."
+    "male": [
+      {"name":"Achird","label":"Friendly"},
+      {"name":"Algenib","label":"Gravelly"},
+      {"name":"Algieba","label":"Smooth"},
+      {"name":"Alnilam","label":"Firm"},
+      {"name":"Charon","label":"Informative"},
+      {"name":"Enceladus","label":"Breathy"},
+      {"name":"Fenrir","label":"Excitable"},
+      {"name":"Iapetus","label":"Clear"},
+      {"name":"Orus","label":"Firm"},
+      {"name":"Puck","label":"Upbeat"},
+      {"name":"Rasalgethi","label":"Informative"},
+      {"name":"Sadachbia","label":"Lively"},
+      {"name":"Sadaltager","label":"Knowledgeable"},
+      {"name":"Schedar","label":"Even"},
+      {"name":"Umbriel","label":"Easy-going"},
+      {"name":"Zubenelgenubi","label":"Casual"}
     ]
   },
-  "CharacterSystem": {
-    "UI": {
-      "slider_values": [-1, 0, 1],
-      "labels": {
-        "-1": "Left trait",
-        "0": "Neutral",
-        "1": "Right trait"
+
+  "mbti_mapping": {
+    "INFP": {
+      "display_name_ko": "로맨티스트 이상주의자",
+      "description_ko": "항상 아름다운 이상적 꿈을 꾸며 러블리한 감성적 데이트를 희망한다",
+      "keywords_ko": ["감성적","이상주의적","공감적","창의적"],
+      "base": {
+        "voice": {
+          "female_candidates": ["Achernar","Vindemiatrix","Sulafat"],
+          "male_candidates": ["Umbriel","Achird","Sadachbia"],
+          "default": {"speaking_rate": 1.0, "pitch": 1.0, "tone_pref": "gentle/warm/soft"}
+        },
+        "appearance_ko": "순한 눈매와 부드러운 인상",
+        "fashion_ko": "단정한 옷차림의 감성적인 룩",
+        "hair_ko": "자연스러운 컬러의 긴 웨이브"
+      }
+    },
+    "INFJ": {
+      "display_name_ko": "조언자",
+      "description_ko": "깊은 통찰과 따뜻한 마음으로 조용히 변화를 이끈다",
+      "keywords_ko": ["통찰적","온화함","이상지향","신중함"],
+      "base": {
+        "voice": {
+          "female_candidates": ["Erinome","Vindemiatrix","Gacrux"],
+          "male_candidates": ["Iapetus","Schedar","Rasalgethi"],
+          "default": {"speaking_rate": 0.95, "pitch": 0.0, "tone_pref": "gentle/clear/mature"}
+        },
+        "appearance_ko": "깊은 눈빛의 신비로운 인상",
+        "fashion_ko": "미니멀하고 감성적인 파스텔톤",
+        "hair_ko": "부드럽게 흐르는 롱 헤어"
+      }
+    },
+    "INTJ": {
+      "display_name_ko": "전략가",
+      "description_ko": "차갑지만 뚜렷한 비전으로 흔들림 없이 전진한다",
+      "keywords_ko": ["전략적","냉철함","목표지향","질서"],
+      "base": {
+        "voice": {
+          "female_candidates": ["Kore","Gacrux","Erinome"],
+          "male_candidates": ["Orus","Alnilam","Rasalgethi"],
+          "default": {"speaking_rate": 0.95, "pitch": -1.0, "tone_pref": "firm/authoritative/clear"}
+        },
+        "appearance_ko": "날카로운 눈매와 각진 턱선",
+        "fashion_ko": "블랙·그레이 파워 포멀",
+        "hair_ko": "정돈된 올백 또는 단정 단발"
+      }
+    },
+    "INTP": {
+      "display_name_ko": "사색가",
+      "description_ko": "세상의 원리를 파고들며 끝없이 질문한다",
+      "keywords_ko": ["분석적","호기심","논리적","차분함"],
+      "base": {
+        "voice": {
+          "female_candidates": ["Erinome","Achernar","Vindemiatrix"],
+          "male_candidates": ["Charon","Iapetus","Schedar"],
+          "default": {"speaking_rate": 0.9, "pitch": -1.0, "tone_pref": "logical/clear/even"}
+        },
+        "appearance_ko": "차분한 표정의 지적인 인상",
+        "fashion_ko": "기능적인 심플 캐주얼",
+        "hair_ko": "단정한 숏컷 또는 자연 단발"
+      }
+    },
+    "ENFP": {
+      "display_name_ko": "탐험가",
+      "description_ko": "자유로운 영혼으로 사랑과 우정을 향해 뛰어든다",
+      "keywords_ko": ["외향적","열정적","자유분방","즉흥적"],
+      "base": {
+        "voice": {
+          "female_candidates": ["Autonoe","Zephyr","Laomedeia"],
+          "male_candidates": ["Puck","Sadachbia","Zubenelgenubi"],
+          "default": {"speaking_rate": 1.2, "pitch": 1.0, "tone_pref": "bright/upbeat/lively"}
+        },
+        "appearance_ko": "큰 눈과 환한 미소",
+        "fashion_ko": "컬러풀 스트리트 믹스",
+        "hair_ko": "파스텔 포인트의 자유로운 스타일"
+      }
+    },
+    "ENFJ": {
+      "display_name_ko": "선도자",
+      "description_ko": "따뜻한 카리스마로 모두를 하나로 모은다",
+      "keywords_ko": ["다정함","리더십","사교성","배려"],
+      "base": {
+        "voice": {
+          "female_candidates": ["Sulafat","Vindemiatrix","Gacrux"],
+          "male_candidates": ["Sadaltager","Rasalgethi","Achird"],
+          "default": {"speaking_rate": 1.1, "pitch": 0.0, "tone_pref": "warm/gentle/knowledgeable"}
+        },
+        "appearance_ko": "친근한 미소와 따뜻한 눈빛",
+        "fashion_ko": "드레스업+단정, 포인트 액세서리",
+        "hair_ko": "우아한 롱 레이어"
+      }
+    },
+    "ENTP": {
+      "display_name_ko": "발명가",
+      "description_ko": "재치와 장난기로 새로운 아이디어를 던진다",
+      "keywords_ko": ["창의적","영리함","장난기","빠른전환"],
+      "base": {
+        "voice": {
+          "female_candidates": ["Laomedeia","Autonoe","Zephyr"],
+          "male_candidates": ["Puck","Sadachbia","Zubenelgenubi"],
+          "default": {"speaking_rate": 1.2, "pitch": 1.0, "tone_pref": "upbeat/bright/casual"}
+        },
+        "appearance_ko": "표정 변화가 빠른 장난기",
+        "fashion_ko": "스트리트+포멀 믹스",
+        "hair_ko": "언밸런스 포인트 컬러"
+      }
+    },
+    "ENTJ": {
+      "display_name_ko": "카리스마 리더",
+      "description_ko": "강렬한 추진력으로 성과를 이끈다",
+      "keywords_ko": ["권위감","결단력","목표지향","효율"],
+      "base": {
+        "voice": {
+          "female_candidates": ["Kore","Gacrux","Erinome"],
+          "male_candidates": ["Orus","Alnilam","Rasalgethi"],
+          "default": {"speaking_rate": 1.05, "pitch": -1.0, "tone_pref": "firm/authoritative/clear"}
+        },
+        "appearance_ko": "강렬한 눈빛과 자신감",
+        "fashion_ko": "파워 수트, 레더, 레드 포인트",
+        "hair_ko": "올백 또는 타이트 업스타일"
+      }
+    },
+    "ISFP": {
+      "display_name_ko": "아티스트",
+      "description_ko": "따뜻한 감성으로 순간의 아름다움을 담는다",
+      "keywords_ko": ["감성","자유","온화","미적감각"],
+      "base": {
+        "voice": {
+          "female_candidates": ["Sulafat","Achernar","Vindemiatrix"],
+          "male_candidates": ["Umbriel","Achird","Algieba"],
+          "default": {"speaking_rate": 1.0, "pitch": 1.0, "tone_pref": "warm/soft/smooth"}
+        },
+        "appearance_ko": "부드러운 눈매의 호감형",
+        "fashion_ko": "보헤미안 감성 캐주얼",
+        "hair_ko": "내추럴 웨이브"
+      }
+    },
+    "ISTP": {
+      "display_name_ko": "장인",
+      "description_ko": "말보다 손이 빠르다. 실용적으로 해결한다",
+      "keywords_ko": ["실용","침착","직관적손기술","과묵"],
+      "base": {
+        "voice": {
+          "female_candidates": ["Erinome","Gacrux","Achernar"],
+          "male_candidates": ["Schedar","Charon","Iapetus"],
+          "default": {"speaking_rate": 0.9, "pitch": -1.0, "tone_pref": "even/clear/firm"}
+        },
+        "appearance_ko": "담백한 표정의 실용적 인상",
+        "fashion_ko": "심플 캐주얼, 밀리터리 디테일",
+        "hair_ko": "짧고 실용적인 스타일"
+      }
+    },
+    "ISFJ": {
+      "display_name_ko": "수호자",
+      "description_ko": "따뜻한 배려로 곁을 지킨다",
+      "keywords_ko": ["헌신","온화","책임","배려"],
+      "base": {
+        "voice": {
+          "female_candidates": ["Vindemiatrix","Sulafat","Erinome"],
+          "male_candidates": ["Achird","Umbriel","Schedar"],
+          "default": {"speaking_rate": 0.95, "pitch": 0.0, "tone_pref": "gentle/warm/even"}
+        },
+        "appearance_ko": "온화한 미소와 부드러운 얼굴선",
+        "fashion_ko": "보수적 전통 스타일",
+        "hair_ko": "깔끔한 단발/숏컷"
+      }
+    },
+    "ISTJ": {
+      "display_name_ko": "원칙주의자",
+      "description_ko": "질서와 책임으로 신뢰를 만든다",
+      "keywords_ko": ["원칙","성실","보수","차분"],
+      "base": {
+        "voice": {
+          "female_candidates": ["Kore","Erinome","Gacrux"],
+          "male_candidates": ["Orus","Alnilam","Rasalgethi"],
+          "default": {"speaking_rate": 0.9, "pitch": -1.0, "tone_pref": "firm/clear/mature"}
+        },
+        "appearance_ko": "단정한 얼굴의 진지한 눈빛",
+        "fashion_ko": "수트/단색 셔츠/단정 니트",
+        "hair_ko": "짧고 정돈된 스타일"
+      }
+    },
+    "ESFP": {
+      "display_name_ko": "연예인",
+      "description_ko": "무대의 중심에서 반짝인다",
+      "keywords_ko": ["화려","활기","사교","즉흥"],
+      "base": {
+        "voice": {
+          "female_candidates": ["Zephyr","Autonoe","Laomedeia"],
+          "male_candidates": ["Sadachbia","Puck","Zubenelgenubi"],
+          "default": {"speaking_rate": 1.2, "pitch": 2.0, "tone_pref": "bright/lively/upbeat"}
+        },
+        "appearance_ko": "큰 눈과 화려한 표정",
+        "fashion_ko": "스팽글·컬러풀 드레스",
+        "hair_ko": "대담한 컬러의 볼륨 헤어"
+      }
+    },
+    "ESTP": {
+      "display_name_ko": "모험가",
+      "description_ko": "지금 이 순간에 과감하게 뛰어든다",
+      "keywords_ko": ["에너지","대담","현실감","속도"],
+      "base": {
+        "voice": {
+          "female_candidates": ["Pulcherrima","Autonoe","Laomedeia"],
+          "male_candidates": ["Puck","Sadachbia","Fenrir"],
+          "default": {"speaking_rate": 1.15, "pitch": 0.0, "tone_pref": "forward/upbeat/excitable"}
+        },
+        "appearance_ko": "활발한 표정과 탄탄한 인상",
+        "fashion_ko": "스포츠/스트리트",
+        "hair_ko": "실용적 쇼트"
+      }
+    },
+    "ESFJ": {
+      "display_name_ko": "사교가",
+      "description_ko": "미소로 분위기를 따뜻하게 잇는다",
+      "keywords_ko": ["친화","온정","조화","배려"],
+      "base": {
+        "voice": {
+          "female_candidates": ["Sulafat","Vindemiatrix","Achernar"],
+          "male_candidates": ["Achird","Umbriel","Zubenelgenubi"],
+          "default": {"speaking_rate": 1.1, "pitch": 1.0, "tone_pref": "warm/gentle/casual"}
+        },
+        "appearance_ko": "다정한 눈빛과 친근한 미소",
+        "fashion_ko": "단정+따뜻한 캐주얼",
+        "hair_ko": "부드러운 레이어"
+      }
+    },
+    "ESTJ": {
+      "display_name_ko": "관리자",
+      "description_ko": "현실을 단호하게 이끈다",
+      "keywords_ko": ["결단","실용","규율","책임"],
+      "base": {
+        "voice": {
+          "female_candidates": ["Kore","Gacrux","Erinome"],
+          "male_candidates": ["Orus","Alnilam","Rasalgethi"],
+          "default": {"speaking_rate": 1.0, "pitch": -1.0, "tone_pref": "firm/authoritative/clear"}
+        },
+        "appearance_ko": "단호한 표정과 곧은 자세",
+        "fashion_ko": "깔끔한 수트",
+        "hair_ko": "정돈된 포멀 헤어"
+      }
+    },
+    "ENFP_dummy_keep_order": {},
+    "ENFJ_dummy_keep_order": {},
+    "IST_dummy_keep_order": {},
+    "ISFP_dummy_keep_order": {},
+    "ISFJ_dummy_keep_order": {},
+    "ISTP_dummy_keep_order": {},
+    "ENTP_dummy_keep_order2": {}
+  },
+
+  "generation_logic": {
+    "gender": "auto", 
+    "pipeline": [
+      "apply_mbti_defaults(appearance_ko,fashion_ko,hair_ko,voice_candidates_by_gender,default_pitch_speed)",
+      "per_section_override_with_probability(0.3)"
+    ],
+    "override_rules": {
+      "voice": {
+        "select_from_gender_pool": true,
+        "select_best_tone_for_scenario": true,
+        "fine_tune": {
+          "speaking_rate_range": [0.85, 1.5],
+          "pitch_range": [-2.0, 2.0]
+        }
       },
-      "note": "Each axis uses -1/0/+1. Values feed selection and adjustments."
+      "appearance": {"strategy": "scenario_fit"},
+      "fashion": {"strategy": "scenario_fit"},
+      "hair": {"strategy": "scenario_fit"}
+    }
+  },
+
+  "nl_templates": {
+    "to_english": {
+      "appearance": "A person with {{appearance_ko}}.",
+      "fashion": "Wearing {{fashion_ko}}.",
+      "hair": "Hairstyle: {{hair_ko}}."
     },
-    "SelectionStrategy": {
-      "precedence": ["free_pick_check", "rule_mix_selection"],
-      "free_pick_prob": 0.30,
-      "rule_mix": {
-        "rule_based": 0.70,
-        "soft_random": 0.20,
-        "strong_random": 0.10
-      }
-    },
-    "Voice": {
-      "tts_voices_list": {
-        "female": ["Achernar", "Aoede", "Autonoe", "Callirrhoe", "Despina", "Erinome", "Gacrux", "Kore", "Laomedeia", "Leda", "Pulcherrima", "Sulafat", "Vindemiatrix", "Zephyr"],
-        "male": ["Achird", "Algenib", "Algieba", "Alnilam", "Charon", "Enceladus", "Fenrir", "Iapetus", "Orus", "Puck", "Rasalgethi", "Sadachbia", "Sadaltager", "Schedar", "Umbriel", "Zubenelgenubi"]
+    "compose_image_prompt": "{{appearance_en}} {{fashion_en}} {{hair_en}} Cinematic portrait, natural lighting, highly detailed."
+  },
+
+  "ui": {
+    "personality_selector": ["MBTI_16","AI_RANDOM"],
+    "ai_random_selected_default": true,
+    "editor_flags": {
+      "show_ai_random_checked_in_personality_panel": true,
+      "apply_buttons": {
+        "apply_reference_image_all_cuts": true,
+        "apply_voice_all_cuts": true
       },
-      "tones": ["Bright", "Upbeat", "Informative", "Firm", "Excitable", "Youthful", "Breezy", "Easy-going", "Breathy", "Clear", "Smooth", "Gravelly", "Soft", "Even", "Mature", "Forward", "Friendly", "Casual", "Gentle", "Lively", "Knowledgeable", "Warm"],
-      "tone_axis_map": [
-        {
-          "axis_id": "introversion",
-          "label_kr": "내향성",
-          "-1": {
-            "prefer": ["Gentle", "Clear", "Soft"],
-            "avoid": ["Upbeat", "Lively"]
-          },
-          "+1": {
-            "prefer": ["Upbeat", "Lively", "Youthful"],
-            "avoid": ["Gentle"]
-          }
-        },
-        {
-          "axis_id": "assertiveness",
-          "label_kr": "적극성",
-          "-1": {
-            "prefer": ["Casual", "Clear"],
-            "pitch": 0,
-            "speed": -0.05
-          },
-          "+1": {
-            "prefer": ["Forward", "Firm", "Upbeat"],
-            "speed": 0.05
-          }
-        },
-        {
-          "axis_id": "calm_temper",
-          "label_kr": "차분/다혈질",
-          "-1": {
-            "prefer": ["Smooth", "Gentle", "Even"]
-          },
-          "+1": {
-            "prefer": ["Excitable", "Forward", "Lively"]
-          }
-        },
-        {
-          "axis_id": "emotional_rational",
-          "label_kr": "감정/이성",
-          "-1": {
-            "prefer": ["Warm", "Breathy", "Gentle"]
-          },
-          "+1": {
-            "prefer": ["Informative", "Firm", "Clear"]
-          }
-        },
-        {
-          "axis_id": "optimism_pessimism",
-          "label_kr": "낙천/비관",
-          "-1": {
-            "prefer": ["Upbeat", "Bright", "Friendly"]
-          },
-          "+1": {
-            "prefer": ["Even", "Informative", "Soft"]
-          }
-        },
-        {
-          "axis_id": "fragile_strong",
-          "label_kr": "유약/강인",
-          "-1": {
-            "prefer": ["Gentle", "Warm"]
-          },
-          "+1": {
-            "prefer": ["Firm", "Gravelly", "Mature"]
-          }
-        },
-        {
-          "axis_id": "brave_coward",
-          "label_kr": "용감/비겁",
-          "-1": {
-            "prefer": ["Forward", "Firm"]
-          },
-          "+1": {
-            "prefer": ["Soft", "Clear"]
-          }
-        },
-        {
-          "axis_id": "feminine_masculine_image",
-          "label_kr": "여성/남성 이미지",
-          "-1": {
-            "prefer": ["Gentle", "Warm", "Soft"]
-          },
-          "+1": {
-            "prefer": ["Firm", "Gravelly", "Mature"]
-          }
-        },
-        {
-          "axis_id": "kind_cold",
-          "label_kr": "친절/무정",
-          "-1": {
-            "prefer": ["Friendly", "Warm", "Gentle"]
-          },
-          "+1": {
-            "prefer": ["Informative", "Firm"]
-          }
-        },
-        {
-          "axis_id": "art_science",
-          "label_kr": "예술/과학",
-          "-1": {
-            "prefer": ["Bright", "Warm", "Breezy"]
-          },
-          "+1": {
-            "prefer": ["Informative", "Even", "Clear"]
-          }
-        },
-        {
-          "axis_id": "aggressive_defensive",
-          "label_kr": "공격/방어",
-          "-1": {
-            "prefer": ["Forward", "Firm"]
-          },
-          "+1": {
-            "prefer": ["Gentle", "Even"]
-          }
-        }
-      ],
-      "adjustments": {
-        "speed_base": 1.0,
-        "speed_min": 0.9,
-        "speed_max": 1.5,
-        "pitch_base": 0,
-        "pitch_min": -5,
-        "pitch_max": 5,
-        "algorithm": "Sum weighted deltas by axis value v∈{-1,0,+1}. Clamp to ranges. If free_pick triggers, sample uniform within ranges.",
-        "axis_rules": [
-          {
-            "id": "introversion",
-            "label_kr": "내향성",
-            "weight": 1.0,
-            "values": {
-              "-1": {
-                "speed": -0.20,
-                "pitch": -2
-              },
-              "0": {
-                "speed": 0,
-                "pitch": 0
-              },
-              "+1": {
-                "speed": 0.20,
-                "pitch": 2
-              }
-            }
-          },
-          {
-            "id": "assertiveness",
-            "label_kr": "적극성",
-            "weight": 0.8,
-            "values": {
-              "-1": {
-                "speed": -0.10,
-                "pitch": 0
-              },
-              "0": {
-                "speed": 0,
-                "pitch": 0
-              },
-              "+1": {
-                "speed": 0.10,
-                "pitch": 0
-              }
-            }
-          },
-          {
-            "id": "calm_temper",
-            "label_kr": "차분/다혈질",
-            "weight": 1.0,
-            "values": {
-              "-1": {
-                "speed": -0.15,
-                "pitch": 0
-              },
-              "0": {
-                "speed": 0,
-                "pitch": 0
-              },
-              "+1": {
-                "speed": 0.20,
-                "pitch": 1
-              }
-            }
-          },
-          {
-            "id": "stability_anxiety",
-            "label_kr": "안정/불안",
-            "weight": 0.6,
-            "values": {
-              "-1": {
-                "speed": -0.05,
-                "pitch": 0
-              },
-              "0": {
-                "speed": 0,
-                "pitch": 0
-              },
-              "+1": {
-                "speed": 0.05,
-                "pitch": 0
-              }
-            }
-          },
-          {
-            "id": "optimism_pessimism",
-            "label_kr": "낙천/비관",
-            "weight": 0.7,
-            "values": {
-              "-1": {
-                "speed": 0.05,
-                "pitch": 1
-              },
-              "0": {
-                "speed": 0,
-                "pitch": 0
-              },
-              "+1": {
-                "speed": -0.05,
-                "pitch": -1
-              }
-            }
-          },
-          {
-            "id": "fragile_strong",
-            "label_kr": "유약/강인",
-            "weight": 1.0,
-            "values": {
-              "-1": {
-                "speed": 0,
-                "pitch": 2
-              },
-              "0": {
-                "speed": 0,
-                "pitch": 0
-              },
-              "+1": {
-                "speed": 0,
-                "pitch": -2
-              }
-            }
-          },
-          {
-            "id": "brave_coward",
-            "label_kr": "용감/비겁",
-            "weight": 0.7,
-            "values": {
-              "-1": {
-                "speed": 0.05,
-                "pitch": -1
-              },
-              "0": {
-                "speed": 0,
-                "pitch": 0
-              },
-              "+1": {
-                "speed": -0.05,
-                "pitch": 1
-              }
-            }
-          },
-          {
-            "id": "emotional_rational",
-            "label_kr": "감정/이성",
-            "weight": 0.6,
-            "values": {
-              "-1": {
-                "speed": 0.05,
-                "pitch": 1
-              },
-              "0": {
-                "speed": 0,
-                "pitch": 0
-              },
-              "+1": {
-                "speed": -0.05,
-                "pitch": -1
-              }
-            }
-          },
-          {
-            "id": "quiet_talkative",
-            "label_kr": "과묵/수다",
-            "weight": 0.8,
-            "values": {
-              "-1": {
-                "speed": -0.10,
-                "pitch": 0
-              },
-              "0": {
-                "speed": 0,
-                "pitch": 0
-              },
-              "+1": {
-                "speed": 0.10,
-                "pitch": 0
-              }
-            }
-          },
-          {
-            "id": "leisure_hasty",
-            "label_kr": "느긋/급함",
-            "weight": 1.0,
-            "values": {
-              "-1": {
-                "speed": -0.15,
-                "pitch": 0
-              },
-              "0": {
-                "speed": 0,
-                "pitch": 0
-              },
-              "+1": {
-                "speed": 0.15,
-                "pitch": 0
-              }
-            }
-          },
-          {
-            "id": "lead_conform",
-            "label_kr": "주도/순응",
-            "weight": 0.5,
-            "values": {
-              "-1": {
-                "speed": 0.05,
-                "pitch": 0
-              },
-              "0": {
-                "speed": 0,
-                "pitch": 0
-              },
-              "+1": {
-                "speed": -0.05,
-                "pitch": 0
-              }
-            }
-          },
-          {
-            "id": "active_passive",
-            "label_kr": "능동/수동",
-            "weight": 0.5,
-            "values": {
-              "-1": {
-                "speed": 0.05,
-                "pitch": 0
-              },
-              "0": {
-                "speed": 0,
-                "pitch": 0
-              },
-              "+1": {
-                "speed": -0.05,
-                "pitch": 0
-              }
-            }
-          },
-          {
-            "id": "obedient_dominant",
-            "label_kr": "순종/지배",
-            "weight": 0.5,
-            "values": {
-              "-1": {
-                "speed": -0.05,
-                "pitch": 0
-              },
-              "0": {
-                "speed": 0,
-                "pitch": 0
-              },
-              "+1": {
-                "speed": 0.05,
-                "pitch": 0
-              }
-            }
-          },
-          {
-            "id": "feminine_masculine_image",
-            "label_kr": "여성/남성 이미지",
-            "weight": 0.4,
-            "values": {
-              "-1": {
-                "speed": 0,
-                "pitch": 1
-              },
-              "0": {
-                "speed": 0,
-                "pitch": 0
-              },
-              "+1": {
-                "speed": 0,
-                "pitch": -1
-              }
-            }
-          },
-          {
-            "id": "kind_cold",
-            "label_kr": "친절/무정",
-            "weight": 0.4,
-            "values": {
-              "-1": {
-                "speed": 0,
-                "pitch": 1
-              },
-              "0": {
-                "speed": 0,
-                "pitch": 0
-              },
-              "+1": {
-                "speed": 0,
-                "pitch": -1
-              }
-            }
-          },
-          {
-            "id": "art_science",
-            "label_kr": "예술/과학",
-            "weight": 0.3,
-            "values": {
-              "-1": {
-                "speed": 0,
-                "pitch": 1
-              },
-              "0": {
-                "speed": 0,
-                "pitch": 0
-              },
-              "+1": {
-                "speed": 0,
-                "pitch": 0
-              }
-            }
-          },
-          {
-            "id": "sensitive_stoic",
-            "label_kr": "예민/무던",
-            "weight": 0.4,
-            "values": {
-              "-1": {
-                "speed": 0.05,
-                "pitch": 0
-              },
-              "0": {
-                "speed": 0,
-                "pitch": 0
-              },
-              "+1": {
-                "speed": -0.05,
-                "pitch": 0
-              }
-            }
-          },
-          {
-            "id": "aggressive_defensive",
-            "label_kr": "공격/방어",
-            "weight": 0.5,
-            "values": {
-              "-1": {
-                "speed": 0.05,
-                "pitch": 0
-              },
-              "0": {
-                "speed": 0,
-                "pitch": 0
-              },
-              "+1": {
-                "speed": -0.05,
-                "pitch": 0
-              }
-            }
-          }
-        ]
-      }
+      "scenario_micro_adjust_button": true
     },
-    "Fashion": {
-      "catalog": {
-        "Topwear": ["T-shirt", "Shirt", "Blouse", "Crop top", "Tank top", "Sweater", "Cardigan", "Hoodie", "Turtleneck", "Jersey", "Off-shoulder"],
-        "Bottomwear": ["Jeans", "Straight pants", "Wide pants", "Shorts", "Skirt mini", "Skirt midi", "Skirt long", "Leggings", "Cargo pants"],
-        "Dresses": ["Slip dress", "Floral dress", "Bodycon dress", "Shirt dress", "Evening gown"],
-        "Outerwear": ["Blazer", "Trench coat", "Leather jacket", "Denim jacket", "Puffer jacket", "Bomber", "Long coat", "Parka"],
-        "Footwear": ["Sneakers", "Loafers", "Oxfords", "Boots", "Heels", "Sandals", "Running shoes"],
-        "Accessories": ["Watch", "Necklace", "Earrings", "Ring", "Bracelet", "Cap", "Beanie", "Sunglasses", "Belt", "Scarf", "Tote bag", "Backpack", "Crossbody"],
-        "ColorPalette": ["Bright", "Pastel", "Neutral", "Dark", "Earth", "Neon"],
-        "Pattern": ["Solid", "Stripes", "Checks", "Florals", "Graphics", "Camo", "Polka"],
-        "Silhouette": ["Fitted", "Straight", "Oversized", "Flared", "Cropped", "Layered"],
-        "Exposure": ["Conservative", "Moderate", "Bold"],
-        "Material": ["Cotton", "Linen", "Wool", "Denim", "Leather", "Silk", "Satin", "Synthetic", "Mesh", "Knitted"]
-      },
-      "axis_bias": [
-        {
-          "axis_kr": "보수/진보",
-          "-1": {
-            "boost": {
-              "Exposure.Conservative": 0.25,
-              "ColorPalette.Neutral": 0.20,
-              "Silhouette.Straight": 0.15
-            }
-          },
-          "+1": {
-            "boost": {
-              "Exposure.Bold": 0.25,
-              "ColorPalette.Bright": 0.20,
-              "Pattern.Graphics": 0.15,
-              "Silhouette.Oversized": 0.10
-            }
-          }
-        },
-        {
-          "axis_kr": "내향성",
-          "-1": {
-            "boost": {
-              "Exposure.Conservative": 0.20,
-              "ColorPalette.Pastel": 0.10,
-              "Accessories.Scarf": 0.05
-            }
-          },
-          "+1": {
-            "boost": {
-              "Exposure.Bold": 0.20,
-              "Accessories.Sunglasses": 0.10,
-              "Accessories.Necklace": 0.05
-            }
-          }
-        },
-        {
-          "axis_kr": "질서/자유",
-          "-1": {
-            "boost": {
-              "Silhouette.Fitted": 0.20,
-              "Pattern.Solid": 0.15
-            }
-          },
-          "+1": {
-            "boost": {
-              "Silhouette.Layered": 0.20,
-              "Pattern.Florals": 0.10,
-              "Pattern.Graphics": 0.10
-            }
-          }
-        },
-        {
-          "axis_kr": "예술/과학",
-          "-1": {
-            "boost": {
-              "Pattern.Florals": 0.15,
-              "Pattern.Checks": 0.10,
-              "Accessories.Ring": 0.05
-            }
-          },
-          "+1": {
-            "boost": {
-              "Silhouette.Straight": 0.10,
-              "ColorPalette.Neutral": 0.10
-            }
-          }
-        },
-        {
-          "axis_kr": "여성/남성 이미지",
-          "-1": {
-            "boost": {
-              "Dresses.Floral dress": 0.20,
-              "Footwear.Heels": 0.10
-            }
-          },
-          "+1": {
-            "boost": {
-              "Outerwear.Blazer": 0.15,
-              "Footwear.Boots": 0.10
-            }
-          }
-        },
-        {
-          "axis_kr": "낙천/비관",
-          "-1": {
-            "boost": {
-              "ColorPalette.Bright": 0.15,
-              "Pattern.Polka": 0.10
-            }
-          },
-          "+1": {
-            "boost": {
-              "ColorPalette.Dark": 0.15,
-              "Pattern.Solid": 0.10
-            }
-          }
-        }
+    "behavior": {
+      "on_personality_change": [
+        "recompute_mbti_defaults",
+        "recompute_voice_tone_pitch_speed",
+        "update_reference_prompt_and_tts"
       ],
-      "selection_strategy": {
-        "free_pick_prob": 0.30,
-        "rule_mix": {
-          "rule_based": 0.70,
-          "soft_random": 0.20,
-          "strong_random": 0.10
-        }
-      }
+      "on_micro_adjust": "scenario_editor_fine_tunes_dialogue_to_personality"
+    }
+  },
+
+  "example_flow": {
+    "input_assumption": {
+      "decided_gender": "female",
+      "mbti": "INFP",
+      "character_name_ko": "손은미"
     },
-    "Hair": {
-      "base_styles": ["Clean Bob", "Wavy Bob", "Long Straight", "Long Wave", "Short Wave", "Ponytail", "Twin Tail", "Braids", "Updo", "Half-up", "Slick Back", "Asymmetric", "Dyed", "Layered", "Short Cut", "Buzz Cut", "Undercut", "Fade", "Curly Afro", "Perm"],
-      "texture": ["Straight", "Wavy", "Curly", "Coily"],
-      "wave_variants": ["Loose Wave", "Tight Wave", "Messy Wave", "Bouncy Wave", "Wet Wave"],
-      "bangs": ["None", "See-through", "Blunt", "Side"],
-      "part": ["Middle", "Side", "Zigzag"],
-      "color": ["Black", "Dark Brown", "Light Brown", "Blonde", "Platinum", "Red", "Auburn", "Ash", "Blue", "Green", "Pink", "Purple", "Gray", "Silver", "Ombre", "Two-tone", "Highlights"],
-      "accessories": ["Hairband", "Clip", "Ribbon", "Scrunchie", "Barrette"],
-      "style_bias": [
-        {
-          "axis_kr": "내향성",
-          "-1": {
-            "boost": {
-              "base.Clean Bob": 0.20,
-              "base.Short Cut": 0.10
-            }
-          },
-          "+1": {
-            "boost": {
-              "base.Ponytail": 0.15,
-              "base.Dyed": 0.10,
-              "base.Long Wave": 0.10
-            }
-          }
-        },
-        {
-          "axis_kr": "여성/남성 이미지",
-          "-1": {
-            "boost": {
-              "base.Long Wave": 0.20,
-              "base.Layered": 0.10
-            }
-          },
-          "+1": {
-            "boost": {
-              "base.Slick Back": 0.20,
-              "base.Buzz Cut": 0.15,
-              "base.Fade": 0.10
-            }
-          }
-        },
-        {
-          "axis_kr": "보수/진보",
-          "-1": {
-            "boost": {
-              "base.Clean Bob": 0.15,
-              "base.Long Straight": 0.10
-            }
-          },
-          "+1": {
-            "boost": {
-              "base.Dyed": 0.15,
-              "base.Asymmetric": 0.15
-            }
-          }
-        }
-      ],
-      "wave_bias": [
-        {
-          "axis_kr": "부드러움/거침",
-          "-1": {
-            "boost": {
-              "wave.Loose Wave": 0.20,
-              "wave.Bouncy Wave": 0.10
-            }
-          },
-          "+1": {
-            "boost": {
-              "wave.Wet Wave": 0.15,
-              "wave.Tight Wave": 0.10
-            }
-          }
-        },
-        {
-          "axis_kr": "예술/과학",
-          "-1": {
-            "boost": {
-              "wave.Messy Wave": 0.15
-            }
-          },
-          "+1": {
-            "boost": {}
-          }
-        },
-        {
-          "axis_kr": "친절/무정",
-          "-1": {
-            "boost": {
-              "wave.Loose Wave": 0.10
-            }
-          },
-          "+1": {
-            "boost": {
-              "wave.Wet Wave": 0.10
-            }
-          }
-        }
-      ],
-      "selection_strategy": {
-        "free_pick_prob": 0.30,
-        "rule_mix": {
-          "rule_based": 0.70,
-          "soft_random": 0.20,
-          "strong_random": 0.10
-        }
-      }
+    "step1_mbti_defaults": {
+      "voice": {"tone": "Achernar", "speaking_rate": 1.0, "pitch": 1.0},
+      "appearance_ko": "순한 눈매와 부드러운 인상",
+      "fashion_ko": "단정한 옷차림의 감성적인 룩",
+      "hair_ko": "세련된 숏컷"
     },
-    "Face": {
-      "features": {
-        "EyesShape": ["Large round", "Almond", "Monolid", "Double lid", "Downturned", "Upturned", "Wide-set", "Close-set"],
-        "Brows": ["Straight soft", "Natural curve", "Arched sharp", "Thick", "Thin"],
-        "Lashes": ["Short", "Medium", "Long"],
-        "Nose": ["Small", "Straight", "Button", "Aquiline", "Wide"],
-        "Lips": ["Full", "Medium", "Thin", "Heart-shaped", "Downturned", "Smirk"],
-        "Mouth": ["Neutral", "Smile", "Slight frown", "Tight"],
-        "SkinTone": ["Porcelain", "Fair", "Light", "Medium", "Olive", "Tan", "Deep"],
-        "SkinDetail": ["Freckles", "Moles", "Blush low", "Blush high", "None"],
-        "Jawline": ["Soft rounded", "Oval", "Sharp angular", "Wide strong"],
-        "Cheekbones": ["Low", "Medium", "High"]
-      },
-      "axis_bias": [
-        {
-          "axis_kr": "감정/이성",
-          "-1": {
-            "boost": {
-              "EyesShape.Large round": 0.15,
-              "Mouth.Smile": 0.10,
-              "SkinDetail.Blush high": 0.10
-            }
-          },
-          "+1": {
-            "boost": {
-              "EyesShape.Almond": 0.10,
-              "Mouth.Tight": 0.10,
-              "Jawline.Sharp angular": 0.10
-            }
-          }
-        },
-        {
-          "axis_kr": "겸손/거만",
-          "-1": {
-            "boost": {
-              "Brows.Natural curve": 0.10,
-              "Mouth.Neutral": 0.10,
-              "Jawline.Oval": 0.05
-            }
-          },
-          "+1": {
-            "boost": {
-              "Brows.Arched sharp": 0.15,
-              "Mouth.Smirk": 0.10,
-              "Jawline.Wide strong": 0.10
-            }
-          }
-        },
-        {
-          "axis_kr": "낙천/비관",
-          "-1": {
-            "boost": {
-              "Mouth.Smile": 0.15,
-              "Lips.Full": 0.10
-            }
-          },
-          "+1": {
-            "boost": {
-              "Mouth.Slight frown": 0.15,
-              "Lips.Thin": 0.10
-            }
-          }
-        },
-        {
-          "axis_kr": "유약/강인",
-          "-1": {
-            "boost": {
-              "EyesShape.Downturned": 0.10,
-              "Jawline.Soft rounded": 0.15
-            }
-          },
-          "+1": {
-            "boost": {
-              "EyesShape.Upturned": 0.10,
-              "Jawline.Wide strong": 0.15
-            }
-          }
-        },
-        {
-          "axis_kr": "내향성",
-          "-1": {
-            "boost": {
-              "Brows.Straight soft": 0.10,
-              "Mouth.Neutral": 0.10
-            }
-          },
-          "+1": {
-            "boost": {
-              "Brows.Arched sharp": 0.10,
-              "Mouth.Smile": 0.10
-            }
-          }
-        }
-      ],
-      "micro_contrast_prob": 0.15,
-      "selection_strategy": {
-        "free_pick_prob": 0.30,
-        "rule_mix": {
-          "rule_based": 0.70,
-          "soft_random": 0.20,
-          "strong_random": 0.10
-        }
-      }
+    "step2_creative_overrides": {
+      "voice_changed": false,
+      "appearance_changed": false,
+      "fashion_changed": false,
+      "hair_changed": false
     },
-    "Notes": [
-      "Categorical attributes cannot be averaged; use weighted or random selection.",
-      "Free-pick check runs first (30%). If not triggered, apply 70/20/10 rule mix.",
-      "Boost values are additive probability weights prior to normalization."
-    ]
+    "final_profile": {
+      "gender": "female",
+      "name_ko": "손은미",
+      "voice": {"tone": "Achernar","speaking_rate": 1.0,"pitch": 1.0},
+      "appearance_ko": "순한 눈매와 부드러운 인상",
+      "fashion_ko": "단정한 옷차림의 감성적인 룩",
+      "hair_ko": "세련된 숏컷"
+    },
+    "image_prompt_en": "A person with gentle eyes and a soft impression. Wearing a neat, sentimental outfit. Hairstyle: a refined short cut. Cinematic portrait, natural lighting, highly detailed."
   }
 }
