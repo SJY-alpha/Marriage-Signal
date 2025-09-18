@@ -1,2402 +1,3037 @@
-[
-  {
-    "카테고리": "기본 태도",
-    "성격 키워드": "내향적",
-    "여성": {
-      "보이스": "Achernar",
-      "톤": "Soft",
-      "Pitch": -0.44,
-      "Speaking Rate": 1.42,
-      "외모": "Cute",
-      "패션": "Dress",
-      "헤어": "Braided straight",
-      "이미지 프롬프트": "A cute woman, wearing a dress. They have braided straight, sharp small eyes with monolids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "기본 태도",
-    "성격 키워드": "외향적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Achird",
-      "톤": "Friendly",
-      "Pitch": -1.41,
-      "Speaking Rate": 1.11,
-      "외모": "Gentle",
-      "패션": "Traditional",
-      "헤어": "Short bob straight",
-      "이미지 프롬프트": "A gentle man, wearing a traditional. They have short bob straight, almond large eyes with double eyelids, and a very convex face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "기본 태도",
-    "성격 키워드": "소심한",
-    "여성": {
-      "보이스": "Aoede",
-      "톤": "Breezy",
-      "Pitch": -0.4,
-      "Speaking Rate": 0.91,
-      "외모": "Mature",
-      "패션": "Figure-skating outfit",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A mature woman, wearing a figure-skating outfit. They have long straight, sharp small eyes with monolids, and a very concave face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "기본 태도",
-    "성격 키워드": "대범한",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Algenib",
-      "톤": "Gravelly",
-      "Pitch": 0.39,
-      "Speaking Rate": 1.13,
-      "외모": "Charismatic",
-      "패션": "Sportswear",
-      "헤어": "Ponytail wave",
-      "이미지 프롬프트": "A charismatic man, wearing a sportswear. They have ponytail wave, round small eyes with monolids, and a concave face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "기본 태도",
-    "성격 키워드": "적극적",
-    "여성": {
-      "보이스": "Autonoe",
-      "톤": "Bright",
-      "Pitch": 1.75,
-      "Speaking Rate": 1.08,
-      "외모": "Idol-like",
-      "패션": "Dress",
-      "헤어": "Ponytail wave",
-      "이미지 프롬프트": "A idol-like woman, wearing a dress. They have ponytail wave, almond medium eyes with monolids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "기본 태도",
-    "성격 키워드": "소극적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Algieba",
-      "톤": "Smooth",
-      "Pitch": 0.33,
-      "Speaking Rate": 1.07,
-      "외모": "Gentle",
-      "패션": "Suit",
-      "헤어": "Medium wave",
-      "이미지 프롬프트": "A gentle man, wearing a suit. They have medium wave, almond medium eyes with double eyelids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "기본 태도",
-    "성격 키워드": "복잡한",
-    "여성": {
-      "보이스": "Callirrhoe",
-      "톤": "Easy-going",
-      "Pitch": 1.27,
-      "Speaking Rate": 1.23,
-      "외모": "Idol-like",
-      "패션": "Figure-skating outfit",
-      "헤어": "Braided straight",
-      "이미지 프롬프트": "A idol-like woman, wearing a figure-skating outfit. They have braided straight, upturned medium eyes with double eyelids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "기본 태도",
-    "성격 키워드": "단순한",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Alnilam",
-      "톤": "Firm",
-      "Pitch": -0.74,
-      "Speaking Rate": 1.15,
-      "외모": "Gentle",
-      "패션": "Casual",
-      "헤어": "Medium wave",
-      "이미지 프롬프트": "A gentle man, wearing a casual. They have medium wave, sharp large eyes with monolids, and a very concave face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "기본 태도",
-    "성격 키워드": "신중한",
-    "여성": {
-      "보이스": "Despina",
-      "톤": "Smooth",
-      "Pitch": 1.92,
-      "Speaking Rate": 1.24,
-      "외모": "Mature",
-      "패션": "Casual",
-      "헤어": "Braided wave",
-      "이미지 프롬프트": "A mature woman, wearing a casual. They have braided wave, upturned large eyes with double eyelids, and a concave face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "기본 태도",
-    "성격 키워드": "성급한",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Charon",
-      "톤": "Informative",
-      "Pitch": -0.06,
-      "Speaking Rate": 1.15,
-      "외모": "Gentle",
-      "패션": "Suit",
-      "헤어": "Long wave",
-      "이미지 프롬프트": "A gentle man, wearing a suit. They have long wave, almond large eyes with monolids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "기본 태도",
-    "성격 키워드": "열정적",
-    "여성": {
-      "보이스": "Erinome",
-      "톤": "Clear",
-      "Pitch": -0.02,
-      "Speaking Rate": 1.27,
-      "외모": "Mature",
-      "패션": "Figure-skating outfit",
-      "헤어": "Ponytail wave",
-      "이미지 프롬프트": "A mature woman, wearing a figure-skating outfit. They have ponytail wave, round small eyes with monolids, and a very concave face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "기본 태도",
-    "성격 키워드": "무심한",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Enceladus",
-      "톤": "Breathy",
-      "Pitch": -0.7,
-      "Speaking Rate": 1.22,
-      "외모": "Charismatic",
-      "패션": "Casual",
-      "헤어": "Short bob wave",
-      "이미지 프롬프트": "A charismatic man, wearing a casual. They have short bob wave, round medium eyes with monolids, and a concave face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "기본 태도",
-    "성격 키워드": "도전적",
-    "여성": {
-      "보이스": "Gacrux",
-      "톤": "Mature",
-      "Pitch": -0.21,
-      "Speaking Rate": 1.27,
-      "외모": "Elegant",
-      "패션": "Traditional",
-      "헤어": "Long wave",
-      "이미지 프롬프트": "A elegant woman, wearing a traditional. They have long wave, sharp large eyes with double eyelids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "기본 태도",
-    "성격 키워드": "안정적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Fenrir",
-      "톤": "Excitable",
-      "Pitch": -0.05,
-      "Speaking Rate": 1.21,
-      "외모": "Charismatic",
-      "패션": "Casual",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A charismatic man, wearing a casual. They have long straight, sharp large eyes with monolids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "기본 태도",
-    "성격 키워드": "모험적",
-    "여성": {
-      "보이스": "Kore",
-      "톤": "Firm",
-      "Pitch": 0.82,
-      "Speaking Rate": 1.21,
-      "외모": "Mature",
-      "패션": "Figure-skating outfit",
-      "헤어": "Medium wave",
-      "이미지 프롬프트": "A mature woman, wearing a figure-skating outfit. They have medium wave, upturned large eyes with double eyelids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "기본 태도",
-    "성격 키워드": "조심스러운",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Iapetus",
-      "톤": "Clear",
-      "Pitch": -0.15,
-      "Speaking Rate": 1.31,
-      "외모": "Muscular",
-      "패션": "Traditional",
-      "헤어": "Ponytail wave",
-      "이미지 프롬프트": "A muscular man, wearing a traditional. They have ponytail wave, round small eyes with monolids, and a concave face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "기본 태도",
-    "성격 키워드": "자유로운",
-    "여성": {
-      "보이스": "Laomedeia",
-      "톤": "Upbeat",
-      "Pitch": 0.88,
-      "Speaking Rate": 1.49,
-      "외모": "Mature",
-      "패션": "Figure-skating outfit",
-      "헤어": "Short bob straight",
-      "이미지 프롬프트": "A mature woman, wearing a figure-skating outfit. They have short bob straight, sharp large eyes with monolids, and a concave face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "기본 태도",
-    "성격 키워드": "규율적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Orus",
-      "톤": "Firm",
-      "Pitch": 0.07,
-      "Speaking Rate": 0.99,
-      "외모": "Gentle",
-      "패션": "Casual",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A gentle man, wearing a casual. They have long straight, sharp small eyes with monolids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "기본 태도",
-    "성격 키워드": "자신있는",
-    "여성": {
-      "보이스": "Leda",
-      "톤": "Youthful",
-      "Pitch": -0.64,
-      "Speaking Rate": 1.01,
-      "외모": "Idol-like",
-      "패션": "Dress",
-      "헤어": "Medium straight",
-      "이미지 프롬프트": "A idol-like woman, wearing a dress. They have medium straight, almond small eyes with double eyelids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "기본 태도",
-    "성격 키워드": "불안한",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Puck",
-      "톤": "Upbeat",
-      "Pitch": -0.31,
-      "Speaking Rate": 1.04,
-      "외모": "Charismatic",
-      "패션": "Sportswear",
-      "헤어": "Short bob wave",
-      "이미지 프롬프트": "A charismatic man, wearing a sportswear. They have short bob wave, upturned small eyes with double eyelids, and a very concave face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "사회적 성향",
-    "성격 키워드": "순종적",
-    "여성": {
-      "보이스": "Pulcherrima",
-      "톤": "Forward",
-      "Pitch": 0.45,
-      "Speaking Rate": 1.1,
-      "외모": "Mature",
-      "패션": "Traditional",
-      "헤어": "Medium straight",
-      "이미지 프롬프트": "A mature woman, wearing a traditional. They have medium straight, sharp medium eyes with monolids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "사회적 성향",
-    "성격 키워드": "지배적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Rasalgethi",
-      "톤": "Informative",
-      "Pitch": -0.42,
-      "Speaking Rate": 1.38,
-      "외모": "Muscular",
-      "패션": "Traditional",
-      "헤어": "Braided straight",
-      "이미지 프롬프트": "A muscular man, wearing a traditional. They have braided straight, almond small eyes with double eyelids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "사회적 성향",
-    "성격 키워드": "의존적",
-    "여성": {
-      "보이스": "Sulafat",
-      "톤": "Warm",
-      "Pitch": 0.29,
-      "Speaking Rate": 1.17,
-      "외모": "Mature",
-      "패션": "Casual",
-      "헤어": "Ponytail wave",
-      "이미지 프롬프트": "A mature woman, wearing a casual. They have ponytail wave, almond medium eyes with monolids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "사회적 성향",
-    "성격 키워드": "독립적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Sadachbia",
-      "톤": "Lively",
-      "Pitch": 1.25,
-      "Speaking Rate": 1.15,
-      "외모": "Charismatic",
-      "패션": "Suit",
-      "헤어": "Ponytail wave",
-      "이미지 프롬프트": "A charismatic man, wearing a suit. They have ponytail wave, almond small eyes with double eyelids, and a very concave face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "사회적 성향",
-    "성격 키워드": "여성적",
-    "여성": {
-      "보이스": "Vindemiatrix",
-      "톤": "Gentle",
-      "Pitch": -1.64,
-      "Speaking Rate": 0.9,
-      "외모": "Mature",
-      "패션": "Traditional",
-      "헤어": "Long wave",
-      "이미지 프롬프트": "A mature woman, wearing a traditional. They have long wave, round large eyes with monolids, and a very concave face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "사회적 성향",
-    "성격 키워드": "남성적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Sadaltager",
-      "톤": "Knowledgeable",
-      "Pitch": 0.02,
-      "Speaking Rate": 1.33,
-      "외모": "Intellectual",
-      "패션": "Traditional",
-      "헤어": "Medium wave",
-      "이미지 프롬프트": "A intellectual man, wearing a traditional. They have medium wave, upturned large eyes with double eyelids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "사회적 성향",
-    "성격 키워드": "따뜻한",
-    "여성": {
-      "보이스": "Zephyr",
-      "톤": "Bright",
-      "Pitch": 0.69,
-      "Speaking Rate": 1.1,
-      "외모": "Elegant",
-      "패션": "Figure-skating outfit",
-      "헤어": "Braided wave",
-      "이미지 프롬프트": "A elegant woman, wearing a figure-skating outfit. They have braided wave, round small eyes with monolids, and a very concave face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "사회적 성향",
-    "성격 키워드": "차가운",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Schedar",
-      "톤": "Even",
-      "Pitch": 0.82,
-      "Speaking Rate": 1.17,
-      "외모": "Gentle",
-      "패션": "Traditional",
-      "헤어": "Long wave",
-      "이미지 프롬프트": "A gentle man, wearing a traditional. They have long wave, sharp medium eyes with double eyelids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "사회적 성향",
-    "성격 키워드": "관대한",
-    "여성": {
-      "보이스": "Achernar",
-      "톤": "Soft",
-      "Pitch": 0.43,
-      "Speaking Rate": 1.14,
-      "외모": "Elegant",
-      "패션": "Figure-skating outfit",
-      "헤어": "Short bob straight",
-      "이미지 프롬프트": "A elegant woman, wearing a figure-skating outfit. They have short bob straight, almond small eyes with double eyelids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "사회적 성향",
-    "성격 키워드": "인색한",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Umbriel",
-      "톤": "Easy-going",
-      "Pitch": 0.96,
-      "Speaking Rate": 1.29,
-      "외모": "Intellectual",
-      "패션": "Casual",
-      "헤어": "Long wave",
-      "이미지 프롬프트": "A intellectual man, wearing a casual. They have long wave, upturned medium eyes with monolids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "사회적 성향",
-    "성격 키워드": "은유적",
-    "여성": {
-      "보이스": "Aoede",
-      "톤": "Breezy",
-      "Pitch": -0.84,
-      "Speaking Rate": 1.26,
-      "외모": "Idol-like",
-      "패션": "Casual",
-      "헤어": "Braided wave",
-      "이미지 프롬프트": "A idol-like woman, wearing a casual. They have braided wave, almond small eyes with monolids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "사회적 성향",
-    "성격 키워드": "직설적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Zubenelgenubi",
-      "톤": "Casual",
-      "Pitch": -0.85,
-      "Speaking Rate": 1.06,
-      "외모": "Gentle",
-      "패션": "Traditional",
-      "헤어": "Braided straight",
-      "이미지 프롬프트": "A gentle man, wearing a traditional. They have braided straight, sharp medium eyes with double eyelids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "사회적 성향",
-    "성격 키워드": "주도적",
-    "여성": {
-      "보이스": "Autonoe",
-      "톤": "Bright",
-      "Pitch": -0.33,
-      "Speaking Rate": 1.2,
-      "외모": "Idol-like",
-      "패션": "Traditional",
-      "헤어": "Ponytail straight",
-      "이미지 프롬프트": "A idol-like woman, wearing a traditional. They have ponytail straight, downturned medium eyes with double eyelids, and a very concave face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "사회적 성향",
-    "성격 키워드": "순응적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Achird",
-      "톤": "Friendly",
-      "Pitch": -0.16,
-      "Speaking Rate": 1.2,
-      "외모": "Charismatic",
-      "패션": "Traditional",
-      "헤어": "Medium straight",
-      "이미지 프롬프트": "A charismatic man, wearing a traditional. They have medium straight, upturned small eyes with double eyelids, and a concave face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "사회적 성향",
-    "성격 키워드": "이타적",
-    "여성": {
-      "보이스": "Callirrhoe",
-      "톤": "Easy-going",
-      "Pitch": -1.92,
-      "Speaking Rate": 1.32,
-      "외모": "Elegant",
-      "패션": "Figure-skating outfit",
-      "헤어": "Long wave",
-      "이미지 프롬프트": "A elegant woman, wearing a figure-skating outfit. They have long wave, upturned medium eyes with monolids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "사회적 성향",
-    "성격 키워드": "이기적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Algenib",
-      "톤": "Gravelly",
-      "Pitch": -0.62,
-      "Speaking Rate": 1.39,
-      "외모": "Gentle",
-      "패션": "Traditional",
-      "헤어": "Braided straight",
-      "이미지 프롬프트": "A gentle man, wearing a traditional. They have braided straight, round small eyes with double eyelids, and a very convex face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "사회적 성향",
-    "성격 키워드": "친근한",
-    "여성": {
-      "보이스": "Despina",
-      "톤": "Smooth",
-      "Pitch": 1.4,
-      "Speaking Rate": 0.86,
-      "외모": "Cute",
-      "패션": "Casual",
-      "헤어": "Medium straight",
-      "이미지 프롬프트": "A cute woman, wearing a casual. They have medium straight, sharp medium eyes with double eyelids, and a very convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "사회적 성향",
-    "성격 키워드": "냉담한",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Algieba",
-      "톤": "Smooth",
-      "Pitch": 0.76,
-      "Speaking Rate": 1.45,
-      "외모": "Intellectual",
-      "패션": "Casual",
-      "헤어": "Long wave",
-      "이미지 프롬프트": "A intellectual man, wearing a casual. They have long wave, almond medium eyes with double eyelids, and a very convex face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "사회적 성향",
-    "성격 키워드": "사교적",
-    "여성": {
-      "보이스": "Erinome",
-      "톤": "Clear",
-      "Pitch": 0.61,
-      "Speaking Rate": 1.22,
-      "외모": "Elegant",
-      "패션": "Dress",
-      "헤어": "Short bob straight",
-      "이미지 프롬프트": "A elegant woman, wearing a dress. They have short bob straight, downturned large eyes with double eyelids, and a very concave face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "사회적 성향",
-    "성격 키워드": "고립적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Alnilam",
-      "톤": "Firm",
-      "Pitch": 0.04,
-      "Speaking Rate": 1.29,
-      "외모": "Charismatic",
-      "패션": "Traditional",
-      "헤어": "Long wave",
-      "이미지 프롬프트": "A charismatic man, wearing a traditional. They have long wave, sharp small eyes with monolids, and a very convex face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "정서 안정",
-    "성격 키워드": "낙관적",
-    "여성": {
-      "보이스": "Gacrux",
-      "톤": "Mature",
-      "Pitch": -0.16,
-      "Speaking Rate": 1.14,
-      "외모": "Idol-like",
-      "패션": "Casual",
-      "헤어": "Braided wave",
-      "이미지 프롬프트": "A idol-like woman, wearing a casual. They have braided wave, sharp small eyes with double eyelids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "정서 안정",
-    "성격 키워드": "비관적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Charon",
-      "톤": "Informative",
-      "Pitch": -0.66,
-      "Speaking Rate": 1.16,
-      "외모": "Gentle",
-      "패션": "Traditional",
-      "헤어": "Long wave",
-      "이미지 프롬프트": "A gentle man, wearing a traditional. They have long wave, upturned large eyes with monolids, and a concave face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "정서 안정",
-    "성격 키워드": "차분한",
-    "여성": {
-      "보이스": "Kore",
-      "톤": "Firm",
-      "Pitch": -0.1,
-      "Speaking Rate": 1.25,
-      "외모": "Mature",
-      "패션": "Casual",
-      "헤어": "Ponytail wave",
-      "이미지 프롬프트": "A mature woman, wearing a casual. They have ponytail wave, sharp small eyes with monolids, and a very convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "정서 안정",
-    "성격 키워드": "다혈질",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Enceladus",
-      "톤": "Breathy",
-      "Pitch": -0.07,
-      "Speaking Rate": 1.2,
-      "외모": "Gentle",
-      "패션": "Sportswear",
-      "헤어": "Braided straight",
-      "이미지 프롬프트": "A gentle man, wearing a sportswear. They have braided straight, upturned medium eyes with monolids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "정서 안정",
-    "성격 키워드": "용감한",
-    "여성": {
-      "보이스": "Laomedeia",
-      "톤": "Upbeat",
-      "Pitch": -0.41,
-      "Speaking Rate": 1.43,
-      "외모": "Idol-like",
-      "패션": "Dress",
-      "헤어": "Short bob wave",
-      "이미지 프롬프트": "A idol-like woman, wearing a dress. They have short bob wave, round medium eyes with monolids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "정서 안정",
-    "성격 키워드": "비겁한",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Fenrir",
-      "톤": "Excitable",
-      "Pitch": -0.85,
-      "Speaking Rate": 1.15,
-      "외모": "Intellectual",
-      "패션": "Traditional",
-      "헤어": "Long wave",
-      "이미지 프롬프트": "A intellectual man, wearing a traditional. They have long wave, sharp large eyes with monolids, and a very concave face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "정서 안정",
-    "성격 키워드": "느긋한",
-    "여성": {
-      "보이스": "Leda",
-      "톤": "Youthful",
-      "Pitch": 0.62,
-      "Speaking Rate": 1.1,
-      "외모": "Elegant",
-      "패션": "Traditional",
-      "헤어": "Long wave",
-      "이미지 프롬프트": "A elegant woman, wearing a traditional. They have long wave, downturned large eyes with monolids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "정서 안정",
-    "성격 키워드": "급한",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Iapetus",
-      "톤": "Clear",
-      "Pitch": -1.57,
-      "Speaking Rate": 0.93,
-      "외모": "Charismatic",
-      "패션": "Suit",
-      "헤어": "Medium straight",
-      "이미지 프롬프트": "A charismatic man, wearing a suit. They have medium straight, round medium eyes with monolids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "정서 안정",
-    "성격 키워드": "의욕적",
-    "여성": {
-      "보이스": "Pulcherrima",
-      "톤": "Forward",
-      "Pitch": 0.23,
-      "Speaking Rate": 1.11,
-      "외모": "Idol-like",
-      "패션": "Casual",
-      "헤어": "Short bob wave",
-      "이미지 프롬프트": "A idol-like woman, wearing a casual. They have short bob wave, almond large eyes with double eyelids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "정서 안정",
-    "성격 키워드": "무기력한",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Orus",
-      "톤": "Firm",
-      "Pitch": 0.24,
-      "Speaking Rate": 1.1,
-      "외모": "Muscular",
-      "패션": "Suit",
-      "헤어": "Long wave",
-      "이미지 프롬프트": "A muscular man, wearing a suit. They have long wave, almond small eyes with double eyelids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "정서 안정",
-    "성격 키워드": "낭만적",
-    "여성": {
-      "보이스": "Sulafat",
-      "톤": "Warm",
-      "Pitch": -0.48,
-      "Speaking Rate": 1.2,
-      "외모": "Mature",
-      "패션": "Figure-skating outfit",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A mature woman, wearing a figure-skating outfit. They have long straight, upturned large eyes with double eyelids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "정서 안정",
-    "성격 키워드": "냉철한",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Puck",
-      "톤": "Upbeat",
-      "Pitch": -1.33,
-      "Speaking Rate": 1.29,
-      "외모": "Intellectual",
-      "패션": "Suit",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A intellectual man, wearing a suit. They have long straight, round small eyes with double eyelids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "정서 안정",
-    "성격 키워드": "과묵한",
-    "여성": {
-      "보이스": "Vindemiatrix",
-      "톤": "Gentle",
-      "Pitch": -0.94,
-      "Speaking Rate": 0.95,
-      "외모": "Elegant",
-      "패션": "Casual",
-      "헤어": "Short bob straight",
-      "이미지 프롬프트": "A elegant woman, wearing a casual. They have short bob straight, downturned medium eyes with double eyelids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "정서 안정",
-    "성격 키워드": "수다스러운",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Rasalgethi",
-      "톤": "Informative",
-      "Pitch": 1.98,
-      "Speaking Rate": 1.43,
-      "외모": "Charismatic",
-      "패션": "Casual",
-      "헤어": "Short bob wave",
-      "이미지 프롬프트": "A charismatic man, wearing a casual. They have short bob wave, almond medium eyes with double eyelids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "정서 안정",
-    "성격 키워드": "거친",
-    "여성": {
-      "보이스": "Zephyr",
-      "톤": "Bright",
-      "Pitch": -0.16,
-      "Speaking Rate": 1.25,
-      "외모": "Idol-like",
-      "패션": "Casual",
-      "헤어": "Braided wave",
-      "이미지 프롬프트": "A idol-like woman, wearing a casual. They have braided wave, almond medium eyes with double eyelids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "정서 안정",
-    "성격 키워드": "부드러운",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Sadachbia",
-      "톤": "Lively",
-      "Pitch": -0.04,
-      "Speaking Rate": 1.16,
-      "외모": "Charismatic",
-      "패션": "Traditional",
-      "헤어": "Ponytail straight",
-      "이미지 프롬프트": "A charismatic man, wearing a traditional. They have ponytail straight, round medium eyes with double eyelids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "정서 안정",
-    "성격 키워드": "민감한",
-    "여성": {
-      "보이스": "Achernar",
-      "톤": "Soft",
-      "Pitch": -0.55,
-      "Speaking Rate": 1.41,
-      "외모": "Idol-like",
-      "패션": "Casual",
-      "헤어": "Short bob wave",
-      "이미지 프롬프트": "A idol-like woman, wearing a casual. They have short bob wave, sharp large eyes with monolids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "정서 안정",
-    "성격 키워드": "둔감한",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Sadaltager",
-      "톤": "Knowledgeable",
-      "Pitch": 0.14,
-      "Speaking Rate": 1.08,
-      "외모": "Muscular",
-      "패션": "Sportswear",
-      "헤어": "Short bob wave",
-      "이미지 프롬프트": "A muscular man, wearing a sportswear. They have short bob wave, downturned large eyes with monolids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "정서 안정",
-    "성격 키워드": "절제적",
-    "여성": {
-      "보이스": "Aoede",
-      "톤": "Breezy",
-      "Pitch": 1.72,
-      "Speaking Rate": 0.89,
-      "외모": "Elegant",
-      "패션": "Casual",
-      "헤어": "Braided wave",
-      "이미지 프롬프트": "A elegant woman, wearing a casual. They have braided wave, round large eyes with double eyelids, and a very concave face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "정서 안정",
-    "성격 키워드": "충동적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Schedar",
-      "톤": "Even",
-      "Pitch": -1.87,
-      "Speaking Rate": 1.01,
-      "외모": "Charismatic",
-      "패션": "Casual",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A charismatic man, wearing a casual. They have long straight, almond small eyes with monolids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "가치관 / 사고방식",
-    "성격 키워드": "보수적",
-    "여성": {
-      "보이스": "Autonoe",
-      "톤": "Bright",
-      "Pitch": -0.26,
-      "Speaking Rate": 0.92,
-      "외모": "Mature",
-      "패션": "Figure-skating outfit",
-      "헤어": "Long wave",
-      "이미지 프롬프트": "A mature woman, wearing a figure-skating outfit. They have long wave, upturned large eyes with monolids, and a very concave face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "가치관 / 사고방식",
-    "성격 키워드": "진보적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Umbriel",
-      "톤": "Easy-going",
-      "Pitch": -0.32,
-      "Speaking Rate": 1.18,
-      "외모": "Gentle",
-      "패션": "Sportswear",
-      "헤어": "Medium wave",
-      "이미지 프롬프트": "A gentle man, wearing a sportswear. They have medium wave, upturned medium eyes with double eyelids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "가치관 / 사고방식",
-    "성격 키워드": "현실적",
-    "여성": {
-      "보이스": "Callirrhoe",
-      "톤": "Easy-going",
-      "Pitch": -0.79,
-      "Speaking Rate": 0.91,
-      "외모": "Cute",
-      "패션": "Dress",
-      "헤어": "Short bob wave",
-      "이미지 프롬프트": "A cute woman, wearing a dress. They have short bob wave, sharp small eyes with double eyelids, and a very convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "가치관 / 사고방식",
-    "성격 키워드": "이상적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Zubenelgenubi",
-      "톤": "Casual",
-      "Pitch": -1.35,
-      "Speaking Rate": 1.16,
-      "외모": "Gentle",
-      "패션": "Suit",
-      "헤어": "Ponytail straight",
-      "이미지 프롬프트": "A gentle man, wearing a suit. They have ponytail straight, downturned medium eyes with double eyelids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "가치관 / 사고방식",
-    "성격 키워드": "정직한",
-    "여성": {
-      "보이스": "Despina",
-      "톤": "Smooth",
-      "Pitch": 0.9,
-      "Speaking Rate": 1.16,
-      "외모": "Mature",
-      "패션": "Casual",
-      "헤어": "Long wave",
-      "이미지 프롬프트": "A mature woman, wearing a casual. They have long wave, round medium eyes with double eyelids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "가치관 / 사고방식",
-    "성격 키워드": "기만적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Achird",
-      "톤": "Friendly",
-      "Pitch": 1.92,
-      "Speaking Rate": 1.14,
-      "외모": "Muscular",
-      "패션": "Suit",
-      "헤어": "Short bob wave",
-      "이미지 프롬프트": "A muscular man, wearing a suit. They have short bob wave, almond large eyes with double eyelids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "가치관 / 사고방식",
-    "성격 키워드": "책임감",
-    "여성": {
-      "보이스": "Erinome",
-      "톤": "Clear",
-      "Pitch": -0.42,
-      "Speaking Rate": 1.02,
-      "외모": "Idol-like",
-      "패션": "Traditional",
-      "헤어": "Long wave",
-      "이미지 프롬프트": "A idol-like woman, wearing a traditional. They have long wave, almond large eyes with double eyelids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "가치관 / 사고방식",
-    "성격 키워드": "무책임",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Algenib",
-      "톤": "Gravelly",
-      "Pitch": -0.23,
-      "Speaking Rate": 1.07,
-      "외모": "Intellectual",
-      "패션": "Casual",
-      "헤어": "Ponytail straight",
-      "이미지 프롬프트": "A intellectual man, wearing a casual. They have ponytail straight, sharp medium eyes with double eyelids, and a concave face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "가치관 / 사고방식",
-    "성격 키워드": "완고한",
-    "여성": {
-      "보이스": "Gacrux",
-      "톤": "Mature",
-      "Pitch": 0.93,
-      "Speaking Rate": 1.17,
-      "외모": "Cute",
-      "패션": "Figure-skating outfit",
-      "헤어": "Braided straight",
-      "이미지 프롬프트": "A cute woman, wearing a figure-skating outfit. They have braided straight, round large eyes with monolids, and a very concave face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "가치관 / 사고방식",
-    "성격 키워드": "유연한",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Algieba",
-      "톤": "Smooth",
-      "Pitch": -0.72,
-      "Speaking Rate": 1.25,
-      "외모": "Charismatic",
-      "패션": "Traditional",
-      "헤어": "Short bob wave",
-      "이미지 프롬프트": "A charismatic man, wearing a traditional. They have short bob wave, downturned large eyes with monolids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "가치관 / 사고방식",
-    "성격 키워드": "예술적",
-    "여성": {
-      "보이스": "Kore",
-      "톤": "Firm",
-      "Pitch": -0.42,
-      "Speaking Rate": 1.26,
-      "외모": "Mature",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A mature woman, wearing a dress. They have long straight, upturned large eyes with monolids, and a concave face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "가치관 / 사고방식",
-    "성격 키워드": "과학적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Alnilam",
-      "톤": "Firm",
-      "Pitch": -0.34,
-      "Speaking Rate": 1.2,
-      "외모": "Muscular",
-      "패션": "Traditional",
-      "헤어": "Short bob wave",
-      "이미지 프롬프트": "A muscular man, wearing a traditional. They have short bob wave, downturned large eyes with monolids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "가치관 / 사고방식",
-    "성격 키워드": "전통적",
-    "여성": {
-      "보이스": "Laomedeia",
-      "톤": "Upbeat",
-      "Pitch": 0.56,
-      "Speaking Rate": 1.1,
-      "외모": "Cute",
-      "패션": "Figure-skating outfit",
-      "헤어": "Ponytail wave",
-      "이미지 프롬프트": "A cute woman, wearing a figure-skating outfit. They have ponytail wave, downturned small eyes with double eyelids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "가치관 / 사고방식",
-    "성격 키워드": "혁신적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Charon",
-      "톤": "Informative",
-      "Pitch": 0.26,
-      "Speaking Rate": 1.12,
-      "외모": "Charismatic",
-      "패션": "Suit",
-      "헤어": "Medium wave",
-      "이미지 프롬프트": "A charismatic man, wearing a suit. They have medium wave, round medium eyes with double eyelids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "가치관 / 사고방식",
-    "성격 키워드": "실용적",
-    "여성": {
-      "보이스": "Leda",
-      "톤": "Youthful",
-      "Pitch": -0.19,
-      "Speaking Rate": 0.99,
-      "외모": "Mature",
-      "패션": "Figure-skating outfit",
-      "헤어": "Short bob straight",
-      "이미지 프롬프트": "A mature woman, wearing a figure-skating outfit. They have short bob straight, sharp small eyes with monolids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "가치관 / 사고방식",
-    "성격 키워드": "감성적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Enceladus",
-      "톤": "Breathy",
-      "Pitch": 0.43,
-      "Speaking Rate": 1.26,
-      "외모": "Intellectual",
-      "패션": "Casual",
-      "헤어": "Long wave",
-      "이미지 프롬프트": "A intellectual man, wearing a casual. They have long wave, round large eyes with monolids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "가치관 / 사고방식",
-    "성격 키워드": "이론적",
-    "여성": {
-      "보이스": "Pulcherrima",
-      "톤": "Forward",
-      "Pitch": -1.5,
-      "Speaking Rate": 1.34,
-      "외모": "Elegant",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A elegant woman, wearing a dress. They have long straight, upturned large eyes with double eyelids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "가치관 / 사고방식",
-    "성격 키워드": "경험적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Fenrir",
-      "톤": "Excitable",
-      "Pitch": 0.63,
-      "Speaking Rate": 1.17,
-      "외모": "Gentle",
-      "패션": "Casual",
-      "헤어": "Braided straight",
-      "이미지 프롬프트": "A gentle man, wearing a casual. They have braided straight, almond large eyes with monolids, and a concave face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "가치관 / 사고방식",
-    "성격 키워드": "감정적",
-    "여성": {
-      "보이스": "Sulafat",
-      "톤": "Warm",
-      "Pitch": 0.01,
-      "Speaking Rate": 1.14,
-      "외모": "Mature",
-      "패션": "Figure-skating outfit",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A mature woman, wearing a figure-skating outfit. They have long straight, sharp small eyes with monolids, and a very convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "가치관 / 사고방식",
-    "성격 키워드": "논리적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Iapetus",
-      "톤": "Clear",
-      "Pitch": -1.02,
-      "Speaking Rate": 1.06,
-      "외모": "Muscular",
-      "패션": "Suit",
-      "헤어": "Short bob straight",
-      "이미지 프롬프트": "A muscular man, wearing a suit. They have short bob straight, almond large eyes with monolids, and a very convex face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "표현 / 행동",
-    "성격 키워드": "수용적",
-    "여성": {
-      "보이스": "Vindemiatrix",
-      "톤": "Gentle",
-      "Pitch": -0.06,
-      "Speaking Rate": 1.25,
-      "외모": "Mature",
-      "패션": "Figure-skating outfit",
-      "헤어": "Ponytail straight",
-      "이미지 프롬프트": "A mature woman, wearing a figure-skating outfit. They have ponytail straight, almond large eyes with double eyelids, and a very convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "표현 / 행동",
-    "성격 키워드": "비판적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Orus",
-      "톤": "Firm",
-      "Pitch": -1.56,
-      "Speaking Rate": 0.87,
-      "외모": "Charismatic",
-      "패션": "Casual",
-      "헤어": "Medium wave",
-      "이미지 프롬프트": "A charismatic man, wearing a casual. They have medium wave, round small eyes with monolids, and a concave face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "표현 / 행동",
-    "성격 키워드": "긍정적",
-    "여성": {
-      "보이스": "Zephyr",
-      "톤": "Bright",
-      "Pitch": 1.32,
-      "Speaking Rate": 1.27,
-      "외모": "Elegant",
-      "패션": "Traditional",
-      "헤어": "Long wave",
-      "이미지 프롬프트": "A elegant woman, wearing a traditional. They have long wave, round large eyes with double eyelids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "표현 / 행동",
-    "성격 키워드": "부정적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Puck",
-      "톤": "Upbeat",
-      "Pitch": 0.15,
-      "Speaking Rate": 1.18,
-      "외모": "Intellectual",
-      "패션": "Sportswear",
-      "헤어": "Braided straight",
-      "이미지 프롬프트": "A intellectual man, wearing a sportswear. They have braided straight, downturned medium eyes with double eyelids, and a very convex face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "표현 / 행동",
-    "성격 키워드": "게으른",
-    "여성": {
-      "보이스": "Achernar",
-      "톤": "Soft",
-      "Pitch": -1.33,
-      "Speaking Rate": 1.12,
-      "외모": "Elegant",
-      "패션": "Figure-skating outfit",
-      "헤어": "Braided straight",
-      "이미지 프롬프트": "A elegant woman, wearing a figure-skating outfit. They have braided straight, sharp medium eyes with monolids, and a very convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "표현 / 행동",
-    "성격 키워드": "부지런한",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Rasalgethi",
-      "톤": "Informative",
-      "Pitch": 0.65,
-      "Speaking Rate": 1.15,
-      "외모": "Muscular",
-      "패션": "Sportswear",
-      "헤어": "Braided straight",
-      "이미지 프롬프트": "A muscular man, wearing a sportswear. They have braided straight, round small eyes with double eyelids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "표현 / 행동",
-    "성격 키워드": "유머러스한",
-    "여성": {
-      "보이스": "Aoede",
-      "톤": "Breezy",
-      "Pitch": -0.04,
-      "Speaking Rate": 1.29,
-      "외모": "Cute",
-      "패션": "Dress",
-      "헤어": "Short bob straight",
-      "이미지 프롬프트": "A cute woman, wearing a dress. They have short bob straight, upturned small eyes with double eyelids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "표현 / 행동",
-    "성격 키워드": "진지한",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Sadachbia",
-      "톤": "Lively",
-      "Pitch": 0.24,
-      "Speaking Rate": 1.06,
-      "외모": "Muscular",
-      "패션": "Casual",
-      "헤어": "Medium wave",
-      "이미지 프롬프트": "A muscular man, wearing a casual. They have medium wave, almond medium eyes with double eyelids, and a very concave face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "표현 / 행동",
-    "성격 키워드": "다정한",
-    "여성": {
-      "보이스": "Autonoe",
-      "톤": "Bright",
-      "Pitch": -0.6,
-      "Speaking Rate": 1.2,
-      "외모": "Idol-like",
-      "패션": "Casual",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A idol-like woman, wearing a casual. They have long straight, sharp large eyes with double eyelids, and a very convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "표현 / 행동",
-    "성격 키워드": "무뚝뚝한",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Sadaltager",
-      "톤": "Knowledgeable",
-      "Pitch": 1.85,
-      "Speaking Rate": 1.39,
-      "외모": "Gentle",
-      "패션": "Suit",
-      "헤어": "Short bob straight",
-      "이미지 프롬프트": "A gentle man, wearing a suit. They have short bob straight, downturned small eyes with monolids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "표현 / 행동",
-    "성격 키워드": "겸손한",
-    "여성": {
-      "보이스": "Callirrhoe",
-      "톤": "Easy-going",
-      "Pitch": 1.51,
-      "Speaking Rate": 1.44,
-      "외모": "Elegant",
-      "패션": "Figure-skating outfit",
-      "헤어": "Long wave",
-      "이미지 프롬프트": "A elegant woman, wearing a figure-skating outfit. They have long wave, upturned small eyes with double eyelids, and a very convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "표현 / 행동",
-    "성격 키워드": "거만한",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Schedar",
-      "톤": "Even",
-      "Pitch": -0.85,
-      "Speaking Rate": 0.95,
-      "외모": "Gentle",
-      "패션": "Casual",
-      "헤어": "Long wave",
-      "이미지 프롬프트": "A gentle man, wearing a casual. They have long wave, upturned small eyes with double eyelids, and a concave face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "표현 / 행동",
-    "성격 키워드": "온화한",
-    "여성": {
-      "보이스": "Despina",
-      "톤": "Smooth",
-      "Pitch": 0.06,
-      "Speaking Rate": 1.35,
-      "외모": "Cute",
-      "패션": "Figure-skating outfit",
-      "헤어": "Medium wave",
-      "이미지 프롬프트": "A cute woman, wearing a figure-skating outfit. They have medium wave, almond small eyes with monolids, and a very concave face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "표현 / 행동",
-    "성격 키워드": "공격적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Umbriel",
-      "톤": "Easy-going",
-      "Pitch": -0.95,
-      "Speaking Rate": 1.12,
-      "외모": "Gentle",
-      "패션": "Suit",
-      "헤어": "Braided straight",
-      "이미지 프롬프트": "A gentle man, wearing a suit. They have braided straight, round large eyes with double eyelids, and a concave face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "표현 / 행동",
-    "성격 키워드": "창의적",
-    "여성": {
-      "보이스": "Erinome",
-      "톤": "Clear",
-      "Pitch": -0.63,
-      "Speaking Rate": 1.21,
-      "외모": "Elegant",
-      "패션": "Casual",
-      "헤어": "Long wave",
-      "이미지 프롬프트": "A elegant woman, wearing a casual. They have long wave, upturned medium eyes with double eyelids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "표현 / 행동",
-    "성격 키워드": "모방적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Zubenelgenubi",
-      "톤": "Casual",
-      "Pitch": 0.55,
-      "Speaking Rate": 0.87,
-      "외모": "Charismatic",
-      "패션": "Casual",
-      "헤어": "Ponytail wave",
-      "이미지 프롬프트": "A charismatic man, wearing a casual. They have ponytail wave, upturned large eyes with monolids, and a very concave face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "표현 / 행동",
-    "성격 키워드": "성실한",
-    "여성": {
-      "보이스": "Gacrux",
-      "톤": "Mature",
-      "Pitch": 0.67,
-      "Speaking Rate": 1.18,
-      "외모": "Cute",
-      "패션": "Dress",
-      "헤어": "Medium straight",
-      "이미지 프롬프트": "A cute woman, wearing a dress. They have medium straight, round small eyes with monolids, and a very concave face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "표현 / 행동",
-    "성격 키워드": "태만한",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Achird",
-      "톤": "Friendly",
-      "Pitch": 0.05,
-      "Speaking Rate": 0.87,
-      "외모": "Charismatic",
-      "패션": "Sportswear",
-      "헤어": "Braided wave",
-      "이미지 프롬프트": "A charismatic man, wearing a sportswear. They have braided wave, upturned medium eyes with monolids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    }
-  },
-  {
-    "카테고리": "표현 / 행동",
-    "성격 키워드": "경계적",
-    "여성": {
-      "보이스": "Kore",
-      "톤": "Firm",
-      "Pitch": 0.23,
-      "Speaking Rate": 1.16,
-      "외모": "Idol-like",
-      "패션": "Traditional",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A idol-like woman, wearing a traditional. They have long straight, downturned large eyes with double eyelids, and a flat face shape. Style is photorealistic, cinematic lighting."
-    },
-    "남성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Casual",
-      "헤어": "Short straight",
-      "이미지 프롬프트": "A default man, wearing Casual."
-    }
-  },
-  {
-    "카테고리": "표현 / 행동",
-    "성격 키워드": "포용적",
-    "여성": {
-      "보이스": "PlaceholderVoice",
-      "톤": "Neutral",
-      "Pitch": 0.0,
-      "Speaking Rate": 1.0,
-      "외모": "Default",
-      "패션": "Dress",
-      "헤어": "Long straight",
-      "이미지 프롬프트": "A default woman, wearing Dress."
-    },
-    "남성": {
-      "보이스": "Algenib",
-      "톤": "Gravelly",
-      "Pitch": 0.55,
-      "Speaking Rate": 1.12,
-      "외모": "Muscular",
-      "패션": "Traditional",
-      "헤어": "Braided wave",
-      "이미지 프롬프트": "A muscular man, wearing a traditional. They have braided wave, sharp large eyes with double eyelids, and a convex face shape. Style is photorealistic, cinematic lighting."
-    }
-  }
-]
+{
+  "옵션풀": {
+    "눈": [
+      "Large almond-shaped eyes with double eyelids",
+      "Large almond-shaped eyes with monolids (no double eyelids)",
+      "Small sharp eyes with double eyelids",
+      "Small sharp eyes with monolids",
+      "Round expressive eyes with double eyelids",
+      "Narrow eyes with monolids, soft smile"
+    ],
+    "입": [
+      "Small lips with upward corners, bright smile",
+      "Full lips with natural curve, sensual look",
+      "Thin lips with downward corners, serious expression",
+      "Heart-shaped lips with subtle gloss"
+    ],
+    "코": [
+      "Sharp and high nose bridge, elegant profile",
+      "Small button nose, youthful appearance",
+      "Straight medium-sized nose, balanced look",
+      "Prominent aquiline nose, strong impression"
+    ],
+    "눈썹": [
+      "Thick bold eyebrows",
+      "Soft arched eyebrows",
+      "Straight defined eyebrows"
+    ],
+    "몸매": [
+      "Slim body with long legs and slender waist",
+      "Athletic build with broad shoulders and toned muscles",
+      "Curvy body with wide hips and elegant posture",
+      "Average build with balanced proportions"
+    ]
+  },
+  "캐릭터": [
+    {
+      "카테고리": "기본 태도",
+      "성격 키워드": "내향적",
+      "여성": {
+        "보이스": "Achernar",
+        "톤": "Soft",
+        "Pitch": -0.44,
+        "Speaking Rate": 1.42,
+        "기본 외모": "Cute",
+        "패션": [
+          "Dress"
+        ],
+        "헤어": [
+          "Braided straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Puck",
+        "톤": "Upbeat",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "기본 태도",
+      "성격 키워드": "외향적",
+      "여성": {
+        "보이스": "Aoede",
+        "톤": "Breezy",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Achird",
+        "톤": "Friendly",
+        "Pitch": -1.41,
+        "Speaking Rate": 1.11,
+        "기본 외모": "Gentle",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Short bob straight"
+        ]
+      }
+    },
+    {
+      "카테고리": "기본 태도",
+      "성격 키워드": "소심한",
+      "여성": {
+        "보이스": "Aoede",
+        "톤": "Breezy",
+        "Pitch": -0.4,
+        "Speaking Rate": 0.91,
+        "기본 외모": "Mature",
+        "패션": [
+          "Figure-skating outfit"
+        ],
+        "헤어": [
+          "Long straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Charon",
+        "톤": "Informative",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "기본 태도",
+      "성격 키워드": "대범한",
+      "여성": {
+        "보이스": "Vindemiatrix",
+        "톤": "Gentle",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Algenib",
+        "톤": "Gravelly",
+        "Pitch": 0.39,
+        "Speaking Rate": 1.13,
+        "기본 외모": "Charismatic",
+        "패션": [
+          "Sportswear"
+        ],
+        "헤어": [
+          "Ponytail wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "기본 태도",
+      "성격 키워드": "적극적",
+      "여성": {
+        "보이스": "Autonoe",
+        "톤": "Bright",
+        "Pitch": 1.75,
+        "Speaking Rate": 1.08,
+        "기본 외모": "Idol-like",
+        "패션": [
+          "Dress"
+        ],
+        "헤어": [
+          "Ponytail wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Achird",
+        "톤": "Friendly",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "기본 태도",
+      "성격 키워드": "소극적",
+      "여성": {
+        "보이스": "Erinome",
+        "톤": "Clear",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Algieba",
+        "톤": "Smooth",
+        "Pitch": 0.33,
+        "Speaking Rate": 1.07,
+        "기본 외모": "Gentle",
+        "패션": [
+          "Suit"
+        ],
+        "헤어": [
+          "Medium wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "기본 태도",
+      "성격 키워드": "복잡한",
+      "여성": {
+        "보이스": "Callirrhoe",
+        "톤": "Easy-going",
+        "Pitch": 1.27,
+        "Speaking Rate": 1.23,
+        "기본 외모": "Idol-like",
+        "패션": [
+          "Figure-skating outfit"
+        ],
+        "헤어": [
+          "Braided straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Sadachbia",
+        "톤": "Lively",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "기본 태도",
+      "성격 키워드": "단순한",
+      "여성": {
+        "보이스": "Laomedeia",
+        "톤": "Upbeat",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Alnilam",
+        "톤": "Firm",
+        "Pitch": -0.74,
+        "Speaking Rate": 1.15,
+        "기본 외모": "Gentle",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Medium wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "기본 태도",
+      "성격 키워드": "신중한",
+      "여성": {
+        "보이스": "Despina",
+        "톤": "Smooth",
+        "Pitch": 1.92,
+        "Speaking Rate": 1.24,
+        "기본 외모": "Mature",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Braided wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Enceladus",
+        "톤": "Breathy",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "기본 태도",
+      "성격 키워드": "성급한",
+      "여성": {
+        "보이스": "Zephyr",
+        "톤": "Bright",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Charon",
+        "톤": "Informative",
+        "Pitch": -0.06,
+        "Speaking Rate": 1.15,
+        "기본 외모": "Gentle",
+        "패션": [
+          "Suit"
+        ],
+        "헤어": [
+          "Long wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "기본 태도",
+      "성격 키워드": "열정적",
+      "여성": {
+        "보이스": "Erinome",
+        "톤": "Clear",
+        "Pitch": -0.02,
+        "Speaking Rate": 1.27,
+        "기본 외모": "Mature",
+        "패션": [
+          "Figure-skating outfit"
+        ],
+        "헤어": [
+          "Ponytail wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Algenib",
+        "톤": "Gravelly",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "기본 태도",
+      "성격 키워드": "무심한",
+      "여성": {
+        "보이스": "Aoede",
+        "톤": "Breezy",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Enceladus",
+        "톤": "Breathy",
+        "Pitch": -0.7,
+        "Speaking Rate": 1.22,
+        "기본 외모": "Charismatic",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Short bob wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "기본 태도",
+      "성격 키워드": "도전적",
+      "여성": {
+        "보이스": "Gacrux",
+        "톤": "Mature",
+        "Pitch": -0.21,
+        "Speaking Rate": 1.27,
+        "기본 외모": "Elegant",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Long wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Rasalgethi",
+        "톤": "Informative",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "기본 태도",
+      "성격 키워드": "안정적",
+      "여성": {
+        "보이스": "Kore",
+        "톤": "Firm",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Fenrir",
+        "톤": "Excitable",
+        "Pitch": -0.05,
+        "Speaking Rate": 1.21,
+        "기본 외모": "Charismatic",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Long straight"
+        ]
+      }
+    },
+    {
+      "카테고리": "기본 태도",
+      "성격 키워드": "모험적",
+      "여성": {
+        "보이스": "Kore",
+        "톤": "Firm",
+        "Pitch": 0.82,
+        "Speaking Rate": 1.21,
+        "기본 외모": "Mature",
+        "패션": [
+          "Figure-skating outfit"
+        ],
+        "헤어": [
+          "Medium wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Puck",
+        "톤": "Upbeat",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "기본 태도",
+      "성격 키워드": "조심스러운",
+      "여성": {
+        "보이스": "Autonoe",
+        "톤": "Bright",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Iapetus",
+        "톤": "Clear",
+        "Pitch": -0.15,
+        "Speaking Rate": 1.31,
+        "기본 외모": "Muscular",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Ponytail wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "기본 태도",
+      "성격 키워드": "자유로운",
+      "여성": {
+        "보이스": "Laomedeia",
+        "톤": "Upbeat",
+        "Pitch": 0.88,
+        "Speaking Rate": 1.49,
+        "기본 외모": "Mature",
+        "패션": [
+          "Figure-skating outfit"
+        ],
+        "헤어": [
+          "Short bob straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Zubenelgenubi",
+        "톤": "Casual",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "기본 태도",
+      "성격 키워드": "규율적",
+      "여성": {
+        "보이스": "Leda",
+        "톤": "Youthful",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Orus",
+        "톤": "Firm",
+        "Pitch": 0.07,
+        "Speaking Rate": 0.99,
+        "기본 외모": "Gentle",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Long straight"
+        ]
+      }
+    },
+    {
+      "카테고리": "기본 태도",
+      "성격 키워드": "자신있는",
+      "여성": {
+        "보이스": "Leda",
+        "톤": "Youthful",
+        "Pitch": -0.64,
+        "Speaking Rate": 1.01,
+        "기본 외모": "Idol-like",
+        "패션": [
+          "Dress"
+        ],
+        "헤어": [
+          "Medium straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Iapetus",
+        "톤": "Clear",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "기본 태도",
+      "성격 키워드": "불안한",
+      "여성": {
+        "보이스": "Callirrhoe",
+        "톤": "Easy-going",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Puck",
+        "톤": "Upbeat",
+        "Pitch": -0.31,
+        "Speaking Rate": 1.04,
+        "기본 외모": "Charismatic",
+        "패션": [
+          "Sportswear"
+        ],
+        "헤어": [
+          "Short bob wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "사회적 성향",
+      "성격 키워드": "순종적",
+      "여성": {
+        "보이스": "Pulcherrima",
+        "톤": "Forward",
+        "Pitch": 0.45,
+        "Speaking Rate": 1.1,
+        "기본 외모": "Mature",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Medium straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Orus",
+        "톤": "Firm",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "사회적 성향",
+      "성격 키워드": "지배적",
+      "여성": {
+        "보이스": "Gacrux",
+        "톤": "Mature",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Rasalgethi",
+        "톤": "Informative",
+        "Pitch": -0.42,
+        "Speaking Rate": 1.38,
+        "기본 외모": "Muscular",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Braided straight"
+        ]
+      }
+    },
+    {
+      "카테고리": "사회적 성향",
+      "성격 키워드": "의존적",
+      "여성": {
+        "보이스": "Sulafat",
+        "톤": "Warm",
+        "Pitch": 0.29,
+        "Speaking Rate": 1.17,
+        "기본 외모": "Mature",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Ponytail wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Enceladus",
+        "톤": "Breathy",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "사회적 성향",
+      "성격 키워드": "독립적",
+      "여성": {
+        "보이스": "Vindemiatrix",
+        "톤": "Gentle",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Sadachbia",
+        "톤": "Lively",
+        "Pitch": 1.25,
+        "Speaking Rate": 1.15,
+        "기본 외모": "Charismatic",
+        "패션": [
+          "Suit"
+        ],
+        "헤어": [
+          "Ponytail wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "사회적 성향",
+      "성격 키워드": "여성적",
+      "여성": {
+        "보이스": "Vindemiatrix",
+        "톤": "Gentle",
+        "Pitch": -1.64,
+        "Speaking Rate": 0.9,
+        "기본 외모": "Mature",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Long wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Puck",
+        "톤": "Upbeat",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "사회적 성향",
+      "성격 키워드": "남성적",
+      "여성": {
+        "보이스": "Leda",
+        "톤": "Youthful",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Sadaltager",
+        "톤": "Knowledgeable",
+        "Pitch": 0.02,
+        "Speaking Rate": 1.33,
+        "기본 외모": "Intellectual",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Medium wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "사회적 성향",
+      "성격 키워드": "따뜻한",
+      "여성": {
+        "보이스": "Zephyr",
+        "톤": "Bright",
+        "Pitch": 0.69,
+        "Speaking Rate": 1.1,
+        "기본 외모": "Elegant",
+        "패션": [
+          "Figure-skating outfit"
+        ],
+        "헤어": [
+          "Braided wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Iapetus",
+        "톤": "Clear",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "사회적 성향",
+      "성격 키워드": "차가운",
+      "여성": {
+        "보이스": "Vindemiatrix",
+        "톤": "Gentle",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Schedar",
+        "톤": "Even",
+        "Pitch": 0.82,
+        "Speaking Rate": 1.17,
+        "기본 외모": "Gentle",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Long wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "사회적 성향",
+      "성격 키워드": "관대한",
+      "여성": {
+        "보이스": "Achernar",
+        "톤": "Soft",
+        "Pitch": 0.43,
+        "Speaking Rate": 1.14,
+        "기본 외모": "Elegant",
+        "패션": [
+          "Figure-skating outfit"
+        ],
+        "헤어": [
+          "Short bob straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Fenrir",
+        "톤": "Excitable",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "사회적 성향",
+      "성격 키워드": "인색한",
+      "여성": {
+        "보이스": "Callirrhoe",
+        "톤": "Easy-going",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Umbriel",
+        "톤": "Easy-going",
+        "Pitch": 0.96,
+        "Speaking Rate": 1.29,
+        "기본 외모": "Intellectual",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Long wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "사회적 성향",
+      "성격 키워드": "은유적",
+      "여성": {
+        "보이스": "Aoede",
+        "톤": "Breezy",
+        "Pitch": -0.84,
+        "Speaking Rate": 1.26,
+        "기본 외모": "Idol-like",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Braided wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Umbriel",
+        "톤": "Easy-going",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "사회적 성향",
+      "성격 키워드": "직설적",
+      "여성": {
+        "보이스": "Achernar",
+        "톤": "Soft",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Zubenelgenubi",
+        "톤": "Casual",
+        "Pitch": -0.85,
+        "Speaking Rate": 1.06,
+        "기본 외모": "Gentle",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Braided straight"
+        ]
+      }
+    },
+    {
+      "카테고리": "사회적 성향",
+      "성격 키워드": "주도적",
+      "여성": {
+        "보이스": "Autonoe",
+        "톤": "Bright",
+        "Pitch": -0.33,
+        "Speaking Rate": 1.2,
+        "기본 외모": "Idol-like",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Ponytail straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Rasalgethi",
+        "톤": "Informative",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "사회적 성향",
+      "성격 키워드": "순응적",
+      "여성": {
+        "보이스": "Despina",
+        "톤": "Smooth",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Achird",
+        "톤": "Friendly",
+        "Pitch": -0.16,
+        "Speaking Rate": 1.2,
+        "기본 외모": "Charismatic",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Medium straight"
+        ]
+      }
+    },
+    {
+      "카테고리": "사회적 성향",
+      "성격 키워드": "이타적",
+      "여성": {
+        "보이스": "Callirrhoe",
+        "톤": "Easy-going",
+        "Pitch": -1.92,
+        "Speaking Rate": 1.32,
+        "기본 외모": "Elegant",
+        "패션": [
+          "Figure-skating outfit"
+        ],
+        "헤어": [
+          "Long wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Iapetus",
+        "톤": "Clear",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "사회적 성향",
+      "성격 키워드": "이기적",
+      "여성": {
+        "보이스": "Laomedeia",
+        "톤": "Upbeat",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Algenib",
+        "톤": "Gravelly",
+        "Pitch": -0.62,
+        "Speaking Rate": 1.39,
+        "기본 외모": "Gentle",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Braided straight"
+        ]
+      }
+    },
+    {
+      "카테고리": "사회적 성향",
+      "성격 키워드": "친근한",
+      "여성": {
+        "보이스": "Despina",
+        "톤": "Smooth",
+        "Pitch": 1.4,
+        "Speaking Rate": 0.86,
+        "기본 외모": "Cute",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Medium straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Schedar",
+        "톤": "Even",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "사회적 성향",
+      "성격 키워드": "냉담한",
+      "여성": {
+        "보이스": "Leda",
+        "톤": "Youthful",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Algieba",
+        "톤": "Smooth",
+        "Pitch": 0.76,
+        "Speaking Rate": 1.45,
+        "기본 외모": "Intellectual",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Long wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "사회적 성향",
+      "성격 키워드": "사교적",
+      "여성": {
+        "보이스": "Erinome",
+        "톤": "Clear",
+        "Pitch": 0.61,
+        "Speaking Rate": 1.22,
+        "기본 외모": "Elegant",
+        "패션": [
+          "Dress"
+        ],
+        "헤어": [
+          "Short bob straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Sadaltager",
+        "톤": "Knowledgeable",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "사회적 성향",
+      "성격 키워드": "고립적",
+      "여성": {
+        "보이스": "Kore",
+        "톤": "Firm",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Alnilam",
+        "톤": "Firm",
+        "Pitch": 0.04,
+        "Speaking Rate": 1.29,
+        "기본 외모": "Charismatic",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Long wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "정서 안정",
+      "성격 키워드": "낙관적",
+      "여성": {
+        "보이스": "Gacrux",
+        "톤": "Mature",
+        "Pitch": -0.16,
+        "Speaking Rate": 1.14,
+        "기본 외모": "Idol-like",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Braided wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Puck",
+        "톤": "Upbeat",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "정서 안정",
+      "성격 키워드": "비관적",
+      "여성": {
+        "보이스": "Gacrux",
+        "톤": "Mature",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Charon",
+        "톤": "Informative",
+        "Pitch": -0.66,
+        "Speaking Rate": 1.16,
+        "기본 외모": "Gentle",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Long wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "정서 안정",
+      "성격 키워드": "차분한",
+      "여성": {
+        "보이스": "Kore",
+        "톤": "Firm",
+        "Pitch": -0.1,
+        "Speaking Rate": 1.25,
+        "기본 외모": "Mature",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Ponytail wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Sadachbia",
+        "톤": "Lively",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "정서 안정",
+      "성격 키워드": "다혈질",
+      "여성": {
+        "보이스": "Despina",
+        "톤": "Smooth",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Enceladus",
+        "톤": "Breathy",
+        "Pitch": -0.07,
+        "Speaking Rate": 1.2,
+        "기본 외모": "Gentle",
+        "패션": [
+          "Sportswear"
+        ],
+        "헤어": [
+          "Braided straight"
+        ]
+      }
+    },
+    {
+      "카테고리": "정서 안정",
+      "성격 키워드": "용감한",
+      "여성": {
+        "보이스": "Laomedeia",
+        "톤": "Upbeat",
+        "Pitch": -0.41,
+        "Speaking Rate": 1.43,
+        "기본 외모": "Idol-like",
+        "패션": [
+          "Dress"
+        ],
+        "헤어": [
+          "Short bob wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Charon",
+        "톤": "Informative",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "정서 안정",
+      "성격 키워드": "비겁한",
+      "여성": {
+        "보이스": "Aoede",
+        "톤": "Breezy",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Fenrir",
+        "톤": "Excitable",
+        "Pitch": -0.85,
+        "Speaking Rate": 1.15,
+        "기본 외모": "Intellectual",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Long wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "정서 안정",
+      "성격 키워드": "느긋한",
+      "여성": {
+        "보이스": "Leda",
+        "톤": "Youthful",
+        "Pitch": 0.62,
+        "Speaking Rate": 1.1,
+        "기본 외모": "Elegant",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Long wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Sadaltager",
+        "톤": "Knowledgeable",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "정서 안정",
+      "성격 키워드": "급한",
+      "여성": {
+        "보이스": "Aoede",
+        "톤": "Breezy",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Iapetus",
+        "톤": "Clear",
+        "Pitch": -1.57,
+        "Speaking Rate": 0.93,
+        "기본 외모": "Charismatic",
+        "패션": [
+          "Suit"
+        ],
+        "헤어": [
+          "Medium straight"
+        ]
+      }
+    },
+    {
+      "카테고리": "정서 안정",
+      "성격 키워드": "의욕적",
+      "여성": {
+        "보이스": "Pulcherrima",
+        "톤": "Forward",
+        "Pitch": 0.23,
+        "Speaking Rate": 1.11,
+        "기본 외모": "Idol-like",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Short bob wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Fenrir",
+        "톤": "Excitable",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "정서 안정",
+      "성격 키워드": "무기력한",
+      "여성": {
+        "보이스": "Autonoe",
+        "톤": "Bright",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Orus",
+        "톤": "Firm",
+        "Pitch": 0.24,
+        "Speaking Rate": 1.1,
+        "기본 외모": "Muscular",
+        "패션": [
+          "Suit"
+        ],
+        "헤어": [
+          "Long wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "정서 안정",
+      "성격 키워드": "낭만적",
+      "여성": {
+        "보이스": "Sulafat",
+        "톤": "Warm",
+        "Pitch": -0.48,
+        "Speaking Rate": 1.2,
+        "기본 외모": "Mature",
+        "패션": [
+          "Figure-skating outfit"
+        ],
+        "헤어": [
+          "Long straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Iapetus",
+        "톤": "Clear",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "정서 안정",
+      "성격 키워드": "냉철한",
+      "여성": {
+        "보이스": "Achernar",
+        "톤": "Soft",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Puck",
+        "톤": "Upbeat",
+        "Pitch": -1.33,
+        "Speaking Rate": 1.29,
+        "기본 외모": "Intellectual",
+        "패션": [
+          "Suit"
+        ],
+        "헤어": [
+          "Long straight"
+        ]
+      }
+    },
+    {
+      "카테고리": "정서 안정",
+      "성격 키워드": "과묵한",
+      "여성": {
+        "보이스": "Vindemiatrix",
+        "톤": "Gentle",
+        "Pitch": -0.94,
+        "Speaking Rate": 0.95,
+        "기본 외모": "Elegant",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Short bob straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Orus",
+        "톤": "Firm",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "정서 안정",
+      "성격 키워드": "수다스러운",
+      "여성": {
+        "보이스": "Vindemiatrix",
+        "톤": "Gentle",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Rasalgethi",
+        "톤": "Informative",
+        "Pitch": 1.98,
+        "Speaking Rate": 1.43,
+        "기본 외모": "Charismatic",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Short bob wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "정서 안정",
+      "성격 키워드": "거친",
+      "여성": {
+        "보이스": "Zephyr",
+        "톤": "Bright",
+        "Pitch": -0.16,
+        "Speaking Rate": 1.25,
+        "기본 외모": "Idol-like",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Braided wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Alnilam",
+        "톤": "Firm",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "정서 안정",
+      "성격 키워드": "부드러운",
+      "여성": {
+        "보이스": "Pulcherrima",
+        "톤": "Forward",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Sadachbia",
+        "톤": "Lively",
+        "Pitch": -0.04,
+        "Speaking Rate": 1.16,
+        "기본 외모": "Charismatic",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Ponytail straight"
+        ]
+      }
+    },
+    {
+      "카테고리": "정서 안정",
+      "성격 키워드": "민감한",
+      "여성": {
+        "보이스": "Achernar",
+        "톤": "Soft",
+        "Pitch": -0.55,
+        "Speaking Rate": 1.41,
+        "기본 외모": "Idol-like",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Short bob wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Alnilam",
+        "톤": "Firm",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "정서 안정",
+      "성격 키워드": "둔감한",
+      "여성": {
+        "보이스": "Autonoe",
+        "톤": "Bright",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Sadaltager",
+        "톤": "Knowledgeable",
+        "Pitch": 0.14,
+        "Speaking Rate": 1.08,
+        "기본 외모": "Muscular",
+        "패션": [
+          "Sportswear"
+        ],
+        "헤어": [
+          "Short bob wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "정서 안정",
+      "성격 키워드": "절제적",
+      "여성": {
+        "보이스": "Aoede",
+        "톤": "Breezy",
+        "Pitch": 1.72,
+        "Speaking Rate": 0.89,
+        "기본 외모": "Elegant",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Braided wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Fenrir",
+        "톤": "Excitable",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "정서 안정",
+      "성격 키워드": "충동적",
+      "여성": {
+        "보이스": "Sulafat",
+        "톤": "Warm",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Schedar",
+        "톤": "Even",
+        "Pitch": -1.87,
+        "Speaking Rate": 1.01,
+        "기본 외모": "Charismatic",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Long straight"
+        ]
+      }
+    },
+    {
+      "카테고리": "가치관 / 사고방식",
+      "성격 키워드": "보수적",
+      "여성": {
+        "보이스": "Autonoe",
+        "톤": "Bright",
+        "Pitch": -0.26,
+        "Speaking Rate": 0.92,
+        "기본 외모": "Mature",
+        "패션": [
+          "Figure-skating outfit"
+        ],
+        "헤어": [
+          "Long wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Iapetus",
+        "톤": "Clear",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "가치관 / 사고방식",
+      "성격 키워드": "진보적",
+      "여성": {
+        "보이스": "Pulcherrima",
+        "톤": "Forward",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Umbriel",
+        "톤": "Easy-going",
+        "Pitch": -0.32,
+        "Speaking Rate": 1.18,
+        "기본 외모": "Gentle",
+        "패션": [
+          "Sportswear"
+        ],
+        "헤어": [
+          "Medium wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "가치관 / 사고방식",
+      "성격 키워드": "현실적",
+      "여성": {
+        "보이스": "Callirrhoe",
+        "톤": "Easy-going",
+        "Pitch": -0.79,
+        "Speaking Rate": 0.91,
+        "기본 외모": "Cute",
+        "패션": [
+          "Dress"
+        ],
+        "헤어": [
+          "Short bob wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Schedar",
+        "톤": "Even",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "가치관 / 사고방식",
+      "성격 키워드": "이상적",
+      "여성": {
+        "보이스": "Vindemiatrix",
+        "톤": "Gentle",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Zubenelgenubi",
+        "톤": "Casual",
+        "Pitch": -1.35,
+        "Speaking Rate": 1.16,
+        "기본 외모": "Gentle",
+        "패션": [
+          "Suit"
+        ],
+        "헤어": [
+          "Ponytail straight"
+        ]
+      }
+    },
+    {
+      "카테고리": "가치관 / 사고방식",
+      "성격 키워드": "정직한",
+      "여성": {
+        "보이스": "Despina",
+        "톤": "Smooth",
+        "Pitch": 0.9,
+        "Speaking Rate": 1.16,
+        "기본 외모": "Mature",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Long wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Schedar",
+        "톤": "Even",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "가치관 / 사고방식",
+      "성격 키워드": "기만적",
+      "여성": {
+        "보이스": "Despina",
+        "톤": "Smooth",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Achird",
+        "톤": "Friendly",
+        "Pitch": 1.92,
+        "Speaking Rate": 1.14,
+        "기본 외모": "Muscular",
+        "패션": [
+          "Suit"
+        ],
+        "헤어": [
+          "Short bob wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "가치관 / 사고방식",
+      "성격 키워드": "책임감",
+      "여성": {
+        "보이스": "Erinome",
+        "톤": "Clear",
+        "Pitch": -0.42,
+        "Speaking Rate": 1.02,
+        "기본 외모": "Idol-like",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Long wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Schedar",
+        "톤": "Even",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "가치관 / 사고방식",
+      "성격 키워드": "무책임",
+      "여성": {
+        "보이스": "Pulcherrima",
+        "톤": "Forward",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Algenib",
+        "톤": "Gravelly",
+        "Pitch": -0.23,
+        "Speaking Rate": 1.07,
+        "기본 외모": "Intellectual",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Ponytail straight"
+        ]
+      }
+    },
+    {
+      "카테고리": "가치관 / 사고방식",
+      "성격 키워드": "완고한",
+      "여성": {
+        "보이스": "Gacrux",
+        "톤": "Mature",
+        "Pitch": 0.93,
+        "Speaking Rate": 1.17,
+        "기본 외모": "Cute",
+        "패션": [
+          "Figure-skating outfit"
+        ],
+        "헤어": [
+          "Braided straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Fenrir",
+        "톤": "Excitable",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "가치관 / 사고방식",
+      "성격 키워드": "유연한",
+      "여성": {
+        "보이스": "Achernar",
+        "톤": "Soft",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Algieba",
+        "톤": "Smooth",
+        "Pitch": -0.72,
+        "Speaking Rate": 1.25,
+        "기본 외모": "Charismatic",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Short bob wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "가치관 / 사고방식",
+      "성격 키워드": "예술적",
+      "여성": {
+        "보이스": "Kore",
+        "톤": "Firm",
+        "Pitch": -0.42,
+        "Speaking Rate": 1.26,
+        "기본 외모": "Mature",
+        "패션": [
+          "Dress"
+        ],
+        "헤어": [
+          "Long straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Rasalgethi",
+        "톤": "Informative",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "가치관 / 사고방식",
+      "성격 키워드": "과학적",
+      "여성": {
+        "보이스": "Vindemiatrix",
+        "톤": "Gentle",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Alnilam",
+        "톤": "Firm",
+        "Pitch": -0.34,
+        "Speaking Rate": 1.2,
+        "기본 외모": "Muscular",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Short bob wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "가치관 / 사고방식",
+      "성격 키워드": "전통적",
+      "여성": {
+        "보이스": "Laomedeia",
+        "톤": "Upbeat",
+        "Pitch": 0.56,
+        "Speaking Rate": 1.1,
+        "기본 외모": "Cute",
+        "패션": [
+          "Figure-skating outfit"
+        ],
+        "헤어": [
+          "Ponytail wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Fenrir",
+        "톤": "Excitable",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "가치관 / 사고방식",
+      "성격 키워드": "혁신적",
+      "여성": {
+        "보이스": "Vindemiatrix",
+        "톤": "Gentle",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Charon",
+        "톤": "Informative",
+        "Pitch": 0.26,
+        "Speaking Rate": 1.12,
+        "기본 외모": "Charismatic",
+        "패션": [
+          "Suit"
+        ],
+        "헤어": [
+          "Medium wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "가치관 / 사고방식",
+      "성격 키워드": "실용적",
+      "여성": {
+        "보이스": "Leda",
+        "톤": "Youthful",
+        "Pitch": -0.19,
+        "Speaking Rate": 0.99,
+        "기본 외모": "Mature",
+        "패션": [
+          "Figure-skating outfit"
+        ],
+        "헤어": [
+          "Short bob straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Alnilam",
+        "톤": "Firm",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "가치관 / 사고방식",
+      "성격 키워드": "감성적",
+      "여성": {
+        "보이스": "Erinome",
+        "톤": "Clear",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Enceladus",
+        "톤": "Breathy",
+        "Pitch": 0.43,
+        "Speaking Rate": 1.26,
+        "기본 외모": "Intellectual",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Long wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "가치관 / 사고방식",
+      "성격 키워드": "이론적",
+      "여성": {
+        "보이스": "Pulcherrima",
+        "톤": "Forward",
+        "Pitch": -1.5,
+        "Speaking Rate": 1.34,
+        "기본 외모": "Elegant",
+        "패션": [
+          "Dress"
+        ],
+        "헤어": [
+          "Long straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Algenib",
+        "톤": "Gravelly",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "가치관 / 사고방식",
+      "성격 키워드": "경험적",
+      "여성": {
+        "보이스": "Erinome",
+        "톤": "Clear",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Fenrir",
+        "톤": "Excitable",
+        "Pitch": 0.63,
+        "Speaking Rate": 1.17,
+        "기본 외모": "Gentle",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Braided straight"
+        ]
+      }
+    },
+    {
+      "카테고리": "가치관 / 사고방식",
+      "성격 키워드": "감정적",
+      "여성": {
+        "보이스": "Sulafat",
+        "톤": "Warm",
+        "Pitch": 0.01,
+        "Speaking Rate": 1.14,
+        "기본 외모": "Mature",
+        "패션": [
+          "Figure-skating outfit"
+        ],
+        "헤어": [
+          "Long straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Sadaltager",
+        "톤": "Knowledgeable",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "가치관 / 사고방식",
+      "성격 키워드": "논리적",
+      "여성": {
+        "보이스": "Sulafat",
+        "톤": "Warm",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Iapetus",
+        "톤": "Clear",
+        "Pitch": -1.02,
+        "Speaking Rate": 1.06,
+        "기본 외모": "Muscular",
+        "패션": [
+          "Suit"
+        ],
+        "헤어": [
+          "Short bob straight"
+        ]
+      }
+    },
+    {
+      "카테고리": "표현 / 행동",
+      "성격 키워드": "수용적",
+      "여성": {
+        "보이스": "Vindemiatrix",
+        "톤": "Gentle",
+        "Pitch": -0.06,
+        "Speaking Rate": 1.25,
+        "기본 외모": "Mature",
+        "패션": [
+          "Figure-skating outfit"
+        ],
+        "헤어": [
+          "Ponytail straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Umbriel",
+        "톤": "Easy-going",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "표현 / 행동",
+      "성격 키워드": "비판적",
+      "여성": {
+        "보이스": "Erinome",
+        "톤": "Clear",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Orus",
+        "톤": "Firm",
+        "Pitch": -1.56,
+        "Speaking Rate": 0.87,
+        "기본 외모": "Charismatic",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Medium wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "표현 / 행동",
+      "성격 키워드": "긍정적",
+      "여성": {
+        "보이스": "Zephyr",
+        "톤": "Bright",
+        "Pitch": 1.32,
+        "Speaking Rate": 1.27,
+        "기본 외모": "Elegant",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Long wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Sadachbia",
+        "톤": "Lively",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "표현 / 행동",
+      "성격 키워드": "부정적",
+      "여성": {
+        "보이스": "Autonoe",
+        "톤": "Bright",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Puck",
+        "톤": "Upbeat",
+        "Pitch": 0.15,
+        "Speaking Rate": 1.18,
+        "기본 외모": "Intellectual",
+        "패션": [
+          "Sportswear"
+        ],
+        "헤어": [
+          "Braided straight"
+        ]
+      }
+    },
+    {
+      "카테고리": "표현 / 행동",
+      "성격 키워드": "게으른",
+      "여성": {
+        "보이스": "Achernar",
+        "톤": "Soft",
+        "Pitch": -1.33,
+        "Speaking Rate": 1.12,
+        "기본 외모": "Elegant",
+        "패션": [
+          "Figure-skating outfit"
+        ],
+        "헤어": [
+          "Braided straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Puck",
+        "톤": "Upbeat",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "표현 / 행동",
+      "성격 키워드": "부지런한",
+      "여성": {
+        "보이스": "Autonoe",
+        "톤": "Bright",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Rasalgethi",
+        "톤": "Informative",
+        "Pitch": 0.65,
+        "Speaking Rate": 1.15,
+        "기본 외모": "Muscular",
+        "패션": [
+          "Sportswear"
+        ],
+        "헤어": [
+          "Braided straight"
+        ]
+      }
+    },
+    {
+      "카테고리": "표현 / 행동",
+      "성격 키워드": "유머러스한",
+      "여성": {
+        "보이스": "Aoede",
+        "톤": "Breezy",
+        "Pitch": -0.04,
+        "Speaking Rate": 1.29,
+        "기본 외모": "Cute",
+        "패션": [
+          "Dress"
+        ],
+        "헤어": [
+          "Short bob straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Algieba",
+        "톤": "Smooth",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "표현 / 행동",
+      "성격 키워드": "진지한",
+      "여성": {
+        "보이스": "Gacrux",
+        "톤": "Mature",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Sadachbia",
+        "톤": "Lively",
+        "Pitch": 0.24,
+        "Speaking Rate": 1.06,
+        "기본 외모": "Muscular",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Medium wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "표현 / 행동",
+      "성격 키워드": "다정한",
+      "여성": {
+        "보이스": "Autonoe",
+        "톤": "Bright",
+        "Pitch": -0.6,
+        "Speaking Rate": 1.2,
+        "기본 외모": "Idol-like",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Long straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Puck",
+        "톤": "Upbeat",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "표현 / 행동",
+      "성격 키워드": "무뚝뚝한",
+      "여성": {
+        "보이스": "Autonoe",
+        "톤": "Bright",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Sadaltager",
+        "톤": "Knowledgeable",
+        "Pitch": 1.85,
+        "Speaking Rate": 1.39,
+        "기본 외모": "Gentle",
+        "패션": [
+          "Suit"
+        ],
+        "헤어": [
+          "Short bob straight"
+        ]
+      }
+    },
+    {
+      "카테고리": "표현 / 행동",
+      "성격 키워드": "겸손한",
+      "여성": {
+        "보이스": "Callirrhoe",
+        "톤": "Easy-going",
+        "Pitch": 1.51,
+        "Speaking Rate": 1.44,
+        "기본 외모": "Elegant",
+        "패션": [
+          "Figure-skating outfit"
+        ],
+        "헤어": [
+          "Long wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Fenrir",
+        "톤": "Excitable",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "표현 / 행동",
+      "성격 키워드": "거만한",
+      "여성": {
+        "보이스": "Aoede",
+        "톤": "Breezy",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Schedar",
+        "톤": "Even",
+        "Pitch": -0.85,
+        "Speaking Rate": 0.95,
+        "기본 외모": "Gentle",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Long wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "표현 / 행동",
+      "성격 키워드": "온화한",
+      "여성": {
+        "보이스": "Despina",
+        "톤": "Smooth",
+        "Pitch": 0.06,
+        "Speaking Rate": 1.35,
+        "기본 외모": "Cute",
+        "패션": [
+          "Figure-skating outfit"
+        ],
+        "헤어": [
+          "Medium wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Rasalgethi",
+        "톤": "Informative",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "표현 / 행동",
+      "성격 키워드": "공격적",
+      "여성": {
+        "보이스": "Kore",
+        "톤": "Firm",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Umbriel",
+        "톤": "Easy-going",
+        "Pitch": -0.95,
+        "Speaking Rate": 1.12,
+        "기본 외모": "Gentle",
+        "패션": [
+          "Suit"
+        ],
+        "헤어": [
+          "Braided straight"
+        ]
+      }
+    },
+    {
+      "카테고리": "표현 / 행동",
+      "성격 키워드": "창의적",
+      "여성": {
+        "보이스": "Erinome",
+        "톤": "Clear",
+        "Pitch": -0.63,
+        "Speaking Rate": 1.21,
+        "기본 외모": "Elegant",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Long wave"
+        ]
+      },
+      "남성": {
+        "보이스": "Enceladus",
+        "톤": "Breathy",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "표현 / 행동",
+      "성격 키워드": "모방적",
+      "여성": {
+        "보이스": "Aoede",
+        "톤": "Breezy",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Zubenelgenubi",
+        "톤": "Casual",
+        "Pitch": 0.55,
+        "Speaking Rate": 0.87,
+        "기본 외모": "Charismatic",
+        "패션": [
+          "Casual"
+        ],
+        "헤어": [
+          "Ponytail wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "표현 / 행동",
+      "성격 키워드": "성실한",
+      "여성": {
+        "보이스": "Gacrux",
+        "톤": "Mature",
+        "Pitch": 0.67,
+        "Speaking Rate": 1.18,
+        "기본 외모": "Cute",
+        "패션": [
+          "Dress"
+        ],
+        "헤어": [
+          "Medium straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Zubenelgenubi",
+        "톤": "Casual",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "표현 / 행동",
+      "성격 키워드": "태만한",
+      "여성": {
+        "보이스": "Callirrhoe",
+        "톤": "Easy-going",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Achird",
+        "톤": "Friendly",
+        "Pitch": 0.05,
+        "Speaking Rate": 0.87,
+        "기본 외모": "Charismatic",
+        "패션": [
+          "Sportswear"
+        ],
+        "헤어": [
+          "Braided wave"
+        ]
+      }
+    },
+    {
+      "카테고리": "표현 / 행동",
+      "성격 키워드": "경계적",
+      "여성": {
+        "보이스": "Kore",
+        "톤": "Firm",
+        "Pitch": 0.23,
+        "Speaking Rate": 1.16,
+        "기본 외모": "Idol-like",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Long straight"
+        ]
+      },
+      "남성": {
+        "보이스": "Fenrir",
+        "톤": "Excitable",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      }
+    },
+    {
+      "카테고리": "표현 / 행동",
+      "성격 키워드": "포용적",
+      "여성": {
+        "보이스": "Laomedeia",
+        "톤": "Upbeat",
+        "Pitch": 0.0,
+        "Speaking Rate": 1.0,
+        "기본 외모": "Neutral expression with balanced features",
+        "패션": [
+          "Casual outfit"
+        ],
+        "헤어": [
+          "Medium straight black"
+        ]
+      },
+      "남성": {
+        "보이스": "Algenib",
+        "톤": "Gravelly",
+        "Pitch": 0.55,
+        "Speaking Rate": 1.12,
+        "기본 외모": "Muscular",
+        "패션": [
+          "Traditional"
+        ],
+        "헤어": [
+          "Braided wave"
+        ]
+      }
+    }
+  ]
+}
