@@ -1,37 +1,63 @@
 {
-  "옵션풀": {
+"옵션풀": {
+  "여성": {
     "눈": [
       "Large almond-shaped eyes with double eyelids",
-      "Large almond-shaped eyes with monolids (no double eyelids)",
-      "Small sharp eyes with double eyelids",
-      "Small sharp eyes with monolids",
-      "Round expressive eyes with double eyelids",
-      "Narrow eyes with monolids, soft smile"
+      "Round expressive eyes with subtle eyeliner",
+      "Small sharp eyes with monolids, soft gaze",
+      "Big sparkling eyes with upward corners"
     ],
     "입": [
       "Small lips with upward corners, bright smile",
-      "Full lips with natural curve, sensual look",
-      "Thin lips with downward corners, serious expression",
-      "Heart-shaped lips with subtle gloss"
+      "Full lips with soft gloss, sensual look",
+      "Heart-shaped lips, youthful and lively",
+      "Thin lips with natural pink shade"
     ],
     "코": [
-      "Sharp and high nose bridge, elegant profile",
-      "Small button nose, youthful appearance",
-      "Straight medium-sized nose, balanced look",
-      "Prominent aquiline nose, strong impression"
+      "Sharp and elegant high nose bridge",
+      "Small button nose, cute and youthful",
+      "Straight medium nose, balanced look"
     ],
     "눈썹": [
-      "Thick bold eyebrows",
-      "Soft arched eyebrows",
-      "Straight defined eyebrows"
+      "Thin arched eyebrows with delicate shape",
+      "Straight soft eyebrows, natural look",
+      "Slightly thick eyebrows, feminine strength"
     ],
     "몸매": [
-      "Slim body with long legs and slender waist",
-      "Athletic build with broad shoulders and toned muscles",
-      "Curvy body with wide hips and elegant posture",
-      "Average build with balanced proportions"
+      "Slim with long legs and narrow waist",
+      "Curvy with wide hips and balanced proportions",
+      "Athletic with toned arms and legs"
     ]
   },
+  "남성": {
+    "눈": [
+      "Sharp almond eyes with double eyelids",
+      "Monolid eyes with strong gaze",
+      "Deep-set eyes with firm expression"
+    ],
+    "입": [
+      "Thin lips with neutral expression",
+      "Full lips with strong definition",
+      "Small lips with slight upward corners"
+    ],
+    "코": [
+      "Straight high-bridged nose",
+      "Strong aquiline nose, bold presence",
+      "Medium straight nose, masculine balance"
+    ],
+    "눈썹": [
+      "Thick straight eyebrows",
+      "Bushy angled eyebrows",
+      "Neatly trimmed masculine eyebrows"
+    ],
+    "몸매": [
+      "Athletic build with broad shoulders and chest",
+      "Muscular with defined abs",
+      "Slim tall build with long legs"
+    ]
+  }
+},
+
   "캐릭터": [
     {
       "카테고리": "기본 태도",
