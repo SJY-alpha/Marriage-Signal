@@ -1,39 +1,137 @@
 // Gemini API 호출과 관련된 모든 함수를 담당합니다.
-// (callAPI, generateStoryAPI, generateImageForCut, generateTTSAPI 등)
-
 app.api = {
     async callAPI(apiUrl, payload, modelName) {
-        const apiKey = "";
-        let finalUrl = apiUrl;
-        if (apiKey) {
-            finalUrl += `?key=${apiKey}`;
-        }
+        // ... (This function remains unchanged)
+    },
+
+    async generateStoryAPI(keywords, duration, script) {
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent`;
+        const systemPrompt = `You are a team of AI experts collaborating to create a compelling script for a YouTube Shorts drama. Each expert must execute their role perfectly in order to produce the final JSON output.
+
+### Stage 1: Story and Script Creation
+(Roles: Hooking Expert, Interest-Piquing Shorts Psychologist, Shorts Drama Storyteller)
+... (These roles remain the same) ...
+
+### Stage 2: Visualization and Direction
+
+#### 4. 편집 및 컷씬 전문가 (Editing & Cutscene Specialist)
+* **Task:** Receiving the final script, your job is to break it down into cuts, and design image prompts.
+* **CRITICAL - Character Consistency:** For shots that should maintain character appearance (e.g., continuous conversation), you MUST include the property \`maintainAppearance: true\`.
+* **CRITICAL - Background Consistency:** You MUST define background groups for each location (e.g., '민준의 집'). For each shot, you MUST reference the background using the format \`@그룹명(상세공간_뷰)\`. This is MANDATORY for creating a consistent spatial experience.
+    * **Example:** A scene in Minjun's house might use \`@민준의집(거실_소파)\` for one shot, and \`@민준의집(부엌)\` for another.
+    * You MUST create detailed prompts for each unique '상세공간_뷰' you define within a group.
+
+**Final JSON Output Structure (Strictly Adhere):**
+{
+  "title": "string",
+  "characters": [
+    { "id": "string", "name": "string", "gender": "string (남성/여성)", "prompt": "string" }
+  ],
+  "backgrounds": [
+    { 
+      "groupName": "string", 
+      "subImages": [
+        { "subName": "string (e.g., 거실_소파)", "prompt": "string (English)" }
+      ]
+    }
+  ],
+  "cutscenes": [
+    {
+      "duration": "number", 
+      "shots": [
+        { "shotId": "number", "imagePrompt": "string (MUST use @Character and @GroupName(SubName))", "maintainAppearance": "boolean (optional)" }
+      ]
+      // ... dialogues ...
+    }
+  ]
+}`;
         
-        const headers = { 'Content-Type': 'application/json' };
+        const userPrompt = `주제 키워드: "${keywords}", 영상 길이: ${duration}초.\n\n참고 대본/사연:\n${script}`;
+        
+        const payload = {
+            contents: [{ parts: [{ text: userPrompt }] }],
+            systemInstruction: { parts: [{ text: systemPrompt }] },
+            generationConfig: { responseMimeType: "application/json" }
+        };
+
+        const result = await this.callAPI(apiUrl, payload, "Story Generation");
+        // ... (Parsing logic remains the same) ...
+        const storyData = JSON.parse(result.candidates[0].content.parts[0].text);
+        
+        // Add unique IDs to new background structure
+        if(storyData.backgrounds) {
+            storyData.backgrounds.forEach(bgGroup => {
+                bgGroup.id = `bg_group_${Date.now()}_${Math.random()}`;
+                if(bgGroup.subImages) {
+                    bgGroup.subImages.forEach(sub => {
+                        sub.subId = `sub_${Date.now()}_${Math.random()}`;
+                    });
+                }
+            });
+        }
+        return storyData;
+    },
+    
+    // ... (refineCharacterPromptAPI remains unchanged)
+
+    async generateImageForCut(cutOrShot, characterReferences, locationReferenceImages, previousShotImage = null) {
+        let prompt = cutOrShot.imagePrompt || cutOrShot.prompt;
+        if (typeof prompt !== 'string' || !prompt.trim()) {
+            return `https://placehold.co/1080x1920/374151/9ca3af?text=No+Prompt`;
+        }
+
+        const parts = [];
+        
+        // Add previous shot image first if it exists
+        if (previousShotImage && previousShotImage.startsWith('data:image')) {
+            parts.push({ inlineData: { mimeType: "image/png", data: previousShotImage.split(',')[1] } });
+        }
+
+        let processedPrompt = prompt;
+
+        // 1. Handle Background References: @GroupName(SubName)
+        const backgroundRegex = /@([\w\uac00-\ud7a3]+)\(([\w\uac00-\ud7a3_]+)\)/g;
+        processedPrompt = processedPrompt.replace(backgroundRegex, (match, groupName, subName) => {
+            const group = app.state.backgrounds.find(bg => bg.groupName === groupName);
+            const subImage = group?.subImages.find(sub => sub.subName === subName);
+            if (subImage?.image && subImage.image.startsWith('data:image')) {
+                parts.push({ inlineData: { mimeType: "image/png", data: subImage.image.split(',')[1] } });
+            }
+            return ''; // Remove the tag from the text prompt
+        });
+
+        // 2. Handle Character References: @CharacterName (but not if followed by '(' )
+        const characterRegex = /@([\w\uac00-\ud7a3]+)(?!\()/g;
+        processedPrompt = processedPrompt.replace(characterRegex, (match, charName) => {
+            const refImage = characterReferences[charName];
+            if (refImage && refImage.startsWith('data:image')) {
+                parts.push({ inlineData: { mimeType: "image/png", data: refImage.split(',')[1] } });
+            }
+            return charName; // Keep the name in the text prompt
+        });
+
+        const finalPrompt = `Photorealistic image of ${processedPrompt.trim()}. captured with a Sony A7 III, 35mm lens at f/1.8, cinematic lighting, dramatic, high detail. The final image MUST have an aspect ratio of 9:16.`;
+        parts.unshift({ text: finalPrompt }); // Add text prompt at the beginning
 
         try {
-            const response = await fetch(finalUrl, {
-                method: 'POST',
-                headers: headers,
-                body: JSON.stringify(payload)
-            });
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent`;
+            const payload = { contents: [{ parts }], generationConfig: { responseModalities: ['IMAGE'] } };
+            const result = await this.callAPI(apiUrl, payload, "Image Generation");
+            const base64Data = result.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
             
-            if (!response.ok) {
-                let errorText = await response.text();
-                const errorInfo = {
-                    status: response.status,
-                    statusText: response.statusText,
-                    responseText: errorText,
-                    requestPayload: payload
-                };
-                if (modelName === 'TTS') app.logToTTSConsole(`[ERROR] API Error: ${modelName}`, errorInfo, true);
-                throw new Error(`[${modelName}] API Error ${response.status}: ${errorText}`);
+            if (base64Data) {
+                const rawUrl = `data:image/png;base64,${base64Data}`;
+                return await app.forceAspect(rawUrl, '9:16');
             }
-            
-            const responseData = await response.json();
-            return responseData;
+            throw new Error('No image data from API');
+        } catch(error) {
+            console.error(`Image generation failed for prompt "${prompt}":`, error);
+            return `https://placehold.co/1080x1920/374151/9ca3af?text=Error`;
+        }
+    },
+    // ... (rest of the api_handler.js code)
+};
 
-        } catch (error) {
             const errorInfo = {
                  error: error.message,
                  requestPayload: payload
