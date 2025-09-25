@@ -106,6 +106,78 @@ document.addEventListener('DOMContentLoaded', () => {
     app.init();
 });
 
+        this.populateNarratorVoices();
+        this.bindInitialEventListeners();
+        this.initTTSDebugConsole();
+    },
+
+    cacheDOMElements() {
+        this.elements = {
+            initialSettings: document.getElementById('initial-settings'),
+            generateStoryBtn: document.getElementById('generate-story-btn'),
+            improveScriptBtn: document.getElementById('improve-script-btn'),
+            recommendKeywordsBtn: document.getElementById('recommend-keywords-btn'),
+            loadingIndicator: document.getElementById('loading-indicator'),
+            loadingMessage: document.getElementById('loading-message'),
+            editorSection: document.getElementById('editor-section'),
+            characterReferences: document.getElementById('character-references'),
+            backgroundTabs: document.getElementById('background-tabs'),
+            backgroundReferences: document.getElementById('background-references'),
+            timelineContainer: document.getElementById('timeline-container'),
+            totalTimeDisplay: document.getElementById('total-time'),
+            currentTimeDisplay: document.getElementById('current-time'),
+            videoPlayerModal: document.getElementById('video-player-modal'),
+            mentionDropdown: document.getElementById('mention-dropdown'),
+            scenarioTitle: document.getElementById('scenario-title'),
+            ttsDebugConsole: document.getElementById('tts-debug-console'),
+            ttsDebugOutput: document.getElementById('tts-debug-output'),
+            showTTSConsoleBtn: document.getElementById('show-tts-console-btn'),
+            clearTTSConsoleBtn: document.getElementById('clear-tts-console-btn'),
+            closeTTSConsoleBtn: document.getElementById('close-tts-console-btn'),
+            // ... (add other elements as needed)
+        };
+    },
+    
+    // ... (rest of the main_app.js code from previous version)
+
+    migrateProjectData(data) {
+        const version = parseFloat(data.version) || 1.0;
+        
+        if (version < 2.7) {
+            // Migrate old background structure to new grouped structure
+            if (data.backgrounds && Array.isArray(data.backgrounds) && data.backgrounds.length > 0 && !data.backgrounds[0].groupName) {
+                data.backgrounds = data.backgrounds.map(bg => ({
+                    id: `bg_group_${Date.now()}_${Math.random()}`,
+                    groupName: bg.name,
+                    subImages: [{
+                        subId: `sub_${Date.now()}_${Math.random()}`,
+                        subName: '기본',
+                        prompt: bg.prompt,
+                        image: bg.image
+                    }]
+                }));
+            }
+        }
+        
+        if (version < 1.4) {
+            data.cutscenes.forEach(cut => {
+                if (cut.imagePrompt && !cut.shots) {
+                    cut.shots = [{ shotId: 1, imagePrompt: cut.imagePrompt, videoPrompt: cut.videoPrompt, startTime: 0, image: cut.image || null }];
+                    delete cut.imagePrompt;
+                    delete cut.videoPrompt;
+                    delete cut.image;
+                }
+            });
+         }
+         data.version = this.currentVersion;
+         return data;
+     },
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    app.init();
+});
+
             initialSettings: document.getElementById('initial-settings'),
             generateStoryBtn: document.getElementById('generate-story-btn'),
             improveScriptBtn: document.getElementById('improve-script-btn'),
