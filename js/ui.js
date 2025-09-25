@@ -4,10 +4,10 @@
  */
 
 // 의존성 모듈 임포트
-import { appState, DOM } from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@527845707204c5eb7b87f283e8615ab2ce1d50bd/js/state.js';
-import { TTS_VOICES } from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@527845707204c5eb7b87f283e8615ab2ce1d50bd/js/constants.js';
-import * as utils from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@527845707204c5eb7b87f283e8615ab2ce1d50bd/js/utils.js';
-import * as api from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@527845707204c5eb7b87f283e8615ab2ce1d50bd/js/api.js';
+import { appState, DOM } from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@c6c8481392c24d61b0465131b38743e63424fdd9/js/state.js';
+import { TTS_VOICES } from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@c6c8481392c24d61b0465131b38743e63424fdd9/js/constants.js';
+import * as utils from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@c6c8481392c24d61b0465131b38743e63424fdd9/js/utils.js';
+import * as api from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@c6c8481392c24d61b0465131b38743e63424fdd9/js/api.js';
 
 
 // --- 렌더링 함수 ---
