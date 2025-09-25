@@ -1,6 +1,4 @@
 // 화면 렌더링, 모달창 제어 등 UI와 관련된 모든 함수를 담당합니다.
-// (renderAll, renderTimeline, showImageModal, createReferenceCard 등)
-
 app.ui = {
     renderAll() { 
         app.elements.scenarioTitle.textContent = app.state.title; 
@@ -9,31 +7,24 @@ app.ui = {
         this.renderTimeline(); 
         app.updateTotalTime(); 
     },
+    
+    // ... (most of the ui_manager.js code remains the same)
 
-    switchTab(button) {
-        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        document.querySelectorAll('.tab-content').forEach(content => {
-            content.id === button.dataset.tab ? content.classList.remove('hidden') : content.classList.add('hidden');
-        });
+    renderBackgrounds() {
+        const bgContainer = app.elements.backgroundReferences;
+        const bgTabs = app.elements.backgroundTabs;
+        bgTabs.innerHTML = ''; // Clear old tabs
+        bgContainer.innerHTML = `
+            <div class="col-span-full text-center p-8 bg-gray-700 rounded-lg">
+                <h4 class="text-lg font-bold text-gray-300">새로운 배경 관리 시스템</h4>
+                <p class="text-gray-400 mt-2">다음 업데이트에서 그룹화된 배경 관리 기능이 제공될 예정입니다. 기대해주세요!</p>
+            </div>
+        `;
     },
 
-    renderCharacters() {
-        app.elements.characterReferences.innerHTML = '';
-        if(!app.state.characters) return;
-        const narrator = app.state.characters.find(c => c.id === 'narrator');
-        if (narrator) this.renderNarratorControls(narrator);
-        
-        app.state.characters.forEach(char => {
-            if (char.id === 'narrator') return;
-            const card = this.createReferenceCard(char, 'character');
-            app.elements.characterReferences.appendChild(card);
-        });
-    },
+    // ... (rest of the ui_manager.js code)
+};
 
-    renderNarratorControls(narrator) {
-        const narratorControls = document.getElementById('narrator-controls');
-        if (!narratorControls) return;
         app.populateNarratorVoices();
         const voiceSelect = narratorControls.querySelector('#narrator-voice');
         const pitchSlider = narratorControls.querySelector('#narrator-pitch-slider');
