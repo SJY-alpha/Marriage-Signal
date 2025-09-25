@@ -6,30 +6,19 @@
 // 의존성 모듈 임포트
 import { appState, DOM } from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@527845707204c5eb7b87f283e8615ab2ce1d50bd/js/state.js';
 import { TTS_VOICES } from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@527845707204c5eb7b87f283e8615ab2ce1d50bd/js/constants.js';
-import { 
-    handlePromptAction, 
-    moveCut, 
-    deleteCut, 
-    playSingleDialogue, 
-    stopSinglePlayback,
-    downloadSingleTTS, 
-    previewTTSVoice, 
-    applyTtsSettingsToTimeline,
-    applyReferenceToAll,
-    savePersonality
-} from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@527845707204c5eb7b87f283e8615ab2ce1d50bd/js/main.js';
-import { copyTextToClipboard } from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@527845707204c5eb7b87f283e8615ab2ce1d50bd/js/utils.js';
+import * as utils from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@527845707204c5eb7b87f283e8615ab2ce1d50bd/js/utils.js';
+import * as api from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@527845707204c5eb7b87f283e8615ab2ce1d50bd/js/api.js';
 
 
 // --- 렌더링 함수 ---
 
 /** 전체 UI를 다시 렌더링합니다. */
-export function renderAll() {
+export function renderAll(handlers) {
     if (!appState.data || !appState.data.title) return;
     DOM.scenarioTitle.textContent = appState.data.title;
-    renderCharacters();
-    renderBackgrounds();
-    renderTimeline();
+    renderCharacters(handlers);
+    renderBackgrounds(handlers);
+    renderTimeline(handlers);
     updateTotalTime();
 }
 
@@ -43,7 +32,7 @@ export function switchTab(button) {
 }
 
 /** 캐릭터 레퍼런스 섹션을 렌더링합니다. */
-export function renderCharacters() {
+export function renderCharacters(handlers) {
     DOM.characterReferences.innerHTML = '';
     if(!appState.data.characters) return;
     const narrator = appState.data.characters.find(c => c.id === 'narrator');
@@ -51,7 +40,7 @@ export function renderCharacters() {
     
     appState.data.characters.forEach(char => {
         if (char.id === 'narrator') return;
-        const card = createReferenceCard(char, 'character');
+        const card = createReferenceCard(char, 'character', handlers);
         DOM.characterReferences.appendChild(card);
     });
 }
@@ -67,7 +56,7 @@ function renderNarratorControls(narrator) {
 }
 
 /** 배경 레퍼런스 섹션을 렌더링합니다. */
-function renderBackgrounds() {
+function renderBackgrounds(handlers) {
     DOM.backgroundTabs.innerHTML = '';
     if(!appState.data.backgrounds) return;
     const bgGroups = appState.data.backgrounds.reduce((acc, bg, index) => {
@@ -82,20 +71,20 @@ function renderBackgrounds() {
         tab.className = `px-3 py-1 rounded-t-lg text-sm ${appState.activeBgTab == key ? 'bg-gray-700 text-white' : 'bg-gray-800 text-gray-400'}`;
         tab.textContent = `배경 ${key}`;
         tab.dataset.tabId = key;
-        tab.onclick = () => { appState.activeBgTab = key; renderBackgrounds(); };
+        tab.onclick = () => { appState.activeBgTab = key; renderBackgrounds(handlers); };
         DOM.backgroundTabs.appendChild(tab);
     });
 
     DOM.backgroundReferences.innerHTML = '';
     if (bgGroups[appState.activeBgTab]) {
         bgGroups[appState.activeBgTab].forEach(bg => {
-            DOM.backgroundReferences.appendChild(createReferenceCard(bg, 'background'));
+            DOM.backgroundReferences.appendChild(createReferenceCard(bg, 'background', handlers));
         });
     }
 }
 
 /** 타임라인 섹션을 렌더링합니다. */
-export function renderTimeline() {
+export function renderTimeline(handlers) {
     DOM.timelineContainer.innerHTML = '';
     if (!appState.data.cutscenes) return;
 
@@ -188,7 +177,7 @@ export function renderTimeline() {
                 }).join('')}
             </div>`;
         DOM.timelineContainer.appendChild(cutElement);
-        addEventListenersToCut(cutElement, index);
+        addEventListenersToCut(cutElement, index, handlers);
     });
 }
 
@@ -199,9 +188,10 @@ export function renderTimeline() {
  * 캐릭터 또는 배경을 위한 레퍼런스 카드를 생성합니다.
  * @param {object} item - 캐릭터 또는 배경 객체
  * @param {string} type - 'character' 또는 'background'
+ * @param {object} handlers - 이벤트 핸들러 함수들이 담긴 객체
  * @returns {HTMLElement} 생성된 카드 요소
  */
-function createReferenceCard(item, type) {
+function createReferenceCard(item, type, handlers) {
     const card = document.createElement('div');
     card.className = 'bg-gray-700 rounded-lg overflow-hidden shadow-md flex flex-col';
     
@@ -260,7 +250,7 @@ function createReferenceCard(item, type) {
             </div>
         </div>`;
     
-    addEventListenersToReferenceCard(card, item, type);
+    addEventListenersToReferenceCard(card, item, type, handlers);
     return card;
 }
 
@@ -283,18 +273,19 @@ function createVideoPromptBox(videoPrompt, shotIndex) {
  * @param {HTMLElement} card - 이벤트 리스너를 추가할 카드 요소
  * @param {object} item - 카드에 해당하는 데이터 객체
  * @param {string} type - 'character' 또는 'background'
+ * @param {object} handlers - 이벤트 핸들러 함수들이 담긴 객체
  */
-function addEventListenersToReferenceCard(card, item, type) {
+function addEventListenersToReferenceCard(card, item, type, handlers) {
     const itemElement = card.querySelector('img');
     itemElement.addEventListener('click', () => showImageModal(item.image, `레퍼런스: ${item.name}`));
     
     card.querySelector('[data-action="edit-prompt"]').addEventListener('click', () => showPromptModal('레퍼런스 프롬프트 편집', item.prompt, (newPromptEditor) => { item.prompt = parsePromptFromEditing(newPromptEditor); }));
     
     if (type === 'character') {
-        card.querySelector('.apply-char-details-btn').addEventListener('click', (e) => {
+        card.querySelector('.apply-char-details-btn').addEventListener('click', () => {
             const newName = card.querySelector('.name-input').value;
             const newNationality = card.querySelector('.nationality-input').value;
-            updateCharacterDetails(item.id, newName, newNationality);
+            handlers.updateCharacterDetails(item.id, newName, newNationality);
         });
         card.querySelector('.voice-select').addEventListener('change', (e) => { item.voice = e.target.value });
         
@@ -313,10 +304,10 @@ function addEventListenersToReferenceCard(card, item, type) {
 
         card.querySelector('.voice-preview-btn').addEventListener('click', (e) => {
             const voiceName = card.querySelector('.voice-select').value;
-            previewTTSVoice({ voice: voiceName, speed: item.speed, pitch: item.pitch }, e.currentTarget);
+            handlers.previewTTSVoice({ voice: voiceName, speed: item.speed, pitch: item.pitch }, e.currentTarget);
         });
         card.querySelector('[data-action="edit-personality"]').addEventListener('click', () => showPersonalityModal(item));
-        card.querySelector('.apply-tts-settings-btn').addEventListener('click', () => applyTtsSettingsToTimeline(item.id));
+        card.querySelector('.apply-tts-settings-btn').addEventListener('click', () => handlers.applyTtsSettingsToTimeline(item.id));
     }
     card.querySelector('[data-action="replace"]').addEventListener('click', () => {
         const fileInput = document.createElement('input');
@@ -342,20 +333,21 @@ function addEventListenersToReferenceCard(card, item, type) {
         itemElement.src = item.image;
         container.removeChild(overlay);
     });
-    card.querySelector('[data-action="apply-all"]').addEventListener('click', () => applyReferenceToAll(item.id));
+    card.querySelector('[data-action="apply-all"]').addEventListener('click', () => handlers.applyReferenceToAll(item.id));
 }
 
 /**
  * 동적으로 생성된 컷(Cut) 요소에 이벤트 리스너를 추가합니다.
  * @param {HTMLElement} cutElement - 이벤트 리스너를 추가할 컷 요소
  * @param {number} index - 해당 컷의 인덱스
+ * @param {object} handlers - 이벤트 핸들러 함수들이 담긴 객체
  */
-function addEventListenersToCut(cutElement, index) {
+function addEventListenersToCut(cutElement, index, handlers) {
     const cut = appState.data.cutscenes[index];
 
-    cutElement.querySelector('[data-action="move-up"]').addEventListener('click', () => moveCut(index, 'up'));
-    cutElement.querySelector('[data-action="move-down"]').addEventListener('click', () => moveCut(index, 'down'));
-    cutElement.querySelector('[data-action="delete"]').addEventListener('click', () => deleteCut(index));
+    cutElement.querySelector('[data-action="move-up"]').addEventListener('click', () => handlers.moveCut(index, 'up'));
+    cutElement.querySelector('[data-action="move-down"]').addEventListener('click', () => handlers.moveCut(index, 'down'));
+    cutElement.querySelector('[data-action="delete"]').addEventListener('click', () => handlers.deleteCut(index));
     cutElement.querySelector('[data-action="view-cut-image"]').addEventListener('click', (e) => {
         const activeShotIndex = parseInt(cutElement.dataset.activeShot || "0");
         showImageModal(cut.shots[activeShotIndex].image, `컷 #${index + 1}, 샷 #${activeShotIndex + 1}`);
@@ -370,7 +362,7 @@ function addEventListenersToCut(cutElement, index) {
 
     cutElement.querySelector('.auto-adjust-duration').addEventListener('change', (e) => {
         cut.autoAdjustDuration = e.target.checked;
-        if(cut.autoAdjustDuration) recalculateCutDuration(index, true);
+        if(cut.autoAdjustDuration) handlers.recalculateCutDuration(index, true);
     });
     
     cutElement.querySelectorAll('.shot-tab').forEach(tab => {
@@ -398,7 +390,7 @@ function addEventListenersToCut(cutElement, index) {
            if (!isNaN(newTime)) {
                cut.shots[shotIndex].startTime = newTime;
                cut.shots.sort((a, b) => a.startTime - b.startTime);
-               renderTimeline();
+               renderTimeline(handlers);
            }
        });
     });
@@ -408,7 +400,7 @@ function addEventListenersToCut(cutElement, index) {
         const promptContainer = e.currentTarget.closest('.prompt-container');
         const type = promptContainer.dataset.type;
         const shotIndex = parseInt(promptContainer.dataset.shotIndex);
-        handlePromptAction(action, type, index, shotIndex);
+        handlers.handlePromptAction(action, type, index, shotIndex);
     }));
     
     cutElement.querySelectorAll('.prompt-input').forEach(div => {
@@ -426,20 +418,20 @@ function addEventListenersToCut(cutElement, index) {
                dialogue.startTime = newTime;
                cut.dialogues.sort((a, b) => (a.startTime || 0) - (b.startTime || 0));
                if (cut.autoAdjustDuration) {
-                   recalculateCutDuration(index, true);
+                   handlers.recalculateCutDuration(index, true);
                } else {
-                   renderTimeline();
+                   renderTimeline(handlers);
                }
            }
         });
 
         controls.querySelector('.dialogue-copy-btn').addEventListener('click', () => {
            const textToCopy = dialogueRow.querySelector('.dialogue-text').value;
-           copyTextToClipboard(textToCopy, showToast);
+           utils.copyTextToClipboard(textToCopy, showToast);
         });
 
-        controls.querySelector('.dialogue-play-pause-btn').addEventListener('click', () => { if (!isGenerating) playSingleDialogue(dialogue, controls) });
-        controls.querySelector('.dialogue-stop-btn').addEventListener('click', () => stopSinglePlayback());
+        controls.querySelector('.dialogue-play-pause-btn').addEventListener('click', () => { if (!isGenerating) handlers.playSingleDialogue(dialogue, controls) });
+        controls.querySelector('.dialogue-stop-btn').addEventListener('click', () => handlers.stopSinglePlayback());
         
         controls.querySelector('.dialogue-refresh-btn').addEventListener('click', async (e) => {
             if (isGenerating) return;
@@ -454,18 +446,17 @@ function addEventListenersToCut(cutElement, index) {
 
             try {
                 const newText = dialogueRow.querySelector('.dialogue-text').value;
-                await main.generateAndCacheTTS(dialogue, newText); // main 모듈의 함수 호출
-                recalculateCutDuration(index, true); 
+                await handlers.handleRefreshTts(dialogue, newText, index); 
             } catch (error) {
                 console.error("Refresh TTS failed", error);
                 showToast('TTS 생성에 실패했습니다.', 'error');
             } finally {
                 isGenerating = false;
-                renderTimeline(); 
+                // The handler already re-renders, so no need to call renderTimeline() here.
             }
         });
 
-        controls.querySelector('.dialogue-download-btn').addEventListener('click', () => downloadSingleTTS(dialogue));
+        controls.querySelector('.dialogue-download-btn').addEventListener('click', () => handlers.downloadSingleTTS(dialogue));
     });
 }
 
@@ -826,31 +817,5 @@ export function updateTotalTime() {
     if (!appState.data.cutscenes) return;
     const total = appState.data.cutscenes.reduce((sum, cut) => sum + (parseFloat(cut.duration) || 0), 0);
     DOM.totalTime.textContent = total.toFixed(1);
-}
-
-function updateCharacterDetails(id, newName, newNationality) {
-    const character = appState.data.characters.find(c => c.id === id);
-    if (!character) return;
-    
-    const oldName = character.name;
-    const nameChanged = oldName !== newName;
-
-    character.name = newName;
-    character.nationality = newNationality;
-
-    if (nameChanged) {
-        appState.data.cutscenes.forEach(cutscene => {
-           cutscene.shots.forEach(shot => {
-               const oldRef = `@${oldName}`;
-               const newRef = `@${newName}`;
-               if(typeof shot.imagePrompt === 'string'){
-                   shot.imagePrompt = shot.imagePrompt.split(oldRef).join(newRef);
-               }
-           });
-        });
-    }
-    
-    renderAll();
-    showToast(`'${oldName}' 정보가 업데이트되었습니다.`, 'success');
 }
 
