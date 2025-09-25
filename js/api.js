@@ -2,7 +2,8 @@
  * @file js/api.js
  * @description 외부 API와의 모든 통신을 담당합니다.
  */
-import { logToTTSConsole } from './ui.js';
+import { logToTTSConsole } from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@527845707204c5eb7b87f283e8615ab2ce1d50bd/js/ui.js';
+import { appState } from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@527845707204c5eb7b87f283e8615ab2ce1d50bd/js/state.js';
 
 /**
  * API 호출을 위한 범용 함수
@@ -59,7 +60,6 @@ async function callAPI(apiUrl, payload, modelName) {
  * @returns {Promise<object>} 생성된 시나리오 데이터
  */
 export async function generateStoryAPI(keywords, duration, script) {
-    // (이하 원본 코드의 generateStoryAPI 함수 내용과 동일)
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent`;
     const systemPrompt = `You are a team of 8 world-class AI experts building a script for 'Marriage Signal', a YouTube Shorts drama. Each role must perform their duty perfectly in the specified order to produce the final JSON output.
 
@@ -152,7 +152,6 @@ export async function generateStoryAPI(keywords, duration, script) {
  * @returns {Promise<string>} 개선된 프롬프트 문자열
  */
 export async function refineCharacterPromptAPI(character) {
-    // (원본 코드의 refineCharacterPromptAPI 함수 내용과 동일)
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent`;
     const systemPrompt = `You are an expert image prompt writer. Your task is to refine a basic character description into a vivid, detailed, and photorealistic prompt. The final prompt must explicitly include the character's nationality and gender. Weave in details about their hair, appearance, and fashion that reflect their given personality keywords.`;
     const userPrompt = `
@@ -179,10 +178,10 @@ export async function refineCharacterPromptAPI(character) {
  * @param {object} cutOrShot - 이미지 생성이 필요한 컷 또는 샷 객체
  * @param {object} characterReferenceImages - 캐릭터 레퍼런스 이미지 맵
  * @param {object} locationReferenceImages - 배경 레퍼런스 이미지 맵
+ * @param {function} forceAspect - 이미지 비율을 강제하는 유틸리티 함수
  * @returns {Promise<string>} 생성된 이미지의 base64 data URL
  */
 export async function generateImageForCut(cutOrShot, characterReferenceImages, locationReferenceImages, forceAspect) {
-    // (원본 코드의 generateImageForCut 함수 내용과 동일, forceAspect 함수는 외부에서 주입받음)
     let prompt = cutOrShot.imagePrompt || cutOrShot.prompt;
    
     if (typeof prompt !== 'string' || !prompt.trim()) {
@@ -247,7 +246,6 @@ export async function generateImageForCut(cutOrShot, characterReferenceImages, l
  * @returns {Promise<string>} 개선된 대본 문자열
  */
 export async function improveScriptAPI(originalScript, keywords) {
-    // (원본 코드의 improveScript 함수 내용 중 API 호출 부분만 분리)
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent`;
     const systemPrompt = `You are South Korea's top Shorts drama scriptwriter. Take the user's original script and improve it into a more exciting, immersive 60-second Shorts drama script where the conflict is clear. The dialogue should be fast-paced, like a rally, and include elements that pique the viewer's curiosity. Refer to the keywords to make the theme clearer. The response should only be the improved script text.`;
     const userPrompt = `주제 키워드: "${keywords}"\n\n---원본 대본---\n${originalScript}`;
@@ -271,7 +269,6 @@ export async function improveScriptAPI(originalScript, keywords) {
  * @returns {Promise<string>} 생성된 음성 데이터 (base64)
  */
 export async function generateTTSAPI(text, voice = 'Kore') {
-    // (원본 코드의 generateTTSAPI 함수 내용과 동일)
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent`;
     const payload = {
         contents: [{ parts: [{ text }] }],
@@ -292,7 +289,6 @@ export async function generateTTSAPI(text, voice = 'Kore') {
  * @returns {Promise<string>} 번역된 텍스트
  */
 export async function translateTextAPI(text) {
-    // (원본 코드의 translateText 함수 내용과 동일)
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent`;
     const payload = {
         contents: [{ parts: [{ text: `Translate the following English text to Korean: "${text}"` }] }]
@@ -321,3 +317,4 @@ export async function loadPersonalityData(url) {
         throw error; // 에러를 상위로 전파하여 처리하도록 함
     }
 }
+
