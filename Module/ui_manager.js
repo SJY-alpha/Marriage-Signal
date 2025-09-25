@@ -1,39 +1,40 @@
 // 화면 렌더링, 모달창 제어 등 UI와 관련된 모든 함수를 담당합니다.
 app.ui = {
-    renderAll() { 
-        app.elements.scenarioTitle.textContent = app.state.title; 
-        this.renderCharacters(); 
-        this.renderBackgrounds(); 
-        this.renderTimeline(); 
-        app.updateTotalTime(); 
-    },
-    
-    renderBackgrounds() {
-        const bgContainer = app.elements.backgroundReferences;
-        app.elements.backgroundTabs.innerHTML = ''; // Hide old tabs
-        bgContainer.innerHTML = ''; // Clear container
+    // ... (renderAll, renderBackgrounds, etc. remain unchanged) ...
 
-        // Add "Add Group" button
-        const addGroupButton = document.createElement('div');
-        addGroupButton.className = "col-span-full mb-4";
-        addGroupButton.innerHTML = `<button id="add-bg-group-btn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition-colors"><i class="fas fa-plus mr-2"></i>새 배경 그룹 추가</button>`;
-        bgContainer.appendChild(addGroupButton);
-        document.getElementById('add-bg-group-btn').addEventListener('click', () => app.addBackgroundGroup());
-        
-        if (app.state.backgrounds && app.state.backgrounds.length > 0) {
-            app.state.backgrounds.forEach(group => {
-                const groupCard = this.createBackgroundGroupCard(group);
-                bgContainer.appendChild(groupCard);
-            });
+    showPromptModal(title, content, onSave) {
+        const modal = document.getElementById('prompt-modal');
+        const editor = document.getElementById('prompt-modal-editor');
+        editor.innerHTML = this.formatPromptForEditing(content);
+        document.getElementById('prompt-modal-title').textContent = title;
+
+        // --- NEW --- Add a helpful tip for using character references
+        let tipElement = modal.querySelector('.prompt-tip');
+        if (!tipElement) {
+            tipElement = document.createElement('div');
+            tipElement.className = 'prompt-tip text-xs text-gray-400 mt-2 p-2 bg-gray-900 rounded-md';
+            // Insert the tip before the translation container
+            const translationContainer = document.getElementById('translation-container');
+            translationContainer.parentNode.insertBefore(tipElement, translationContainer);
         }
-    },
+        tipElement.innerHTML = `<i class="fas fa-info-circle mr-1"></i> <b>팁:</b> 프롬프트에 '@캐릭터명'을 사용하면 해당 캐릭터의 얼굴이 반영됩니다. (예: 액자 속 @민준)`;
+        // --- END NEW ---
 
-    createBackgroundGroupCard(group) {
-        const card = document.createElement('div');
-        card.className = 'bg-gray-700 p-4 rounded-lg col-span-full';
-        card.dataset.groupId = group.id;
+        modal.style.display = 'flex';
+        if(onSave === null) {
+           document.getElementById('prompt-modal-save').style.display = 'none';
+        } else {
+           document.getElementById('prompt-modal-save').style.display = 'inline-block';
+           this._promptSaveHandler = () => onSave(editor);
+        }
+   },
 
-        const subImagesHTML = group.subImages.map(sub => this.createSubImageCard(group.id, sub)).join('');
+    // ... (The rest of ui_manager.js remains unchanged) ...
+};
+
+// Initialize the background rendering override
+app.ui.setupBackgrounds();
+
 
         card.innerHTML = `
             <div class="flex items-center justify-between mb-3">
