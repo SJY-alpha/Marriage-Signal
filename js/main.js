@@ -12,6 +12,25 @@ import * as api from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@5278
 import * as ui from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@527845707204c5eb7b87f283e8615ab2ce1d50bd/js/ui.js';
 import * as utils from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@527845707204c5eb7b87f283e8615ab2ce1d50bd/js/utils.js';
 
+// --- UI에 전달할 이벤트 핸들러 모음 ---
+const handlers = {
+    stopSinglePlayback,
+    playSingleDialogue,
+    downloadSingleTTS,
+    moveCut,
+    deleteCut,
+    handlePromptAction,
+    previewTTSVoice,
+    applyTtsSettingsToTimeline,
+    savePersonality,
+    savePrompt,
+    applyReferenceToAll,
+    recalculateCutDuration,
+    handleRefreshTts,
+    updateCharacterDetails
+};
+
+
 // --- 애플리케이션 초기화 ---
 
 /**
@@ -73,7 +92,7 @@ function bindInitialEventListeners() {
         try {
             const loadedState = await utils.loadProject(e.target.files[0]);
             appState.data = loadedState;
-            ui.renderAll();
+            ui.renderAll(handlers);
             DOM.editorSection.classList.remove("hidden");
             DOM.initialSettings.classList.add("hidden");
             ui.showToast("프로젝트를 성공적으로 불러왔습니다.", 'success');
@@ -190,7 +209,7 @@ async function generateFullStory() {
         await intelligentlySetAllTimings();
 
         DOM.loadingIndicator.style.display = 'none';
-        ui.renderAll();
+        ui.renderAll(handlers);
         DOM.editorSection.classList.remove('hidden');
 
     } catch (error) {
@@ -352,7 +371,7 @@ function getTtsPromptForDialogue(dialogue) {
     return `${finalPrompt}: "${baseText}"`;
 }
 
-export async function generateAndCacheTTS(dialogue, text) {
+async function generateAndCacheTTS(dialogue, text) {
      if (!dialogue) return false;
      let newText = text !== null ? text : dialogue.text;
      
@@ -387,7 +406,7 @@ export async function generateAndCacheTTS(dialogue, text) {
          
          ui.logToTTSConsole('API 요청 데이터', {'프롬프트': ttsPrompt, '보이스': voice });
 
-         const base64Audio = await api.generateTTSAPI(ttsPrompt, voice);
+         const base64Audio = await api.generateTTSAPI(prompt, voice);
 
          ui.logToTTSConsole('✅ TTS 생성 성공', {});
          
@@ -542,11 +561,9 @@ function updatePlaybackFrame() {
     }
 }
 
-// --- UI Interaction Handlers (Exported for ui.js) ---
-// The functions below are exported so they can be attached as event listeners
-// to dynamically created elements in ui.js.
+// --- UI Interaction Handlers ---
 
-export function stopSinglePlayback() {
+function stopSinglePlayback() {
     if (appState.singlePlayback.audio) {
         appState.singlePlayback.audio.pause();
         appState.singlePlayback.audio = null;
@@ -565,7 +582,7 @@ export function stopSinglePlayback() {
     }
 }
 
-export async function playSingleDialogue(dialogue, controlsElement) {
+async function playSingleDialogue(dialogue, controlsElement) {
     const playPauseBtn = controlsElement.querySelector('.dialogue-play-pause-btn');
 
     if (appState.singlePlayback.audio && appState.singlePlayback.dialogue === dialogue) {
@@ -611,7 +628,7 @@ export async function playSingleDialogue(dialogue, controlsElement) {
     }
 }
 
-export async function downloadSingleTTS(dialogue) {
+async function downloadSingleTTS(dialogue) {
     if (!dialogue.pcmData) {
          ui.showToast("음성 데이터가 없습니다.", 'error');
          return;
@@ -660,28 +677,28 @@ async function downloadAllTTS() {
     btn.innerHTML = `<i class="fas fa-archive mr-2"></i>모든 음성 저장`;
 }
 
-export function moveCut(index, direction) {
+function moveCut(index, direction) {
     if (direction === 'up' && index > 0) {
         [appState.data.cutscenes[index], appState.data.cutscenes[index - 1]] = [appState.data.cutscenes[index - 1], appState.data.cutscenes[index]];
     } else if (direction === 'down' && index < appState.data.cutscenes.length - 1) {
         [appState.data.cutscenes[index], appState.data.cutscenes[index + 1]] = [appState.data.cutscenes[index + 1], appState.data.cutscenes[index]];
     }
-    ui.renderTimeline();
+    ui.renderTimeline(handlers);
 }
 
-export function deleteCut(index) {
+function deleteCut(index) {
     ui.showConfirmModal(
         '컷 삭제',
         `#${index + 1} 컷을 정말로 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.`,
         () => {
             appState.data.cutscenes.splice(index, 1);
-            ui.renderTimeline();
+            ui.renderTimeline(handlers);
             ui.showToast('컷이 삭제되었습니다.', 'info');
         }
     );
 }
 
-export async function handlePromptAction(action, type, cutIndex, shotIndex) {
+async function handlePromptAction(action, type, cutIndex, shotIndex) {
     const cutscene = appState.data.cutscenes[cutIndex];
     const shot = cutscene.shots[shotIndex];
     const promptElement = DOM.timelineContainer.querySelector(`[data-index="${cutIndex}"] [data-shot-index="${shotIndex}"][data-type="${type}"] .prompt-input`);
@@ -701,7 +718,7 @@ export async function handlePromptAction(action, type, cutIndex, shotIndex) {
                     if(shot.videoPrompt.type === 'hailuo') shot.videoPrompt.prompt = newPromptText;
                     else shot.videoPrompt.tip = newPromptText;
                 }
-                ui.renderTimeline();
+                ui.renderTimeline(handlers);
             });
             break;
         case 'regenerate':
@@ -715,7 +732,7 @@ export async function handlePromptAction(action, type, cutIndex, shotIndex) {
                 const locRefs = Object.fromEntries(appState.data.backgrounds.filter(b=>b.image).map(b => [b.name, b.image]));
                 shot.image = await api.generateImageForCut(shot, charRefs, locRefs, utils.forceAspect);
                 imgContainer.removeChild(overlay);
-                ui.renderTimeline();
+                ui.renderTimeline(handlers);
             } else { ui.showToast('영상 프롬프트/팁은 직접 수정해주세요.', 'info'); }
             break;
         case 'translate':
@@ -734,7 +751,7 @@ export async function handlePromptAction(action, type, cutIndex, shotIndex) {
     }
 }
 
-export async function previewTTSVoice(options, buttonElement) {
+async function previewTTSVoice(options, buttonElement) {
     const { voice, speed = 1.0, pitch = 0.0 } = options;
     const cacheKey = `${voice}_${pitch}`; // Cache based on voice and pitch
     const icon = buttonElement.querySelector('i');
@@ -801,7 +818,7 @@ export async function previewTTSVoice(options, buttonElement) {
     } 
 }
 
-export async function applyTtsSettingsToTimeline(charId, showToast = true) {
+async function applyTtsSettingsToTimeline(charId, showToast = true) {
    const character = appState.data.characters.find(c => c.id === charId);
    if (!character) return;
    
@@ -820,7 +837,7 @@ export async function applyTtsSettingsToTimeline(charId, showToast = true) {
    if(showToast) ui.showToast(`'${character.name}'의 음성 설정이 모두 적용되었습니다.`, 'success');
 }
 
-export async function savePersonality() {
+async function savePersonality() {
     const charId = DOM.personalityModal.dataset.characterId;
     const character = appState.data.characters.find(c => c.id === charId);
     if (character) {
@@ -842,21 +859,21 @@ export async function savePersonality() {
             container.removeChild(overlay);
         }
         
-        ui.renderCharacters();
+        ui.renderCharacters(handlers);
         ui.showToast(`'${character.name}'의 성격이 저장되었습니다. '전체 적용'을 눌러 모든 컷에 반영하세요.`, 'success');
     } else {
         ui.closePersonalityModal();
     }
 }
 
-export function savePrompt() { 
+function savePrompt() { 
     if (appState._promptSaveHandler) {
         appState._promptSaveHandler();
     }
     ui.closePromptModal(); 
 }
 
-export async function applyReferenceToAll(charId) {
+async function applyReferenceToAll(charId) {
     const character = appState.data.characters.find(c => c.id === charId);
     if (!character) return;
     ui.showToast(`'${character.name}'의 설정을 모든 컷씬에 적용합니다...`, 'info');
@@ -876,7 +893,7 @@ async function regenerateCutscenesForReference(refName) {
        for (const shot of cut.shots) {
            if (typeof shot.imagePrompt === 'string' && referenceRegex.test(shot.imagePrompt)) {
                shot.image = await api.generateImageForCut(shot, characterReferenceImages, locationReferenceImages, utils.forceAspect);
-               ui.renderTimeline(); 
+               ui.renderTimeline(handlers); 
                await new Promise(resolve => setTimeout(resolve, 300));
            }
        }
@@ -926,12 +943,12 @@ function recalculateAllCutDurations(forceRerender = false) {
         recalculateCutDuration(index);
     });
     if (forceRerender) {
-        ui.renderTimeline();
+        ui.renderTimeline(handlers);
     }
     ui.updateTotalTime();
 }
 
-export function recalculateCutDuration(cutIndex, forceRerender = false) {
+function recalculateCutDuration(cutIndex, forceRerender = false) {
     const cut = appState.data.cutscenes[cutIndex];
     if (!cut || !cut.dialogues) return;
     
@@ -951,9 +968,39 @@ export function recalculateCutDuration(cutIndex, forceRerender = false) {
     }
 
     ui.updateTotalTime();
-    if (forceRerender) ui.renderTimeline();
+    if (forceRerender) ui.renderTimeline(handlers);
 }
 
+async function handleRefreshTts(dialogue, newText, cutIndex) {
+    await generateAndCacheTTS(dialogue, newText);
+    recalculateCutDuration(cutIndex, true);
+}
+
+function updateCharacterDetails(id, newName, newNationality) {
+    const character = appState.data.characters.find(c => c.id === id);
+    if (!character) return;
+    
+    const oldName = character.name;
+    const nameChanged = oldName !== newName;
+
+    character.name = newName;
+    character.nationality = newNationality;
+
+    if (nameChanged) {
+        appState.data.cutscenes.forEach(cutscene => {
+           cutscene.shots.forEach(shot => {
+               const oldRef = `@${oldName}`;
+               const newRef = `@${newName}`;
+               if(typeof shot.imagePrompt === 'string'){
+                   shot.imagePrompt = shot.imagePrompt.split(oldRef).join(newRef);
+               }
+           });
+        });
+    }
+    
+    ui.renderAll(handlers);
+    ui.showToast(`'${oldName}' 정보가 업데이트되었습니다.`, 'success');
+}
 
 // --- 애플리케이션 시작 ---
 document.addEventListener('DOMContentLoaded', init);
