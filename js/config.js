@@ -36,12 +36,10 @@ export const DOM_ELEMENTS = {
     videoPlayerModal: document.getElementById('video-player-modal'),
     mentionDropdown: document.getElementById('mention-dropdown'),
     scenarioTitle: document.getElementById('scenario-title'),
-    // Modals
     imageModal: document.getElementById('image-modal'),
     promptModal: document.getElementById('prompt-modal'),
     personalityModal: document.getElementById('personality-modal'),
     confirmModal: document.getElementById('confirm-modal'),
-    // TTS Debug Console Elements
     ttsDebugConsole: document.getElementById('tts-debug-console'),
     ttsDebugOutput: document.getElementById('tts-debug-output'),
     showTTSConsoleBtn: document.getElementById('show-tts-console-btn'),
