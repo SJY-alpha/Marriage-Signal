@@ -1,251 +1,488 @@
-import { logToTTSConsole } from './ui.js';
+import { state, app, handlePromptAction, applyReferenceToAll, updateCharacterDetails, moveCut, deleteCut } from './app.js';
+import { DOM_ELEMENTS, TTS_VOICES } from './config.js';
+import { generateAndCacheTTS, previewTTSVoice } from './audio.js';
+import { translateTextAPI, refineCharacterPromptAPI, generateImageAPI } from './api.js';
+import { forceAspect, copyTextToClipboard } from './utils.js';
 
-async function callAPI(apiUrl, payload, modelName) {
-    const apiKey = "";
-    let finalUrl = apiUrl;
-    if (apiKey) {
-        finalUrl += `?key=${apiKey}`;
-    }
+export let _promptSaveHandler = null;
+
+export function renderAll() {
+    DOM_ELEMENTS.scenarioTitle.textContent = state.story.title;
+    renderCharacters();
+    renderBackgrounds();
+    renderTimeline();
+    updateTotalTime();
+}
+
+export function switchTab(button) {
+    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+    document.querySelectorAll('.tab-content').forEach(content => {
+        content.id === button.dataset.tab ? content.classList.remove('hidden') : content.classList.add('hidden');
+    });
+}
+
+function renderNarratorControls(narrator) {
+    const narratorControls = document.getElementById('narrator-controls');
+    if (!narratorControls) return;
+    populateNarratorVoices();
+    const voiceSelect = narratorControls.querySelector('#narrator-voice');
+    const pitchSlider = narratorControls.querySelector('#narrator-pitch-slider');
+    const speedSlider = narratorControls.querySelector('#narrator-speed-slider');
+    const pitchValue = narratorControls.querySelector('#narrator-pitch-value');
+    const speedValue = narratorControls.querySelector('#narrator-speed-value');
+
+    voiceSelect.value = narrator.voice || 'Charon';
+    pitchSlider.value = narrator.pitch || 0.0;
+    speedSlider.value = narrator.speed || 1.0;
+    pitchValue.textContent = (narrator.pitch || 0.0).toFixed(2);
+    speedValue.textContent = (narrator.speed || 1.0).toFixed(2);
+}
+
+function renderCharacters() {
+    DOM_ELEMENTS.characterReferences.innerHTML = '';
+    if(!state.story.characters) return;
+    const narrator = state.story.characters.find(c => c.id === 'narrator');
+    if (narrator) renderNarratorControls(narrator);
     
-    const headers = { 'Content-Type': 'application/json' };
+    state.story.characters.forEach(char => {
+        if (char.id === 'narrator') return;
+        const card = createReferenceCard(char, 'character');
+        DOM_ELEMENTS.characterReferences.appendChild(card);
+    });
+}
 
-    try {
-        const response = await fetch(finalUrl, {
-            method: 'POST',
-            headers: headers,
-            body: JSON.stringify(payload)
+function renderBackgrounds() {
+    DOM_ELEMENTS.backgroundTabs.innerHTML = '';
+    if(!state.story.backgrounds) return;
+    const bgGroups = state.story.backgrounds.reduce((acc, bg, index) => {
+        const groupIndex = Math.floor(index / 2) + 1;
+        if (!acc[groupIndex]) acc[groupIndex] = [];
+        acc[groupIndex].push(bg);
+        return acc;
+    }, {});
+    Object.keys(bgGroups).forEach(key => {
+        const tab = document.createElement('button');
+        tab.className = `px-3 py-1 rounded-t-lg text-sm ${state.activeBgTab == key ? 'bg-gray-700 text-white' : 'bg-gray-800 text-gray-400'}`;
+        tab.textContent = `배경 ${key}`;
+        tab.dataset.tabId = key;
+        tab.onclick = () => { state.activeBgTab = key; renderBackgrounds(); };
+        DOM_ELEMENTS.backgroundTabs.appendChild(tab);
+    });
+    DOM_ELEMENTS.backgroundReferences.innerHTML = '';
+    if (bgGroups[state.activeBgTab]) {
+        bgGroups[state.activeBgTab].forEach(bg => {
+            DOM_ELEMENTS.backgroundReferences.appendChild(createReferenceCard(bg, 'background'));
+        });
+    }
+}
+
+function createReferenceCard(item, type) {
+    const card = document.createElement('div');
+    card.className = 'bg-gray-700 rounded-lg overflow-hidden shadow-md flex flex-col';
+    
+    let extraControlsHTML = '';
+    if (type === 'character') {
+        card.dataset.characterId = item.id;
+        const voiceList = TTS_VOICES.filter(v => v.gender === item.gender);
+        const createOptions = (voices) => voices.map(v => `<option value="${v.name}" ${item.voice === v.name ? 'selected' : ''}>${formatVoiceForDisplay(v.name)}</option>`).join('');
+        
+        extraControlsHTML = `
+        <div class="text-xs text-gray-400 mt-2 flex items-center">
+            <input type="text" value="${item.nationality || '한국'}" class="nationality-input bg-gray-600 p-1 rounded w-16" title="국적">
+            <span class="ml-2">${item.gender}</span>
+        </div>
+        <div class="mt-2">
+            <div class="flex items-center space-x-2">
+                <select class="w-full bg-gray-600 text-white text-sm rounded p-1 voice-select" title="캐릭터 목소리 종류를 변경합니다.">${createOptions(voiceList)}</select>
+                <button class="voice-preview-btn bg-blue-600 hover:bg-blue-700 p-1 rounded-md text-xs" title="선택된 목소리 미리듣기"><i class="fas fa-play"></i></button>
+                <button class="apply-tts-settings-btn bg-teal-600 hover:bg-teal-500 p-1 rounded-md text-xs" title="현재 목소리 설정을 모든 대사에 적용"><i class="fas fa-broadcast-tower"></i></button>
+            </div>
+        </div>
+        <div class="mt-2 text-xs">
+            <div class="grid grid-cols-2 gap-x-2">
+                <div>
+                    <label class="text-gray-400">피치: <span class="pitch-value">${item.pitch?.toFixed(2) || '0.00'}</span></label>
+                    <input type="range" class="w-full h-1 bg-gray-600 rounded-lg appearance-none cursor-pointer pitch-slider" min="-2.0" max="2.0" step="0.01" value="${item.pitch || 0.0}" title="목소리 높낮이 조절">
+                </div>
+                 <div>
+                    <label class="text-gray-400">속도: <span class="speed-value">${item.speed?.toFixed(2) || '1.00'}</span></label>
+                    <input type="range" class="w-full h-1 bg-gray-600 rounded-lg appearance-none cursor-pointer speed-slider" min="0.45" max="1.85" step="0.01" value="${item.speed || 1.0}" title="말하기 속도 조절">
+                </div>
+            </div>
+        </div>
+        <div class="mt-2 grid grid-cols-2 gap-2 text-sm">
+            <button class="bg-gray-600 hover:bg-gray-500 p-2 rounded transition-colors" data-action="edit-personality" title="캐릭터 성격 키워드를 수정합니다."><i class="fas fa-user-edit mr-1"></i> 성격</button>
+            <button class="bg-gray-600 hover:bg-gray-500 p-2 rounded transition-colors" data-action="edit-prompt" title="이미지 생성을 위한 레퍼런스 프롬프트를 수정합니다."><i class="fas fa-file-alt mr-1"></i> 프롬프트</button>
+        </div>`;
+    } else {
+         extraControlsHTML = `<div class="mt-2 grid grid-cols-1 gap-2 text-sm"><button class="bg-gray-600 hover:bg-gray-500 p-2 rounded transition-colors" data-action="edit-prompt" title="배경 이미지 생성을 위한 레퍼런스 프롬프트를 수정합니다."><i class="fas fa-file-alt mr-1"></i> 프롬프트</button></div>`;
+    }
+
+    card.innerHTML = `
+        <div class="reference-image-container bg-gray-600">
+            <img src="${item.image || 'https://placehold.co/540x960/374151/9ca3af?text=No+Image'}" alt="${item.name}" class="cursor-pointer hover:opacity-80 transition-opacity">
+        </div>
+        <div class="p-3 flex-grow flex flex-col">
+            <div class="flex items-center mb-1">
+                <input type="text" value="${item.name}" class="name-input bg-gray-600 rounded-l p-1 text-white font-bold w-full">
+                <button class="apply-char-details-btn bg-green-600 hover:bg-green-700 p-1 rounded-r px-2" title="이름 및 국적 변경 적용"><i class="fas fa-check"></i></button>
+            </div>
+             ${extraControlsHTML}
+            <div class="mt-auto pt-2 grid grid-cols-3 gap-2 text-sm">
+                <button class="bg-gray-600 hover:bg-gray-500 p-2 rounded transition-colors" data-action="replace" title="내 컴퓨터에서 이미지 업로드"><i class="fas fa-upload mr-1"></i></button>
+                <button class="bg-indigo-600 hover:bg-indigo-500 p-2 rounded transition-colors" data-action="regenerate" title="AI로 이미지 다시 생성"><i class="fas fa-sync-alt mr-1"></i></button>
+                <button class="bg-teal-600 hover:bg-teal-500 p-2 rounded transition-colors" data-action="apply-all" title="현재 캐릭터의 모든 설정을 타임라인에 일괄 적용"><i class="fas fa-check-double mr-1"></i></button>
+            </div>
+        </div>`;
+    
+    const itemElement = card.querySelector('img');
+    itemElement.addEventListener('click', () => showImageModal(item.image, `레퍼런스: ${item.name}`));
+    
+    card.querySelector('[data-action="edit-prompt"]').addEventListener('click', () => showPromptModal('레퍼런스 프롬프트 편집', item.prompt, (newPromptEditor) => { item.prompt = parsePromptFromEditing(newPromptEditor); }));
+    
+    if (type === 'character') {
+        card.querySelector('.apply-char-details-btn').addEventListener('click', (e) => {
+            const newName = card.querySelector('.name-input').value;
+            const newNationality = card.querySelector('.nationality-input').value;
+            updateCharacterDetails(item.id, newName, newNationality);
+        });
+        card.querySelector('.voice-select').addEventListener('change', (e) => { item.voice = e.target.value });
+        
+        const pitchSlider = card.querySelector('.pitch-slider');
+        pitchSlider.addEventListener('input', (e) => {
+            const value = parseFloat(e.target.value);
+            item.pitch = value;
+            card.querySelector('.pitch-value').textContent = value.toFixed(2);
+        });
+        const speedSlider = card.querySelector('.speed-slider');
+        speedSlider.addEventListener('input', (e) => {
+            const value = parseFloat(e.target.value);
+            item.speed = value;
+            card.querySelector('.speed-value').textContent = value.toFixed(2);
+        });
+
+        card.querySelector('.voice-preview-btn').addEventListener('click', (e) => {
+            const voiceName = card.querySelector('.voice-select').value;
+            previewTTSVoice({ voice: voiceName, speed: item.speed, pitch: item.pitch }, e.currentTarget);
+        });
+        card.querySelector('[data-action="edit-personality"]').addEventListener('click', () => showPersonalityModal(item));
+        card.querySelector('.apply-tts-settings-btn').addEventListener('click', () => applyTtsSettingsToTimeline(item.id));
+    }
+    card.querySelector('[data-action="replace"]').addEventListener('click', () => {
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = 'image/*';
+        fileInput.onchange = async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = async (event) => {
+                item.image = await forceAspect(event.target.result);
+                itemElement.src = item.image;
+            };
+            reader.readAsDataURL(file);
+        };
+        fileInput.click();
+    });
+    card.querySelector('[data-action="regenerate"]').addEventListener('click', async () => {
+        const container = itemElement.parentElement;
+        const overlay = createLoadingOverlay();
+        container.appendChild(overlay);
+        item.image = await generateImageAPI(item, {}, {});
+        itemElement.src = item.image;
+        container.removeChild(overlay);
+    });
+    card.querySelector('[data-action="apply-all"]').addEventListener('click', () => applyReferenceToAll(item.id));
+
+    return card;
+}
+
+function createPromptBox(title, type, content, shotIndex) { return `<div class="bg-gray-800 rounded-lg prompt-container" data-type="${type}" data-shot-index="${shotIndex}"><div class="prompt-box-header bg-gray-700 p-2 rounded-t-lg flex justify-between items-center text-sm"><span class="font-semibold">${title}</span><div><button data-action="copy" title="프롬프트 복사"><i class="far fa-copy"></i></button><button data-action="edit" class="ml-2" title="프롬프트 편집"><i class="far fa-edit"></i></button><button data-action="regenerate" class="ml-2" title="이미지 다시 생성"><i class="fas fa-sync-alt"></i></button></div></div><div class="prompt-input" contenteditable="true">${formatPromptForEditing(content || '')}</div></div>`; }
+
+function createVideoPromptBox(videoPrompt, shotIndex) {
+      if (!videoPrompt || typeof videoPrompt !== 'object') {
+           return createPromptBox(`영상 프롬프트 #${shotIndex + 1}`, "videoPrompt", "", shotIndex);
+      }
+      const { type, tip, prompt } = videoPrompt;
+      const title = type === 'hailuo' ? `Hailuo AI 프롬프트 #${shotIndex + 1}` : `캡컷 팁 #${shotIndex + 1}`;
+      const content = type === 'hailuo' ? prompt : tip;
+      const translateButton = type === 'hailuo' ? `<button data-action="translate" class="ml-2" title="프롬프트 번역"><i class="fas fa-language"></i></button>` : '';
+
+      return `<div class="bg-gray-800 rounded-lg prompt-container" data-type="videoPrompt" data-shot-index="${shotIndex}"><div class="prompt-box-header bg-gray-700 p-2 rounded-t-lg flex justify-between items-center text-sm"><span class="font-semibold">${title}</span><div><button data-action="copy" title="복사"><i class="far fa-copy"></i></button>${translateButton}<button data-action="edit" class="ml-2" title="편집"><i class="far fa-edit"></i></button></div></div><div class="prompt-input" contenteditable="true">${formatPromptForEditing(content || '')}</div></div>`;
+}
+
+export function renderTimeline() {
+    DOM_ELEMENTS.timelineContainer.innerHTML = '';
+    if (!state.story.cutscenes) return;
+    state.story.cutscenes.forEach((cut, index) => {
+        const cutElement = document.createElement('div');
+        cutElement.className = 'cutscene-card bg-gray-900 p-4 rounded-lg';
+        cutElement.dataset.index = index;
+        cutElement.dataset.activeShot = "0";
+
+        const getChar = (charId) => state.story.characters.find(c => c.id === charId);
+        
+        const shotsHTML = cut.shots.map((shot, shotIndex) => `
+           <div class="shot-number">${'#' + (shotIndex + 1)}</div>
+           <img src="${shot.image || 'https://placehold.co/540x960/374151/9ca3af?text=No+Image'}" 
+                class="shot-image ${shotIndex === 0 ? 'active' : ''}" 
+                data-shot-index="${shotIndex}">
+        `).join('');
+
+        const shotTabsHTML = cut.shots.length > 1 ? `
+           <div class="shot-tabs">
+               ${cut.shots.map((shot, shotIndex) => `
+                   <button class="shot-tab ${shotIndex === 0 ? 'active' : ''}" data-shot-index="${shotIndex}">
+                       샷 #${shotIndex + 1}
+                   </button>`).join('')}
+           </div>
+        ` : '';
+
+       const promptBoxesHTML = cut.shots.map((shot, shotIndex) => `
+           <div class="shot-prompts-container ${shotIndex === 0 ? '' : 'hidden'}" data-shot-index="${shotIndex}">
+               <div class="flex items-center space-x-2 mb-2">
+                    <label class="shot-start-time-label">시작 시간:</label>
+                    <input type="number" value="${(shot.startTime || 0).toFixed(1)}" class="shot-start-time" step="0.1" title="샷 시작 시간 (초)">s
+               </div>
+               ${createPromptBox(`이미지 프롬프트 #${shotIndex + 1}`, "imagePrompt", shot.imagePrompt, shotIndex)}
+               ${createVideoPromptBox(shot.videoPrompt, shotIndex)}
+           </div>
+       `).join('');
+
+        cutElement.innerHTML = `
+            <div class="flex items-center mb-4">
+                <span class="text-xl font-bold text-indigo-400 mr-4">#${index + 1}</span>
+                <div class="flex items-center">
+                    <label class="text-sm mr-2">시간(초):</label>
+                    <input type="number" value="${cut.duration || 0}" class="w-20 bg-gray-700 p-1 rounded text-center cut-duration" ${cut.autoAdjustDuration ? 'readonly' : ''}>
+                    <input type="checkbox" class="ml-2 auto-adjust-duration" ${cut.autoAdjustDuration ? 'checked' : ''} title="대사 길이에 따라 시간 자동 조절">
+                </div>
+                <div class="ml-auto flex items-center space-x-2">
+                    <button class="control-btn" data-action="move-up" ${index === 0 ? "disabled" : ""} title="컷을 위로 이동"><i class="fas fa-arrow-up"></i></button>
+                    <button class="control-btn" data-action="move-down" ${index === state.story.cutscenes.length - 1 ? "disabled" : ""} title="컷을 아래로 이동"><i class="fas fa-arrow-down"></i></button>
+                    <button class="control-btn" data-action="delete" title="이 컷을 삭제"><i class="fas fa-times-circle text-red-400"></i></button>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                   <div class="relative group cutscene-image-container rounded-lg overflow-hidden">
+                       ${shotsHTML}
+                       <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                           <button class="text-white text-2xl" title="이미지 크게 보기" data-action="view-cut-image"><i class="fas fa-expand"></i></button>
+                       </div>
+                   </div>
+                </div>
+                <div class="space-y-3">
+                    ${shotTabsHTML}
+                    ${promptBoxesHTML}
+                </div>
+            </div>
+            <div class="mt-4 space-y-2">
+                ${cut.dialogues.map((dialogue, i) => {
+                    const character = getChar(dialogue.charId);
+                    const charName = character ? character.name : "Unknown";
+                    const isAudioReady = dialogue.cachedBlobUrl;
+                    const durationText = dialogue.audioDuration ? `(${(dialogue.audioDuration).toFixed(1)}s)` : "(--s)";
+                    const charColor = charName === "나레이션" ? "text-yellow-300" : "text-cyan-400";
+                    return `
+                    <div class="bg-gray-800 p-2 rounded-lg flex items-center">
+                        <div class="flex flex-col w-24">
+                           <span class="font-bold ${charColor} truncate" title="${charName}">${charName}:</span>
+                           <input type="number" value="${(dialogue.startTime || 0).toFixed(1)}" class="dialogue-start-time w-16 bg-gray-700 p-1 rounded text-center text-xs mt-1" step="0.1" title="대사 시작 시간 (초)">
+                        </div>
+                        <input type="text" value="${(dialogue.text || '').replace(/"/g, "&quot;")}" class="flex-grow bg-gray-700 p-1 rounded mx-2 dialogue-text">
+                        <div class="dialogue-controls flex items-center space-x-1">
+                            <span class="audio-duration text-gray-400 text-xs w-12 text-center">${durationText}</span>
+                            <button class="dialogue-copy-btn text-gray-300 hover:text-white" title="대사 복사"><i class="far fa-copy"></i></button>
+                            <button class="dialogue-play-pause-btn text-gray-300 hover:text-white" title="음성 재생/일시정지"><i class="fas ${isAudioReady ? "fa-volume-up text-green-400" : "fa-play"}"></i></button>
+                            <button class="dialogue-stop-btn hidden text-gray-300 hover:text-white" title="정지"><i class="fas fa-stop"></i></button>
+                            <button class="dialogue-refresh-btn text-gray-300 hover:text-white" title="음성 다시 생성"><i class="fas fa-sync-alt"></i></button>
+                            <button class="dialogue-download-btn text-gray-300 hover:text-white" title="MP3 저장"><i class="fas fa-download"></i></button>
+                        </div>
+                    </div>`;
+                }).join('')}
+            </div>`;
+        DOM_ELEMENTS.timelineContainer.appendChild(cutElement);
+
+        const card = DOM_ELEMENTS.timelineContainer.lastElementChild;
+        card.querySelector('[data-action="move-up"]').addEventListener('click', () => moveCut(index, 'up'));
+        card.querySelector('[data-action="move-down"]').addEventListener('click', () => moveCut(index, 'down'));
+        card.querySelector('[data-action="delete"]').addEventListener('click', () => deleteCut(index));
+        card.querySelector('[data-action="view-cut-image"]').addEventListener('click', (e) => {
+            const activeShotIndex = parseInt(card.dataset.activeShot || "0");
+            showImageModal(cut.shots[activeShotIndex].image, `컷 #${index + 1}, 샷 #${activeShotIndex + 1}`);
         });
         
-        if (!response.ok) {
-            let errorText = await response.text();
-            const errorInfo = {
-                status: response.status,
-                statusText: response.statusText,
-                responseText: errorText,
-                requestPayload: payload
-            };
-            if (modelName === 'TTS') logToTTSConsole(`[ERROR] API Error: ${modelName}`, errorInfo, true);
-            throw new Error(`[${modelName}] API Error ${response.status}: ${errorText}`);
-        }
+        card.querySelector('.cut-duration').addEventListener('change', (e) => {
+            cut.duration = parseFloat(e.target.value) || 0;
+            cut.autoAdjustDuration = false;
+            card.querySelector('.auto-adjust-duration').checked = false;
+            updateTotalTime();
+        });
+
+        card.querySelector('.auto-adjust-duration').addEventListener('change', (e) => {
+            cut.autoAdjustDuration = e.target.checked;
+            if(cut.autoAdjustDuration) recalculateCutDuration(index, true);
+        });
         
-        return await response.json();
+        card.querySelectorAll('.shot-tab').forEach(tab => {
+            tab.addEventListener('click', e => {
+                if (e.target.classList.contains('shot-start-time')) return;
+                const shotIndex = e.currentTarget.dataset.shotIndex;
+                card.dataset.activeShot = shotIndex;
+                
+                card.querySelectorAll('.shot-tab').forEach(t => t.classList.remove('active'));
+                e.currentTarget.classList.add('active');
 
-    } catch (error) {
-        const errorInfo = {
-             error: error.message,
-             requestPayload: payload
-        };
-        if (modelName === 'TTS') logToTTSConsole(`[FATAL] API Call Failed: ${modelName}`, errorInfo, true);
-        throw error;
-    }
+                card.querySelectorAll('.shot-image').forEach(img => img.classList.remove('active'));
+                card.querySelector(`.shot-image[data-shot-index="${shotIndex}"]`).classList.add('active');
+                
+                card.querySelectorAll('.shot-prompts-container').forEach(p => p.classList.add('hidden'));
+                card.querySelector(`.shot-prompts-container[data-shot-index="${shotIndex}"]`).classList.remove('hidden');
+            });
+        });
+
+        card.querySelectorAll('.shot-start-time').forEach((input) => {
+           input.addEventListener('click', (e) => e.stopPropagation());
+           input.addEventListener('change', (e) => {
+               const shotIndex = parseInt(e.target.closest('.shot-prompts-container').querySelector('.prompt-container').dataset.shotIndex);
+               const newTime = parseFloat(e.target.value);
+               if (!isNaN(newTime)) {
+                   cut.shots[shotIndex].startTime = newTime;
+                   cut.shots.sort((a, b) => a.startTime - b.startTime);
+                   renderTimeline();
+               }
+           });
+        });
+
+        card.querySelectorAll('.prompt-box-header button').forEach(b => b.addEventListener('click', e => {
+            const action = e.currentTarget.dataset.action;
+            const promptContainer = e.currentTarget.closest('.prompt-container');
+            const type = promptContainer.dataset.type;
+            const shotIndex = parseInt(promptContainer.dataset.shotIndex);
+            handlePromptAction(action, type, index, shotIndex);
+        }));
+        
+        card.querySelectorAll('.prompt-input').forEach(div => {
+           div.addEventListener('click', (e) => handlePromptClick(e));
+        });
+        
+        card.querySelectorAll('.dialogue-controls').forEach((controls, i) => {
+            const { playSingleDialogue } = import('./playback.js');
+            const { downloadSingleTTS } = import('./audio.js');
+            const dialogue = cut.dialogues[i];
+            let isGenerating = false;
+            const dialogueRow = controls.closest('.bg-gray-800');
+            
+            dialogueRow.querySelector('.dialogue-start-time').addEventListener('change', (e) => {
+               const newTime = parseFloat(e.target.value);
+               if (!isNaN(newTime)) {
+                   dialogue.startTime = newTime;
+                   cut.dialogues.sort((a, b) => (a.startTime || 0) - (b.startTime || 0));
+                   if (cut.autoAdjustDuration) {
+                       recalculateCutDuration(index, true);
+                   } else {
+                       renderTimeline();
+                   }
+               }
+            });
+
+            controls.querySelector('.dialogue-copy-btn').addEventListener('click', () => {
+               const textToCopy = dialogueRow.querySelector('.dialogue-text').value;
+               copyTextToClipboard(textToCopy);
+            });
+
+            controls.querySelector('.dialogue-play-pause-btn').addEventListener('click', () => { if (!isGenerating) playSingleDialogue(dialogue, controls) });
+            controls.querySelector('.dialogue-stop-btn').addEventListener('click', () => stopSinglePlayback());
+            
+            controls.querySelector('.dialogue-refresh-btn').addEventListener('click', async (e) => {
+                if (isGenerating) return;
+                isGenerating = true;
+                const button = e.currentTarget;
+                const icon = button.querySelector('i');
+                icon.className = 'fas fa-spinner fa-spin';
+                button.disabled = true;
+                
+                const playBtn = dialogueRow.querySelector('.dialogue-play-pause-btn');
+                playBtn.disabled = true;
+
+                try {
+                    const newText = dialogueRow.querySelector('.dialogue-text').value;
+                    await generateAndCacheTTS(dialogue, newText);
+                    recalculateCutDuration(index, true); 
+                } catch (error) {
+                    console.error("Refresh TTS failed", error);
+                    showToast('TTS 생성에 실패했습니다.', 'error');
+                } finally {
+                    isGenerating = false;
+                    renderTimeline(); 
+                }
+            });
+
+            controls.querySelector('.dialogue-download-btn').addEventListener('click', () => downloadSingleTTS(dialogue));
+        });
+    });
 }
 
-export async function generateStoryAPI(keywords, duration, script) {
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent`;
-    const systemPrompt = `You are a team of 8 world-class AI experts building a script for 'Marriage Signal', a YouTube Shorts drama. Each role must perform their duty perfectly in the specified order to produce the final JSON output.
-
-**Mandatory Workflow & Rules:**
-1.  **Scenario & Character First:** The Scenario expert (#1) defines the core story and all characters who will appear visually. A narrator with id 'narrator' must always be included, but without personality or prompt.
-2.  **Character Keywords:** The Character Setting expert (#2) MUST ONLY provide a comma-separated string of personality keywords for each character in the "personality" field. The keywords MUST be contextually appropriate for the character.
-3.  **Reference Prompt:** The Image Prompt expert (#4) creates a simple, generic prompt for the character's reference image in the "prompt" field. The client will enhance this later.
-4.  **Cutscene & Shot Generation:** The Video Prompt and Editing experts (#5, #6) design the scenes. To create visual variety, generate 2-3 'shots' per 'cutscene'. Each shot prompt MUST reference characters using their KOREAN name prefixed with @ (e.g., '@지민'). This is critical for visual consistency.
-5.  **Contextual Clothing:** Image prompts MUST specify realistic, context-appropriate clothing (e.g., "pajamas at home," "a business suit in the office"). AVOID unrealistic or fantasy outfits unless explicitly required by the script.
-6.  **Video Prompt Specialist (#5) must follow the Hailou AI Manual:** Use basic camera motions like [Truck left/right], [Pan left/right], [Push in], [Pull out], [Pedestal up/down], [Tilt up/down], [Zoom in/out], [Shake], [Tracking shot], [Static shot]. Use English for prompts and describe subjects using terms like "a man", "she", or detailed descriptions, NOT '@' references. All camera motions MUST be inside square brackets [].
-7.  **Editing & Direction AI (#6) must follow the Hailuo AI Manual:** For 'capcut' type, provide a tip in KOREAN. For 'hailuo' type, provide a detailed action and camera prompt in ENGLISH.
-8.  **Final Polish:** The Comment Induction expert (#7) adds an engaging hook to the final narration.
-
----
-
-### AI Expert Roles:
-
-### 1. 시나리오 전문가 (Scenario Specialist AI)
-* As a top storytelling expert, restructure the user's input into a 60-second drama script.
-* Define each character's \`name\`, \`gender\` ('남성'/'여성'), and \`nationality\` (in Korean, default: '한국'). Always include a 'narrator' character. A plausible age should be included in their description.
-* **CRITICAL:** The \`id\` for each character MUST be a unique string (e.g., "character_1", "character_2"). The narrator's id MUST be "narrator".
-
-### 2. 캐릭터 설정 전문가 (Character Setting AI)
-* As a top character development expert, you MUST select personality keywords for each character that fit their role in the story. The narrator does not get personality keywords.
-* **STRICT RULES:**
-    * 1. You MUST select 1 or 2 keywords from EACH of the 5 categories.
-    * 2. You ABSOLUTELY CANNOT select two keywords from the same pair (e.g., '소심한' and '대범한').
-    * 3. The total number of keywords MUST be between 5 and 10.
-* Place the selected keywords as a single comma-separated string in the \`personality\` field. **DO NOT set pitch, speed, or voice.**
-
-### 3. (REMOVED) 성격–TTS 매칭 전문가 (Personality & Voice Matching AI)
-* This role is now handled by the client application.
-
-### 4. 이미지 프롬프트 전문가 (Image Prompt Specialist AI)
-* As a top image prompt expert, write English prompts.
-* **For Reference Images:** Write a detailed physical description in the character's \`prompt\` field, explicitly starting with their nationality (in ENGLISH) and gender (e.g., "A Korean man in his 30s with sharp eyes..."). The narrator does not get an image prompt.
-* **For Shot Images:** Write detailed prompts describing the scene, action, and emotion. You MUST use the KOREAN character name prefixed with @ (e.g., '@지민') to maintain visual consistency. Specify context-appropriate clothing and the character's nationality in ENGLISH.
-
-### 5. 영상 프롬프트 전문가 (Video Prompt Specialist AI)
-* As a top camera directing expert, write English camera prompts for each shot following the Hailou AI Manual. Describe the subject in detail (e.g., "A woman in a red dress...") and DO NOT use '@' references. All camera motions MUST be inside square brackets [].
-
-### 6. 연출·편집 전문가 (Editing & Direction AI)
-* As a top video editing expert, set the video prompt \`type\` ('capcut' or 'hailuo'). Provide tips or detailed prompts as required.
-* Write a concise, situational English \`ttsPrompt\` for each dialogue that reflects the character's emotion.
-* **CRITICAL:** The \`charId\` in the \`dialogues\` array MUST EXACTLY match the \`id\` of a character defined in the \`characters\` array (e.g., "character_1"). DO NOT use the character's name.
-
-### 7. 댓글 유도 전문가 (Comment Induction Expert)
-* As a top social media expert, add a question or thought-provoking sentence to the end of the final narrator's dialogue.
-
-### 8. 코딩·디버깅 전문가 (Coding·Debugging Expert)
-* Ensure the final JSON is perfectly structured before output, especially the mapping between \`characters.id\` and \`dialogues.charId\`.
-
-**JSON Output Structure (Strictly Adhere):**
-{
-  "title": "string",
-  "characters": [
-    {
-      "id": "string", "name": "string", "gender": "string (남성/여성)", "nationality": "string (Korean)", "prompt": "string (English, optional)", "personality": "string (comma-separated Korean keywords, optional)"
-    }
-  ],
-  "backgrounds": [{"id": "string", "name": "string", "prompt": "string (English)"}],
-  "cutscenes": [
-    {
-      "duration": "number", 
-      "shots": [
-        { "shotId": "number", "imagePrompt": "string (English)", "videoPrompt": { "type": "string", "prompt": "string", "tip": "string" }, "startTime": "number" }
-      ],
-      "dialogues": [{"charId": "string", "text": "string", "ttsPrompt": "string (English, situational)", "postDelay": "number"}]
-    }
-  ]
-}`;
-    
-    const userPrompt = `주제 키워드: "${keywords}", 영상 길이: ${duration}초.\n\n참고 대본/사연:\n${script}`;
-    
-    const payload = {
-        contents: [{ parts: [{ text: userPrompt }] }],
-        systemInstruction: { parts: [{ text: systemPrompt }] },
-        generationConfig: { responseMimeType: "application/json" }
-    };
-
-    const result = await callAPI(apiUrl, payload, "Story Generation");
-    if (!result || !result.candidates || !result.candidates[0].content?.parts?.[0]?.text) {
-        console.error("Invalid response structure from Story API:", result);
-        throw new Error("스토리 API로부터 유효하지 않은 응답을 받았습니다.");
-    }
-    return JSON.parse(result.candidates[0].content.parts[0].text);
+// ... Rest of the UI functions (showToast, modals, etc.)
+// The following functions need to be defined or imported
+function formatVoiceForDisplay(voiceName) {
+    const voice = TTS_VOICES.find(v => v.name === voiceName);
+    return voice ? `${voice.name} (${voice.gender}, ${voice.desc})` : voiceName;
 }
 
-export async function refineCharacterPromptAPI(character) {
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent`;
-    const systemPrompt = `You are an expert image prompt writer. Your task is to refine a basic character description into a vivid, detailed, and photorealistic prompt. The final prompt must explicitly include the character's nationality and gender. Weave in details about their hair, appearance, and fashion that reflect their given personality keywords.`;
-    const userPrompt = `
-        Base Prompt: "${character.prompt}"
-        Personality Keywords: "${character.personality}"
-        Nationality: ${character.nationality}
-        Gender: ${character.gender}
-
-        Refine the base prompt into a single, cohesive sentence for an image generation AI.
-    `;
-     const payload = {
-        contents: [{ parts: [{ text: userPrompt }] }],
-        systemInstruction: { parts: [{ text: systemPrompt }] },
-    };
-    const result = await callAPI(apiUrl, payload, "Prompt Refinement");
-    if (result && result.candidates && result.candidates[0].content?.parts?.[0]?.text) {
-        return result.candidates[0].content.parts[0].text.trim();
-    }
-    return character.prompt;
+export function populateNarratorVoices() {
+    const select = document.getElementById('narrator-voice');
+    select.innerHTML = '';
+    ['여성', '남성'].forEach(gender => {
+        const group = document.createElement('optgroup');
+        group.label = gender;
+        TTS_VOICES.filter(v => v.gender === gender).forEach(voice => {
+            const option = document.createElement('option');
+            option.value = voice.name;
+            option.textContent = formatVoiceForDisplay(voice.name);
+            group.appendChild(option);
+        });
+        select.appendChild(group);
+    });
+    select.value = 'Charon'; // Default narrator voice
 }
 
-export async function generateImageAPI(cutOrShot, characterReferenceImages, locationReferenceImages) {
-    let prompt = cutOrShot.imagePrompt || cutOrShot.prompt;
-   
-    if (typeof prompt !== 'string' || !prompt.trim()) {
-        return `https://placehold.co/1080x1920/374151/9ca3af?text=No+Prompt`;
-    }
+export function initTTSDebugConsole() {
+    DOM_ELEMENTS.showTTSConsoleBtn.addEventListener('click', () => {
+        DOM_ELEMENTS.ttsDebugConsole.classList.remove('hidden');
+        DOM_ELEMENTS.showTTSConsoleBtn.classList.add('hidden');
+    });
+    DOM_ELEMENTS.closeTTSConsoleBtn.addEventListener('click', () => {
+        DOM_ELEMENTS.ttsDebugConsole.classList.add('hidden');
+        DOM_ELEMENTS.showTTSConsoleBtn.classList.remove('hidden');
+    });
+    DOM_ELEMENTS.clearTTSConsoleBtn.addEventListener('click', () => {
+        DOM_ELEMENTS.ttsDebugOutput.innerHTML = '';
+    });
+}
+
+export function logToTTSConsole(title, data, isError = false) {
+    if(isError) console.error(title, data);
+    else console.log(title, data);
+
+    const logEntry = document.createElement('div');
+    logEntry.className = 'p-1 border-b border-gray-700';
     
-    let nationality = cutOrShot.nationality || '';
-    if (nationality === '한국') nationality = 'Korean';
-
-    const references = prompt.match(/@([\w\uac00-\ud7a3]+)/g) || [];
-     if (!nationality && references.length > 0) {
-        const firstRefName = references[0].substring(1);
-        const { state } = await import('./app.js');
-        const referencedChar = state.story.characters.find(c => c.name === firstRefName);
-        if (referencedChar) {
-            nationality = referencedChar.nationality || '';
-            if (nationality === '한국') nationality = 'Korean';
-        }
-    }
-
-    const cleanedPrompt = prompt.replace(/@[\w\uac00-\ud7a3]+/g, (match, p1) => p1).trim();
-    
-    let finalPrompt = cleanedPrompt;
-    if(nationality && !cleanedPrompt.toLowerCase().includes(nationality.toLowerCase())){
-        finalPrompt = `${nationality} ${finalPrompt}`;
-    }
-
-    const textPrompt = `Photorealistic image of ${finalPrompt}. captured with a Sony A7 III, 35mm lens at f/1.8, cinematic lighting, dramatic, high detail. The final image MUST have an aspect ratio of 9:16.`;
-
-    const parts = [{ text: textPrompt }];
-
-    if (references.length > 0) {
-        for (const refName of references) {
-            const name = refName.substring(1);
-            const refImage = characterReferenceImages[name] || locationReferenceImages[name];
-            if (refImage && refImage.startsWith('data:image')) {
-                parts.push({ inlineData: { mimeType: "image/png", data: refImage.split(',')[1] } });
-            }
-        }
-    }
-    
+    let prettyData = '';
     try {
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent`;
-        const payload = { contents: [{ parts }], generationConfig: { responseModalities: ['IMAGE'] } };
-        const result = await callAPI(apiUrl, payload, "Image Generation");
-        const base64Data = result.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
-        
-        if (base64Data) {
-            return `data:image/png;base64,${base64Data}`;
-        }
-        throw new Error('No image data from API');
-    } catch(error) {
-        console.error(`Image generation failed for prompt "${prompt}":`, error);
-        return `https://placehold.co/1080x1920/374151/9ca3af?text=Error`;
+        prettyData = JSON.stringify(data, null, 2);
+    } catch (e) {
+        prettyData = 'Could not stringify object.';
     }
-}
 
-export async function improveScriptAPI(originalScript, keywords) {
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent`;
-    const systemPrompt = `You are South Korea's top Shorts drama scriptwriter. Take the user's original script and improve it into a more exciting, immersive 60-second Shorts drama script where the conflict is clear. The dialogue should be fast-paced, like a rally, and include elements that pique the viewer's curiosity. Refer to the keywords to make the theme clearer. The response should only be the improved script text.`;
-    const userPrompt = `주제 키워드: "${keywords}"\n\n---원본 대본---\n${originalScript}`;
+    const titleColor = isError ? 'text-red-500' : 'text-yellow-400';
+    logEntry.innerHTML = `<div class="flex justify-between"><span class="font-bold ${titleColor}">${title}</span><span class="text-green-400">${new Date().toLocaleTimeString()}</span></div><pre class="whitespace-pre-wrap text-gray-300">${prettyData}</pre>`;
     
-    const payload = {
-        contents: [{ parts: [{ text: userPrompt }] }],
-        systemInstruction: { parts: [{ text: systemPrompt }] },
-    };
-    
-    const result = await callAPI(apiUrl, payload, "Script Improvement");
-    if (!result || !result.candidates || !result.candidates[0].content.parts[0].text) {
-        throw new Error("대본 개선 API로부터 유효하지 않은 응답을 받았습니다.");
-    }
-    return result.candidates[0].content.parts[0].text;
+    DOM_ELEMENTS.ttsDebugOutput.appendChild(logEntry);
+    DOM_ELEMENTS.ttsDebugOutput.scrollTop = DOM_ELEMENTS.ttsDebugOutput.scrollHeight;
 }
 
-export async function generateTTSAPI(text, voice = 'Kore') {
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent`;
-    const payload = {
-        contents: [{ parts: [{ text }] }],
-        generationConfig: {
-            responseModalities: ["AUDIO"],
-            speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: voice } } }
-        }
-    };
-    const result = await callAPI(apiUrl, payload, "TTS");
-    const part = result?.candidates?.[0]?.content?.parts?.[0];
-    if (part?.inlineData?.data) return part.inlineData.data;
-    throw new Error("TTS API did not return audio data.");
-}
-
-export async function translateTextAPI(text) {
-       const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent`;
-       const payload = {
-           contents: [{ parts: [{ text: `Translate the following English text to Korean: "${text}"` }] }]
-       };
-       const result = await callAPI(apiUrl, payload, "Translation");
-       return result.candidates[0].content.parts[0].text;
-}
+export function showToast(message, type = 'info') {
+    const container
