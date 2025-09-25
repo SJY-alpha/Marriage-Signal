@@ -8,32 +8,141 @@ app.ui = {
         app.updateTotalTime(); 
     },
     
-    // ... (most of the ui_manager.js code remains the same)
-
     renderBackgrounds() {
         const bgContainer = app.elements.backgroundReferences;
-        const bgTabs = app.elements.backgroundTabs;
-        bgTabs.innerHTML = ''; // Clear old tabs
-        bgContainer.innerHTML = `
-            <div class="col-span-full text-center p-8 bg-gray-700 rounded-lg">
-                <h4 class="text-lg font-bold text-gray-300">새로운 배경 관리 시스템</h4>
-                <p class="text-gray-400 mt-2">다음 업데이트에서 그룹화된 배경 관리 기능이 제공될 예정입니다. 기대해주세요!</p>
+        app.elements.backgroundTabs.innerHTML = ''; // Hide old tabs
+        bgContainer.innerHTML = ''; // Clear container
+
+        // Add "Add Group" button
+        const addGroupButton = document.createElement('div');
+        addGroupButton.className = "col-span-full mb-4";
+        addGroupButton.innerHTML = `<button id="add-bg-group-btn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition-colors"><i class="fas fa-plus mr-2"></i>새 배경 그룹 추가</button>`;
+        bgContainer.appendChild(addGroupButton);
+        document.getElementById('add-bg-group-btn').addEventListener('click', () => app.addBackgroundGroup());
+        
+        if (app.state.backgrounds && app.state.backgrounds.length > 0) {
+            app.state.backgrounds.forEach(group => {
+                const groupCard = this.createBackgroundGroupCard(group);
+                bgContainer.appendChild(groupCard);
+            });
+        }
+    },
+
+    createBackgroundGroupCard(group) {
+        const card = document.createElement('div');
+        card.className = 'bg-gray-700 p-4 rounded-lg col-span-full';
+        card.dataset.groupId = group.id;
+
+        const subImagesHTML = group.subImages.map(sub => this.createSubImageCard(group.id, sub)).join('');
+
+        card.innerHTML = `
+            <div class="flex items-center justify-between mb-3">
+                <input type="text" value="${group.groupName}" class="group-name-input bg-gray-600 rounded p-1 text-white font-bold text-lg w-1/2">
+                <div class="space-x-2">
+                    <button class="add-sub-image-btn bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-md text-sm"><i class="fas fa-plus-circle mr-1"></i>각도 추가</button>
+                    <button class="delete-group-btn bg-red-600 hover:bg-red-700 px-3 py-1 rounded-md text-sm"><i class="fas fa-trash-alt mr-1"></i>그룹 삭제</button>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                ${subImagesHTML}
+            </div>
+        `;
+
+        // Event Listeners
+        card.querySelector('.group-name-input').addEventListener('change', (e) => {
+            group.groupName = e.target.value;
+        });
+        card.querySelector('.add-sub-image-btn').addEventListener('click', () => {
+            app.addSubImage(group.id);
+        });
+        card.querySelector('.delete-group-btn').addEventListener('click', () => {
+            this.showConfirmModal(
+                '그룹 삭제',
+                `'${group.groupName}' 배경 그룹을 정말 삭제하시겠습니까?`,
+                () => app.deleteBackgroundGroup(group.id)
+            );
+        });
+
+        return card;
+    },
+
+    createSubImageCard(groupId, subImage) {
+        return `
+            <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md flex flex-col text-sm" data-sub-id="${subImage.subId}">
+                <div class="reference-image-container bg-gray-600">
+                     <img src="${subImage.image || 'https://placehold.co/540x960/374151/9ca3af?text=No+Image'}" alt="${subImage.subName}" class="sub-image-img cursor-pointer hover:opacity-80 transition-opacity">
+                </div>
+                <div class="p-2">
+                    <input type="text" value="${subImage.subName}" class="sub-name-input w-full bg-gray-700 p-1 rounded mb-2">
+                    <div class="grid grid-cols-2 gap-1">
+                         <button class="edit-sub-prompt-btn bg-gray-600 hover:bg-gray-500 p-1 rounded"><i class="fas fa-file-alt"></i></button>
+                         <button class="regen-sub-image-btn bg-indigo-600 hover:bg-indigo-500 p-1 rounded"><i class="fas fa-sync-alt"></i></button>
+                    </div>
+                     <button class="delete-sub-image-btn bg-red-600 hover:bg-red-500 p-1 rounded w-full mt-1"><i class="fas fa-trash"></i></button>
+                </div>
             </div>
         `;
     },
 
+    bindSubImageCardEvents() {
+        app.elements.backgroundReferences.querySelectorAll('[data-sub-id]').forEach(card => {
+            const subId = card.dataset.subId;
+            const groupId = card.closest('[data-group-id]').dataset.groupId;
+            const group = app.state.backgrounds.find(g => g.id === groupId);
+            const subImage = group?.subImages.find(s => s.subId === subId);
+
+            if (!subImage) return;
+
+            card.querySelector('.sub-image-img').addEventListener('click', () => {
+                this.showImageModal(subImage.image, `${group.groupName} - ${subImage.subName}`);
+            });
+            card.querySelector('.sub-name-input').addEventListener('change', (e) => {
+                subImage.subName = e.target.value;
+            });
+            card.querySelector('.edit-sub-prompt-btn').addEventListener('click', () => {
+                this.showPromptModal('배경 프롬프트 편집', subImage.prompt, (newPromptEditor) => {
+                    subImage.prompt = this.parsePromptFromEditing(newPromptEditor);
+                });
+            });
+            card.querySelector('.regen-sub-image-btn').addEventListener('click', async (e) => {
+                const button = e.currentTarget;
+                const icon = button.querySelector('i');
+                const originalClass = icon.className;
+                icon.className = 'fas fa-spinner fa-spin';
+                button.disabled = true;
+
+                subImage.image = await app.api.generateImageForCut(subImage, {}, {});
+                
+                icon.className = originalClass;
+                button.disabled = false;
+                this.renderBackgrounds();
+            });
+            card.querySelector('.delete-sub-image-btn').addEventListener('click', () => {
+                 this.showConfirmModal(
+                    '각도 삭제',
+                    `'${subImage.subName}' 각도를 정말 삭제하시겠습니까?`,
+                    () => app.deleteSubImage(groupId, subId)
+                );
+            });
+        });
+    },
+
+    // Override renderBackgrounds to bind events after rendering
+    originalRenderBackgrounds: function() { /* placeholder */ }, // Store original
+    setupBackgrounds() {
+        this.originalRenderBackgrounds = this.renderBackgrounds;
+        this.renderBackgrounds = () => {
+            this.originalRenderBackgrounds();
+            this.bindSubImageCardEvents(); // Bind events after DOM is updated
+        }
+    },
+    
     // ... (rest of the ui_manager.js code)
 };
 
-        app.populateNarratorVoices();
-        const voiceSelect = narratorControls.querySelector('#narrator-voice');
-        const pitchSlider = narratorControls.querySelector('#narrator-pitch-slider');
-        const speedSlider = narratorControls.querySelector('#narrator-speed-slider');
-        const pitchValue = narratorControls.querySelector('#narrator-pitch-value');
-        const speedValue = narratorControls.querySelector('#narrator-speed-value');
+// Initialize the background rendering override
+app.ui.setupBackgrounds();
 
-        voiceSelect.value = narrator.voice || 'Charon';
-        pitchSlider.value = narrator.pitch || 0.0;
         speedSlider.value = narrator.speed || 1.0;
         pitchValue.textContent = (narrator.pitch || 0.0).toFixed(2);
         speedValue.textContent = (narrator.speed || 1.0).toFixed(2);
