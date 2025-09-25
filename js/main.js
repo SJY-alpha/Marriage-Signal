@@ -6,11 +6,11 @@
  */
 
 // 모듈 임포트 (CDN 경로 사용)
-import { TTS_VOICES, PERSONALITY_DATA_URL, CURRENT_VERSION } from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@527845707204c5eb7b87f283e8615ab2ce1d50bd/js/constants.js';
-import { appState, DOM, cacheDomElements } from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@527845707204c5eb7b87f283e8615ab2ce1d50bd/js/state.js';
-import * as api from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@527845707204c5eb7b87f283e8615ab2ce1d50bd/js/api.js';
-import * as ui from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@527845707204c5eb7b87f283e8615ab2ce1d50bd/js/ui.js';
-import * as utils from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@527845707204c5eb7b87f283e8615ab2ce1d50bd/js/utils.js';
+import { TTS_VOICES, PERSONALITY_DATA_URL } from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@c6c8481392c24d61b0465131b38743e63424fdd9/js/constants.js';
+import { appState, DOM, cacheDomElements } from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@c6c8481392c24d61b0465131b38743e63424fdd9/js/state.js';
+import * as api from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@c6c8481392c24d61b0465131b38743e63424fdd9/js/api.js';
+import * as ui from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@c6c8481392c24d61b0465131b38743e63424fdd9/js/ui.js';
+import * as utils from 'https://cdn.jsdelivr.net/gh/SJY-alpha/Marriage-Signal@c6c8481392c24d61b0465131b38743e63424fdd9/js/utils.js';
 
 // --- UI에 전달할 이벤트 핸들러 모음 ---
 const handlers = {
@@ -406,7 +406,7 @@ async function generateAndCacheTTS(dialogue, text) {
          
          ui.logToTTSConsole('API 요청 데이터', {'프롬프트': ttsPrompt, '보이스': voice });
 
-         const base64Audio = await api.generateTTSAPI(prompt, voice);
+         const base64Audio = await api.generateTTSAPI(ttsPrompt, voice);
 
          ui.logToTTSConsole('✅ TTS 생성 성공', {});
          
