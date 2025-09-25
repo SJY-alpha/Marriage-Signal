@@ -4,10 +4,12 @@ body {
     background-color: #1a1a1a;
     color: #f0f0f0;
 }
+/* 스크롤바 커스텀 */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: #2c2c2c; }
 ::-webkit-scrollbar-thumb { background: #555; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: #777; }
+
 .tab-button.active {
     background-color: #4f46e5;
     color: white;
@@ -127,7 +129,7 @@ body {
 }
 .shot-start-time-label {
      font-size: 0.8rem;
-    color: #9ca3af;
+     color: #9ca3af;
 }
 .shot-start-time {
     width: 50px;
@@ -217,6 +219,6 @@ body {
 }
 .dialogue-start-time {
      width: 40px;
-    background-color: #1f2937;
+     background-color: #1f2937;
      border: 1px solid #4b5563;
 }
