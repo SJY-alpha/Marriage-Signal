@@ -18,22 +18,40 @@ app.api = {
 * **Task:** Receiving the final script, your job is to break it down into cuts, and design image prompts.
 * **CRITICAL - Character Consistency:** For shots that should maintain character appearance (e.g., continuous conversation), you MUST include the property \`maintainAppearance: true\`.
 * **CRITICAL - Background Consistency:** You MUST define background groups for each location (e.g., '민준의 집'). For each shot, you MUST reference the background using the format \`@그룹명(상세공간_뷰)\`. This is MANDATORY for creating a consistent spatial experience.
-    * **Example:** A scene in Minjun's house might use \`@민준의집(거실_소파)\` for one shot, and \`@민준의집(부엌)\` for another.
-    * You MUST create detailed prompts for each unique '상세공간_뷰' you define within a group.
+* **CRITICAL - Prop Consistency:** If a prop like a photo frame appears in a shot, you MUST use the '@캐릭터명' tag within the prompt to ensure the person in the photo is consistent with the main character. (e.g., "a wedding photo of @민준 and @서연 on the table").
 
 **Final JSON Output Structure (Strictly Adhere):**
-{
-  "title": "string",
-  "characters": [
-    { "id": "string", "name": "string", "gender": "string (남성/여성)", "prompt": "string" }
-  ],
-  "backgrounds": [
-    { 
-      "groupName": "string", 
-      "subImages": [
-        { "subName": "string (e.g., 거실_소파)", "prompt": "string (English)" }
-      ]
-    }
+... (The rest of the prompt remains the same) ...
+`;
+        
+        const userPrompt = `주제 키워드: "${keywords}", 영상 길이: ${duration}초.\n\n참고 대본/사연:\n${script}`;
+        
+        const payload = {
+            contents: [{ parts: [{ text: userPrompt }] }],
+            systemInstruction: { parts: [{ text: systemPrompt }] },
+            generationConfig: { responseMimeType: "application/json" }
+        };
+
+        const result = await this.callAPI(apiUrl, payload, "Story Generation");
+        // ... (Parsing and ID logic remains the same) ...
+        const storyData = JSON.parse(result.candidates[0].content.parts[0].text);
+        
+        if(storyData.backgrounds) {
+            storyData.backgrounds.forEach(bgGroup => {
+                bgGroup.id = `bg_group_${Date.now()}_${Math.random()}`;
+                if(bgGroup.subImages) {
+                    bgGroup.subImages.forEach(sub => {
+                        sub.subId = `sub_${Date.now()}_${Math.random()}`;
+                    });
+                }
+            });
+        }
+        return storyData;
+    },
+    
+    // ... (The rest of api_handler.js remains unchanged) ...
+};
+
   ],
   "cutscenes": [
     {
